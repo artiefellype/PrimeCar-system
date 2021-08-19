@@ -26,7 +26,8 @@ public class OrcamentoVO {
 		if(orcamento == null || orcamento.equals("")) {
 			
 		}else {
-			this.orcamento = orcamento;
+			if(orcamento > 0) // Não existe orçamento menor que 0
+				this.orcamento = orcamento;
 		}
 	}
 	//--------------------custos------------------------
@@ -36,8 +37,9 @@ public class OrcamentoVO {
 	public void setCusto(Double custo) {
 		if(custo == null || custo.equals("")) {
 			
-		}else {
-			this.custo = custo;
+		}else { 
+			if(custo > 0)  // Não existe custo negativo
+				this.custo = custo;
 		}
 	}
 	//--------------------Balanço--------------------------------

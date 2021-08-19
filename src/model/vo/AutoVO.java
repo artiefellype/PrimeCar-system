@@ -14,7 +14,7 @@ public class AutoVO {
 		
 	}
 	public void setMarca(String marca) {
-		if(marca == null || marca.isBlank()) {
+		if(marca.isBlank()) {
 			
 		}else {
 			this.marca = marca;
@@ -26,7 +26,7 @@ public class AutoVO {
 	}
 	
 	public void setCor(String cor) {
-		if(cor == null || cor.isBlank()) {
+		if(cor.isBlank()) {
 			
 		}else {
 			this.cor = cor;
@@ -37,7 +37,7 @@ public class AutoVO {
 		return placa;
 	}
 	public void setPlaca(String placa) {
-		if(placa == null || placa.isBlank()) {
+		if(placa.isBlank()) {
 			
 		}else {
 			this.placa = placa;
@@ -51,7 +51,9 @@ public class AutoVO {
 		if(ano == null || ano.equals("")) {
 			
 		}else {
-			this.ano = ano;
+			if (ano > 1920) {  // Não deve existir carros antes dessa década
+				this.ano = ano;
+			}
 		}
 	}
 	//-----------------------Quilometragem do automóvel------------------------------------
@@ -62,7 +64,9 @@ public class AutoVO {
 		if(quilometragem == null || quilometragem.equals("")) {
 			
 		}else {
-			this.quilometragem = quilometragem;
+			if (quilometragem > 0) {
+				this.quilometragem = quilometragem;
+			}
 		}
 	}
 	//-----------------------Proprietario do automóvel-----------------------------------

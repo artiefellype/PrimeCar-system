@@ -9,7 +9,7 @@ public class ServicosVO {
 		return tipo;
 	}
 	public void setTipo(String tipo) {
-		if(tipo == null || tipo.isBlank()) {
+		if(tipo.isBlank()) {
 			
 		}else {
 			this.tipo = tipo;
@@ -25,7 +25,8 @@ public class ServicosVO {
 		if(valor == null || valor.equals("")) {
 			
 		}else {
-			this.valor = valor;
+			if(valor > 0)
+				this.valor = valor;
 		}
 		
 	}
