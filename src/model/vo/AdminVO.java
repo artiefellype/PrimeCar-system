@@ -11,11 +11,11 @@ public class AdminVO {
 		return name;
 	}
 	public void setName(String name) {
-		if(name == null || name.isBlank()) {
+		if(name.isBlank()) {
 			
 		}else {
-				this.name = name;
-			}
+			this.name = name;
+		}
 		
 	}
 	//--------------------Senha do Admin------------------------------
@@ -24,7 +24,7 @@ public class AdminVO {
 	}
 	public void setSenha(String senha) {
 		
-		if(senha == null || senha.isBlank()) {
+		if(senha.isBlank()) {
 			
 		}else {
 				this.senha = senha;
