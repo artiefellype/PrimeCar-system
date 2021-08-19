@@ -10,7 +10,7 @@ public class PacasVO {
 		return name;
 	}
 	public void setName(String name) {
-		if(name == null || name.isBlank()) {
+		if(name.isBlank()) {
 			
 		}else {
 			this.name = name;
@@ -22,7 +22,7 @@ public class PacasVO {
 		return fabricante;
 	}
 	public void setFabricante(String fabricante) {
-		if(fabricante == null || fabricante.isBlank()) {
+		if(fabricante.isBlank()) {
 			
 		}else {
 			this.fabricante = fabricante;
@@ -37,7 +37,8 @@ public class PacasVO {
 		if(preco == null || preco.equals("")) {
 			
 		}else {
-			this.preco = preco;
+			if(preco > 0) // Não existe preço negativo
+				this.preco = preco;
 		}
 		
 	}
