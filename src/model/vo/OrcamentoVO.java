@@ -11,7 +11,7 @@ public class OrcamentoVO {
 		return clientName;
 	}
 	public void setClientName(ClienteVO clientName) {
-		if(clientName == null || clientName.equals("")) {
+		if(clientName.getName() == null || clientName.getName().isBlank()) {
 			
 		}else {
 			this.clientName = clientName;
