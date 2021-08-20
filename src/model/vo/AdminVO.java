@@ -10,7 +10,7 @@ public class AdminVO {
 		return name;
 	}
 	public void setName(String name) {
-		if(name.isBlank()) {
+		if(name == null || name.isBlank()) {
 			
 		}else {
 			this.name = name;
@@ -23,7 +23,7 @@ public class AdminVO {
 	}
 	public void setSenha(String senha) {
 		
-		if(senha.isBlank()) {
+		if(senha == null || senha.isBlank()) {
 			
 		}else {
 				this.senha = senha;

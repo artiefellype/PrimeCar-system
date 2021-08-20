@@ -10,7 +10,7 @@ public class PacasVO {
 		return name;
 	}
 	public void setName(String name) {
-		if(name.isBlank()) {
+		if(name == null || name.isBlank()) {
 			
 		}else {
 			this.name = name;
@@ -22,7 +22,7 @@ public class PacasVO {
 		return fabricante;
 	}
 	public void setFabricante(String fabricante) {
-		if(fabricante.isBlank()) {
+		if(fabricante == null || fabricante.isBlank()) {
 			
 		}else {
 			this.fabricante = fabricante;
