@@ -14,7 +14,7 @@ public class AutoVO {
 		
 	}
 	public void setMarca(String marca) {
-		if(marca.isBlank()) {
+		if(marca == null || marca.isBlank()) {
 			
 		}else {
 			this.marca = marca;
@@ -26,7 +26,7 @@ public class AutoVO {
 	}
 	
 	public void setCor(String cor) {
-		if(cor.isBlank()) {
+		if(cor == null || cor.isBlank()) {
 			
 		}else {
 			this.cor = cor;
@@ -37,7 +37,7 @@ public class AutoVO {
 		return placa;
 	}
 	public void setPlaca(String placa) {
-		if(placa.isBlank()) {
+		if(placa == null || placa.isBlank()) {
 			
 		}else {
 			this.placa = placa;

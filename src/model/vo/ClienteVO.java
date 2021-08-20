@@ -10,7 +10,7 @@ public class ClienteVO {
 		return name;
 	}
 	public void setName(String name) {
-		if(name.isBlank()) {
+		if(name == null || name.isBlank()) {
 			
 		}else {
 			this.name = name;
@@ -22,7 +22,7 @@ public class ClienteVO {
 		return endereco;
 	}
 	public void setEndereco(String endereco) {
-		if(endereco.isBlank()) {
+		if(endereco == null || endereco.isBlank()) {
 			
 		}else {
 			this.endereco = endereco;
@@ -34,7 +34,7 @@ public class ClienteVO {
 		return cpf;
 	}
 	public void setCPF(String cpf) {
-		 if(cpf.isBlank()) {
+		 if(cpf == null || cpf.isBlank()) {
 			 
 		 }else {
 			 //Caso o numero de cpf tenha números iguais é considerado erro, assim como ter mais de
