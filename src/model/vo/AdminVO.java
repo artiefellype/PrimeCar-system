@@ -3,7 +3,6 @@ package model.vo;
 public class AdminVO {
 	private String name;
 	private String senha;
-	private Integer id;
 	
 	//-------------------Nome do admin------------------------------
 	public String getName() {
