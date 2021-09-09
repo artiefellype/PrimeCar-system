@@ -4,7 +4,19 @@ public class ClienteVO {
 	private String name;
 	private String endereco;
 	private String cpf;
+	private Long id;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		if(id == null) {
+			
+		}else {
+			this.id = id;
+		}
+		
+	}
 	//----------------------Nome do cliente---------------------------------
 	public String getName() {
 		return name;
@@ -39,11 +51,11 @@ public class ClienteVO {
 		 }else {
 			 //Caso o numero de cpf tenha números iguais é considerado erro, assim como ter mais de
 			 //	10 digitos
-			 if (cpf.matches("\\d{10}") || (cpf.length() >= 11)) {
+			 //if (cpf.matches("\\d{10}") || (cpf.length() >= 11)) {
 				 
-			 }else {
+			// }else {
 				 this.cpf = cpf;
-			 }
+			 //}
 		 }
 	}
 	
