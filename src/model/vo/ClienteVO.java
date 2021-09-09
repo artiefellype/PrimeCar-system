@@ -1,15 +1,19 @@
 package model.vo;
 
+import java.util.UUID;
+
 public class ClienteVO {
 	private String name;
 	private String endereco;
 	private String cpf;
-	private Long id;
+	private UUID id;
 	
-	public Long getId() {
+	
+	// ------------------- ID do cliente ----------------------------
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		if(id == null) {
 			
 		}else {

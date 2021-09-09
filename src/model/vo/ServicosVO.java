@@ -1,42 +1,25 @@
 package model.vo;
+import java.util.UUID;
 
 public class ServicosVO {
+	private UUID id;
 	private String tipo;
 	private Double valor;
-	private Integer idServico;
-	private Integer idAuto;
-	private Integer idpeca;
 	private Boolean finalizado;
 	
-	public Integer getIdServico() {
-		return idServico;
+	// ------------------- ID do Serviço ----------------------------
+	public UUID getId() {
+		return id;
 	}
-	public void setIdServico(Integer idServico) {
-		this.idServico = idServico;
-	}
-	public Integer getIdAuto() {
-		return idAuto;
-	}
-	public void setIdAuto(Integer idAuto) {
-		this.idAuto = idAuto;
-	}
-	public Integer getIdpeca() {
-		return idpeca;
-	}
-	public void setIdpeca(Integer idpeca) {
-		this.idpeca = idpeca;
-	}
-	public Boolean getFinalizado() {
-		return finalizado;
-	}
-	public void setFinalizado(Boolean finalizado) {
-		if(finalizado == null) {
+	public void setId(UUID id) {
+		if(id == null) {
 			
-		}else {
-			this.finalizado = finalizado;
+		}else{
+			this.id = id;
 		}
 		
 	}
+
 	//------------------Tipo do serviço-----------------------
 	public String getTipo() {
 		return tipo;
@@ -60,6 +43,19 @@ public class ServicosVO {
 		}else {
 			if(valor > 0)
 				this.valor = valor;
+		}
+		
+	}
+	//------------------ Verificação ----------------------------------------
+	public Boolean getFinalizado() {
+		return finalizado;
+	}
+	
+	public void setFinalizado(Boolean finalizado) {
+		if(finalizado == null) {
+			
+		}else {
+			this.finalizado = finalizado;
 		}
 		
 	}

@@ -58,7 +58,6 @@ public class ClienteDAO extends BaseDAO{
 				cliente.setName(rs.getString("nome"));
 				cliente.setCPF(rs.getString("cpf"));
 				cliente.setEndereco(rs.getString("endereco"));
-				cliente.setId(rs.getLong("id"));
 				client.add(cliente);
 				
 			}

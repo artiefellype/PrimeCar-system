@@ -1,12 +1,28 @@
 package model.vo;
 
+import java.util.UUID;
+
 public class AutoVO {
+	private UUID id;
 	private String marca;
 	private String cor;
 	private String placa;
 	private Integer ano;
 	private Double quilometragem;
 	private ClienteVO proprietario;
+	
+	// ------------------- ID do automóvel ----------------------------
+	public UUID getId() {
+		return id;
+	}
+	public void setId(UUID id) {
+		if(id == null) {
+			
+		}else {
+			this.id = id;
+		}
+		
+	}
 	
 	//-----------------------Marca do automóvel------------------------------------
 	public String getMarca() {
