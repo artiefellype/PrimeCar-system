@@ -11,16 +11,19 @@ import model.vo.ClienteVO;
 
 public class ClienteDAO extends BaseDAO{
 	
+	
 	public void inserir(ClienteVO client) {
 		conect = getConnection();
 		String sql = "insert into clientes (nome, endereco, cpf) values (?,?,?)";
 		PreparedStatement ptst;
 		try {
-			ptst = conect.prepareStatement(sql);
+			
+			ptst = conect.prepareStatement(sql);		
 			ptst.setString(1, client.getName());
 			ptst.setString(2, client.getEndereco());
 			ptst.setString(3, client.getCPF());
 			ptst.execute();
+			
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,6 +38,34 @@ public class ClienteDAO extends BaseDAO{
 		try {
 			ptst = conect.prepareStatement(sql);
 			ptst.setString(1, client.getName());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByEndereco(ClienteVO client) {
+		conect = getConnection();
+		String sql = "delete from clientes where endereco = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setString(1, client.getEndereco());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByCPF(ClienteVO client) {
+		conect = getConnection();
+		String sql = "delete from clientes where cpf = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setString(1, client.getCPF());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		
@@ -58,6 +89,7 @@ public class ClienteDAO extends BaseDAO{
 				cliente.setName(rs.getString("nome"));
 				cliente.setCPF(rs.getString("cpf"));
 				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setId(rs.getInt("idcliente"));
 				client.add(cliente);
 				
 			}
@@ -66,8 +98,22 @@ public class ClienteDAO extends BaseDAO{
 			e.printStackTrace();
 		}
 		return client;
+	}
+	
+	public void editar(ClienteVO client) {
+		conect = getConnection();
+		String sql = "update clientes set nome = ? where idcliente= ?";
+		PreparedStatement ptst;
 		
-		
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setString(1, client.getName());
+			ptst.setInt(2, client.getId());
+			ptst.execute();
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

@@ -1,20 +1,20 @@
 package model.vo;
 
 import java.util.Calendar;
-import java.util.UUID;
+
 
 public class OrcamentoVO {
-	private UUID id;
+	private Integer id;
 	private ClienteVO clientName;
 	private ServicosVO servicos;
 	private Double custo;
 	private Calendar data;
 
 	// ------------------- ID do orçamento ----------------------------
-	public UUID getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(UUID id) {
+	public void setId(Integer id) {
 		if(id == null) {
 			
 		}else {

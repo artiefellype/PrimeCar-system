@@ -1,18 +1,18 @@
 package model.vo;
 
-import java.util.UUID;
+
 
 public class PecasVO {
-	private UUID id;
+	private Integer id;
 	private String name;
 	private String fabricante;
 	private Double preco;
 	
 	// ------------------- ID da peça ----------------------------
-	public UUID getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(UUID id) {
+	public void setId(Integer id) {
 		if(id == null) {
 			
 		}else {

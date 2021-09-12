@@ -1,17 +1,17 @@
 package model.vo;
-import java.util.UUID;
+
 
 public class ServicosVO {
-	private UUID id;
+	private Integer id;
 	private String tipo;
 	private Double valor;
 	private Boolean finalizado;
 	
 	// ------------------- ID do Serviço ----------------------------
-	public UUID getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(UUID id) {
+	public void setId(Integer id) {
 		if(id == null) {
 			
 		}else{
