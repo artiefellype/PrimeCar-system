@@ -1,29 +1,36 @@
 package model.dao;
 
-import model.vo.ClienteVO;
 import java.util.List;
+//import model.vo.ClienteVO;
+import model.vo.ServicosVO;
+
+
 
 public class testBD {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BaseDAO client = new BaseDAO();
-		System.out.println(client.getConnection());
+		BaseDAO base = new BaseDAO();
+		System.out.println(base.getConnection());
 		
-		
+		/* TESTE CLIENTEDAO
 		ClienteDAO clientD = new ClienteDAO();
 		ClienteVO clientV = new ClienteVO();
 		
 		
-		clientV.setName("mais uma vez pinto ");
-		clientV.setCPF("123.9-23");
+		clientV.setName("editado de vdd um");
+		clientV.setCPF("111.222.333-23");
 		clientV.setEndereco("Rusdsdsrr");
+		clientV.setId(clientD.getIdFromBD());
 		
-		
-		
+	
 		//clientD.inserir(clientV);
 		//clientD.editar(clientV);
 		//clientD.removeByCPF(clientV);
+		//System.out.println("---------------------");
+		//System.out.println(clientD.getIdFromBD());
+		//System.out.println("---------------------");
+		
 		
 		List<ClienteVO> clientes = clientD.listar();
 		
@@ -34,6 +41,30 @@ public class testBD {
 			System.out.println(clientesShow.getCPF());
 			
 		}
+		*/
+		
+		ServicosDAO servicosD = new ServicosDAO();
+		ServicosVO servicosV = new ServicosVO();
+		
+		servicosV.setTipo("troca de vidraça");
+		servicosV.setValor(120.60);
+		servicosV.setFinalizado(false);
+		servicosV.setId(servicosD.getIdFromBD());
+		
+		//servicosD.inserir(servicosV);
+		
+		List<ServicosVO> servico = servicosD.listar();
+		
+		for(ServicosVO servicosShow : servico) {
+			System.out.println(servicosShow.getId());
+			System.out.println(servicosShow.getTipo());
+			System.out.println(servicosShow.getValor());
+			System.out.println("Finalizado:" + servicosShow.getFinalizado());
+			
+		}
+		
+		
+		
 		
 		
 	}

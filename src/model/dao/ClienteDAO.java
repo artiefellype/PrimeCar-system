@@ -31,6 +31,29 @@ public class ClienteDAO extends BaseDAO{
 		
 	}
 	
+	public Integer getIdFromBD() { // RETORNA O ID DO REGISTRO MAIS RECENTE DO BANCO DE DADOS
+		conect = getConnection();
+		String sql = "select * from clientes order by idcliente desc limit 1";
+		Statement st;
+		ResultSet rs;
+		int id = 0;
+		try {
+			ClienteVO cli = new ClienteVO();
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+			cli.setId(rs.getInt("idcliente"));
+			}
+			id = cli.getId();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return id;
+		
+	}
+	
 	public void removeByName(ClienteVO client) {
 		conect = getConnection();
 		String sql = "delete from clientes where nome = ?";
