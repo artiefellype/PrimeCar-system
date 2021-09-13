@@ -3,10 +3,11 @@ package model.vo;
 
 
 public class ClienteVO {
+	private Integer id;
 	private String name;
 	private String endereco;
 	private String cpf;
-	private Integer id;
+	
 	
 	
 	// ------------------- ID do cliente ----------------------------
