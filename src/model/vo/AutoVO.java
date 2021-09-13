@@ -4,6 +4,7 @@ package model.vo;
 
 public class AutoVO {
 	private Integer id;
+	private Integer idcliente;
 	private String marca;
 	private String cor;
 	private String placa;
@@ -99,6 +100,20 @@ public class AutoVO {
 		}
 		
 	}
+	public Integer getIdcliente() {
+		return idcliente;
+	}
+	public void setIdcliente(Integer idcliente) {
+		if(idcliente == null || idcliente.equals("")) {
+			
+			
+		}else {
+			this.idcliente = idcliente;
+		}
+		
+	}
+	
+	
 	
 	
 	
