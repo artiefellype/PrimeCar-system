@@ -24,13 +24,13 @@ public class OrcamentoVO {
 	}
 	//--------------------Nome do cliente a qual pertence o orçamento---------------------------
 	public ClienteVO getClientName() {
-		return clientName;
+		return clientName.getName();
 	}
 	public void setClientName(ClienteVO clientName) {
 		if(clientName.getName() == null || clientName.getName().isBlank()) {
 			
 		}else {
-			this.clientName = clientName;
+			this.clientName = clientName.getName();
 		}
 		
 	}
@@ -39,10 +39,10 @@ public class OrcamentoVO {
 		return servicos;
 	}
 	public void setServicos(ServicosVO servicos) {
-		if(servicos == null) {
+		if(servicos.getTipo() == null) {
 			
 		}else {
-			this.servicos = servicos;
+			this.servicos = servicos.getTipo();
 		}
 		
 	}
