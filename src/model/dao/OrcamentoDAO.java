@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,22 +10,20 @@ import java.util.List;
 import java.util.Calendar;
 
 import model.vo.OrcamentoVO;
-import model.vo.ClienteVO;
-import model.vo.ServicosVO;
 
 
 public class OrcamentoDAO extends BaseDAO {
 	public void inserir(OrcamentoVO orc) {
 		conect = getConnection();
-		String sql = "insert into orcamentos (nomeCliente, tipoServico, custo, data) values (?,?,?,?)";
+		String sql = "insert into orcamentos (idcliente, idservico, custo, data) values (?,?,?,?)";
 		PreparedStatement ptst;
 		try {
-			
+			Date is = null;
 			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, orc.getClientName().getName());
-			ptst.setString(2, orc.getServicos().getTipo());
+			ptst.setInt(1, orc.getClientName().getId());
+			ptst.setInt(2, orc.getServicos().getId());
 			ptst.setDouble(3, orc.getCusto());
-			ptst.setDate(4, orc.getData());
+			ptst.setDate(4, is ,orc.getData());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -61,11 +60,15 @@ public class OrcamentoDAO extends BaseDAO {
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				OrcamentoVO orcamento = new OrcamentoVO();
-				orcamento.setClientName(rs.getString("nomeCliente"));
-				orcamento.setServicos(rs.getString("tipoServico"));
+				Calendar data = Calendar.getInstance();
+				data.setTimeInMillis(rs.getDate("data").getTime());
+				
+				
+				orcamento.getClientName().setName(rs.getString("nome"));
+				orcamento.getServicos().setTipo(rs.getString("tipo"));
 				orcamento.setCusto(rs.getDouble("custo"));
-				orcamento.setData(rs.getDate("data"));
-				orcamento.setId(rs.getInt("id"));
+				orcamento.setData(data);
+				orcamento.setId(rs.getInt("idorm"));
 				orc.add(orcamento);
 				
 			}

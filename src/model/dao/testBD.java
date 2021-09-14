@@ -15,16 +15,17 @@ public class testBD {
 		BaseDAO base = new BaseDAO();
 		System.out.println(base.getConnection());
 		
-		/* // ---------------TESTE CLIENTEDAO --------------------
+		 // ---------------TESTE CLIENTEDAO --------------------
 		ClienteDAO clientD = new ClienteDAO();
 		ClienteVO clientV = new ClienteVO();
 		
 		
-		clientV.setName("felipe de caia");
-		clientV.setCPF("123.222.433-28");
-		clientV.setEndereco("Rua marimar");
-		clientV.setId(clientD.getIdFromBD());
+		clientV.setName("editado de vdd um");
+		//clientV.setCPF("123.222.433-28");
+		//clientV.setEndereco("Rua marimar");
+		clientV.setId(8);
 		
+		/*
 		clientD.inserir(clientV);
 		
 	
@@ -72,12 +73,12 @@ public class testBD {
 		AutoDAO autoD = new AutoDAO();
 		AutoVO autoV = new AutoVO();
 		
-		autoV.setMarca("chevrolet");
-		autoV.setCor("cinza");
-		autoV.setPlaca("BRA2E19");
-		autoV.setAno(2019);
-		autoV.setQuilometragem(21783.7);
-		//autoV.setId(autoD.getIdFromBD());
+		autoV.setMarca("fiat");
+		autoV.setCor("vermelho");
+		autoV.setPlaca("BFA2A34");
+		autoV.setAno(2017);
+		autoV.setQuilometragem(3059.0);// atenção para 0km
+		autoV.setProprietario(clientV);
 		
 		autoD.inserir(autoV);
 		/*

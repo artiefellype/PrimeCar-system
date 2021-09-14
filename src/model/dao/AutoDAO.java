@@ -91,7 +91,7 @@ public class AutoDAO extends BaseDAO{
 				automovel.setPlaca(rs.getString("placa"));
 				automovel.setAno(rs.getInt("ano"));
 				automovel.setQuilometragem(rs.getDouble("quilometragem"));
-				automovel.setIdcliente(rs.getInt("idcliente"));
+				automovel.getProprietario().setId(rs.getInt("idcliente"));
 				automovel.setId(rs.getInt("idauto"));
 				auto.add(automovel);
 				
