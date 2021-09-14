@@ -21,10 +21,10 @@ public class OrcamentoDAO extends BaseDAO {
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, orc.getClienteVO().getName());
-			ptst.setString(2, orc.getServicosVO().getTipo());
-			ptst.setString(3, orc.getCusto());
-			ptst.setInt(4, orc.getData());
+			ptst.setString(1, orc.getClientName().getName());
+			ptst.setString(2, orc.getServicos().getTipo());
+			ptst.setDouble(3, orc.getCusto());
+			ptst.setDate(4, orc.getData());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -35,12 +35,12 @@ public class OrcamentoDAO extends BaseDAO {
 	
 	public void remover(OrcamentoVO orc) {
 		conect = getConnection();
-		String sql = "delete from orcamentos where id = ?";
+		String sql = "delete from orcamentos where idorc = ?";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, orc.getId());
+			ptst.setInt(1, orc.getId());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {
@@ -49,22 +49,22 @@ public class OrcamentoDAO extends BaseDAO {
 		}
 	}
 	
-	public List<OrcamentosVO> listar() {
+	public List<OrcamentoVO> listar() {
 		conect = getConnection();
-		String sql = "select * from automnoveis";
+		String sql = "select * from orcamentos";
 		Statement st;
 		ResultSet rs;
-		List<OrcamentosVO> orc = new ArrayList<OrcamentosVO>();
+		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
 		
 		try {
 			st = conect.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				AutoVO orcamento = new AutoVO();
-				orcamento.setClienteVO().setName(rs.getString("nomeCliente"));
-				orcamento.setServicosVO().setTipo(rs.getString("tipoServico"));
-				orcamento.setCusto(rs.getString("custo"));
-				orcamento.setData(rs.getInt("data"));
+				OrcamentoVO orcamento = new OrcamentoVO();
+				orcamento.setClientName(rs.getString("nomeCliente"));
+				orcamento.setServicos(rs.getString("tipoServico"));
+				orcamento.setCusto(rs.getDouble("custo"));
+				orcamento.setData(rs.getDate("data"));
 				orcamento.setId(rs.getInt("id"));
 				orc.add(orcamento);
 				
@@ -73,7 +73,7 @@ public class OrcamentoDAO extends BaseDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return client;
+		return orc;
 	}
 	
 	public void editarCliente(OrcamentoVO orc) {
@@ -83,8 +83,8 @@ public class OrcamentoDAO extends BaseDAO {
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, orc.getClienteVO().getName());
-			ptst.setString(2, orc.Id());
+			ptst.setString(1, orc.getClientName().getName());
+			ptst.setInt(2, orc.getId());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {

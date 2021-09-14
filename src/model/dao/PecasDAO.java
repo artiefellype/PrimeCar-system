@@ -19,7 +19,7 @@ public class PecasDAO extends BaseDAO {
 			ptst = conect.prepareStatement(sql);		
 			ptst.setString(1, peca.getName());
 			ptst.setString(2, peca.getFabricante());
-			ptst.setString(3, peca.getPreco());
+			ptst.setDouble(3, peca.getPreco());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -31,12 +31,12 @@ public class PecasDAO extends BaseDAO {
 	
 	public void remover(PecasVO peca) {
 		conect = getConnection();
-		String sql = "delete from pecas where id = ?";
+		String sql = "delete from pecas where idpeca = ?";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, peca.getId());
+			ptst.setInt(1, peca.getId());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {
@@ -51,7 +51,7 @@ public class PecasDAO extends BaseDAO {
 		String sql = "select * from pecas";
 		Statement st;
 		ResultSet rs;
-		List<PecasVO> pecas = new ArrayList<pecasVO>();
+		List<PecasVO> pecas = new ArrayList<PecasVO>();
 		
 		try {
 			st = conect.createStatement();
@@ -60,7 +60,7 @@ public class PecasDAO extends BaseDAO {
 				PecasVO peca = new PecasVO();
 				peca.setName(rs.getString("nome"));
 				peca.setFabricante(rs.getString("fabricante"));
-				peca.setPreco(rs.getInt("preco"));
+				peca.setPreco(rs.getDouble("preco"));
 				peca.setId(rs.getInt("id"));
 				pecas.add(peca);
 				
@@ -69,17 +69,17 @@ public class PecasDAO extends BaseDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return client;
+		return pecas;
 	}
 	public void editNome(PecasVO peca) {
 		conect = getConnection();
-		String sql = "update peca set nome = ? where id = ?";
+		String sql = "update peca set nome = ? where idpeca = ?";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
 			ptst.setString(1, peca.getName());
-			ptst.setString(2, peca.getId());
+			ptst.setInt(2, peca.getId());
 			ptst.execute();
 			
 			} catch (SQLException e) {
