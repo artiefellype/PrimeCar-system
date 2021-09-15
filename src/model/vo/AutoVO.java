@@ -93,7 +93,7 @@ public class AutoVO {
 	}
 	public void setProprietario(ClienteVO proprietario) {
 		
-		if(proprietario.getName() == null || proprietario.getName().equals("")) {
+		if(proprietario == null || proprietario.equals("")) {
 			
 			
 		}else {

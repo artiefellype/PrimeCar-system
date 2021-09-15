@@ -9,6 +9,7 @@ import java.util.List;
 
 import model.vo.AutoVO;
 
+
 public class AutoDAO extends BaseDAO{
 	public void inserir(AutoVO automovel) {
 		conect = getConnection();
@@ -171,6 +172,198 @@ public class AutoDAO extends BaseDAO{
 		return auto;
 	}
 	
+	public List<AutoVO> findByMarca(String marca){
+		conect = getConnection();
+		String sql = "select * from auto where marca like '" + marca + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AutoVO> auto = new ArrayList<AutoVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AutoVO automovel = new AutoVO();
+				
+				
+				automovel.setId(rs.getInt("idauto"));
+				automovel.setMarca(rs.getString("marca"));
+				automovel.setCor(rs.getString("cor"));
+				automovel.setPlaca(rs.getString("placa"));
+				automovel.setAno(rs.getInt("ano"));
+				automovel.setQuilometragem(rs.getDouble("quilometragem"));
+				automovel.getProprietario().setId(rs.getInt("idcliente"));;
+				auto.add(automovel);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return auto;
+		
+	}
+	public List<AutoVO> findByCor(String cor){
+		conect = getConnection();
+		String sql = "select * from auto where cor like '" + cor + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AutoVO> auto = new ArrayList<AutoVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AutoVO automovel = new AutoVO();
+				
+				
+				automovel.setId(rs.getInt("idauto"));
+				automovel.setMarca(rs.getString("marca"));
+				automovel.setCor(rs.getString("cor"));
+				automovel.setPlaca(rs.getString("placa"));
+				automovel.setAno(rs.getInt("ano"));
+				automovel.setQuilometragem(rs.getDouble("quilometragem"));
+				automovel.getProprietario().setId(rs.getInt("idcliente"));;
+				auto.add(automovel);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return auto;
+		
+	}
+	public List<AutoVO> findByPlaca(String placa){
+		conect = getConnection();
+		String sql = "select * from auto where placa like '" + placa + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AutoVO> auto = new ArrayList<AutoVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AutoVO automovel = new AutoVO();
+				
+				
+				automovel.setId(rs.getInt("idauto"));
+				automovel.setMarca(rs.getString("marca"));
+				automovel.setCor(rs.getString("cor"));
+				automovel.setPlaca(rs.getString("placa"));
+				automovel.setAno(rs.getInt("ano"));
+				automovel.setQuilometragem(rs.getDouble("quilometragem"));
+				automovel.getProprietario().setId(rs.getInt("idcliente"));;
+				auto.add(automovel);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return auto;
+		
+	}
+	public List<AutoVO> findByAno(Integer ano){
+		conect = getConnection();
+		String sql = "select * from auto where ano like '" + ano + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AutoVO> auto = new ArrayList<AutoVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AutoVO automovel = new AutoVO();
+				
+				
+				automovel.setId(rs.getInt("idauto"));
+				automovel.setMarca(rs.getString("marca"));
+				automovel.setCor(rs.getString("cor"));
+				automovel.setPlaca(rs.getString("placa"));
+				automovel.setAno(rs.getInt("ano"));
+				automovel.setQuilometragem(rs.getDouble("quilometragem"));
+				automovel.getProprietario().setId(rs.getInt("idcliente"));;
+				auto.add(automovel);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return auto;
+		
+	}
+	public List<AutoVO> findByQuilom(Double km){
+		conect = getConnection();
+		String sql = "select * from auto where quilometragem like '" + km + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AutoVO> auto = new ArrayList<AutoVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AutoVO automovel = new AutoVO();
+				
+				
+				automovel.setId(rs.getInt("idauto"));
+				automovel.setMarca(rs.getString("marca"));
+				automovel.setCor(rs.getString("cor"));
+				automovel.setPlaca(rs.getString("placa"));
+				automovel.setAno(rs.getInt("ano"));
+				automovel.setQuilometragem(rs.getDouble("quilometragem"));
+				automovel.getProprietario().setId(rs.getInt("idcliente"));;
+				auto.add(automovel);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return auto;
+		
+	}
+	public List<AutoVO> findByCliente(Integer idClient){
+		conect = getConnection();
+		String sql = "select * from auto where idcliente like '" + idClient + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AutoVO> auto = new ArrayList<AutoVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AutoVO automovel = new AutoVO();
+				
+				
+				automovel.setId(rs.getInt("idauto"));
+				automovel.setMarca(rs.getString("marca"));
+				automovel.setCor(rs.getString("cor"));
+				automovel.setPlaca(rs.getString("placa"));
+				automovel.setAno(rs.getInt("ano"));
+				automovel.setQuilometragem(rs.getDouble("quilometragem"));
+				automovel.getProprietario().setId(rs.getInt("idcliente"));;
+				auto.add(automovel);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return auto;
+		
+	}
 	public void editar(AutoVO automovel) {
 		conect = getConnection();
 		String sql = "update auto set tipo = ? where idauto= ?";

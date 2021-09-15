@@ -25,11 +25,11 @@ public class testBD {
 		clientV.setCPF("123.9-23");
 		clientV.setEndereco("Rua chico freire");
 		clientV.setId(clientD.getIdFromBD());
-		
+		/*
 		
 		//List<ClienteVO> clientes = clientD.findByName(clientV.getName());
 		//List<ClienteVO> clientes = clientD.findByCPF(clientV.getCPF());
-		List<ClienteVO> clientes = clientD.findByEndereco(clientV.getEndereco());
+		//List<ClienteVO> clientes = clientD.findByEndereco(clientV.getEndereco());
 		
 		
 		for(ClienteVO clientesShow : clientes) {
@@ -40,7 +40,7 @@ public class testBD {
 		}
 		
 		
-		
+		*/
 		
 		
 		//clientD.inserir(clientV);
@@ -89,7 +89,7 @@ public class testBD {
 		}
 		*/
 		
-		/*
+		
 		 //-------------TESTE AUTOMOVELDAO---------------------
 		AutoDAO autoD = new AutoDAO();
 		AutoVO autoV = new AutoVO();
@@ -107,21 +107,21 @@ public class testBD {
 		
 		
 		
-		List<AutoVO> auto = autoD.listar();
+		List<AutoVO> auto = autoD.findByMarca(autoV.getMarca());
 		
 		for(AutoVO automovelShow : auto) {
 			System.out.println(automovelShow.getId());
-			//System.out.println(automovelShow.getMarca());
-			//System.out.println(automovelShow.getCor());
+			System.out.println(automovelShow.getMarca());
+			System.out.println(automovelShow.getCor());
 			System.out.println(automovelShow.getPlaca());
-			//System.out.println(automovelShow.getAno());
-			//System.out.println(automovelShow.getQuilometragem());
-			//System.out.println(automovelShow.getProprietario().getId());
+			System.out.println(automovelShow.getAno());
+			System.out.println(automovelShow.getQuilometragem());
+			System.out.println(automovelShow.getProprietario().getId());
 			System.out.println("-------------------------------------------");
 			
 		}
 		
-		*/
+		
 		//autoD.removeByCor(autoV);
 		
 		
