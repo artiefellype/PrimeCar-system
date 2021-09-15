@@ -7,23 +7,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Calendar;
 
-import model.vo.OrcamentoVO;
+import model.vo.AdminVO;
 
-
-public class OrcamentoDAO extends BaseDAO {
-	public void inserir(OrcamentoVO orc) {
+public class AdminDAO extends BaseDAO {
+	
+	public void inserir(AdminVO admin) {
 		conect = getConnection();
-		String sql = "insert into orcamentos (idcliente, idservico, custo, data) values (?,?,?,?)";
+		String sql = "insert into admin (nome, senha) values (?,?)";
 		PreparedStatement ptst;
 		try {
-			
+		
 			ptst = conect.prepareStatement(sql);		
-			ptst.setInt(1, orc.getClientName().getId());
-			ptst.setInt(2, orc.getServicos().getId());
-			ptst.setDouble(3, orc.getCusto());
-			ptst.setDate(4, new java.sql.Date(orc.getData().getTimeInMillis()));
+			ptst.setString(1, admin.getName());
+			ptst.setString(2, admin.getSenha());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -32,20 +29,21 @@ public class OrcamentoDAO extends BaseDAO {
 		}
 	}
 	
+	
 	public Integer getIdFromBD() { // RETORNA O ID DO REGISTRO MAIS RECENTE DO BANCO DE DADOS
 		conect = getConnection();
-		String sql = "select * from orcamentos order by idorm desc limit 1";
+		String sql = "select * from admin order by idadmin desc limit 1";
 		Statement st;
 		ResultSet rs;
 		int id = 0;
 		try {
-			OrcamentoVO orc = new OrcamentoVO();
+			AdminVO admin = new AdminVO();
 			st = conect.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-			orc.setId(rs.getInt("idorm"));
+			admin.setId(rs.getInt("idadmin"));
 			}
-			id = orc.getId();
+			id = admin.getId();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,14 +53,14 @@ public class OrcamentoDAO extends BaseDAO {
 		
 	}
 	
-	public void remover(OrcamentoVO orc) {
+	public void removeByName(AdminVO admin) {
 		conect = getConnection();
-		String sql = "delete from orcamentos where idorc = ?";
+		String sql = "delete from admin where nome = ?";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
-			ptst.setInt(1, orc.getId());
+			ptst.setString(1, admin.getName());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {
@@ -71,46 +69,59 @@ public class OrcamentoDAO extends BaseDAO {
 		}
 	}
 	
-	public List<OrcamentoVO> listar() {
+	public void removeById(AdminVO admin) {
 		conect = getConnection();
-		String sql = "select * from orcamentos";
+		String sql = "delete from admin where idadmin = ?";
+		PreparedStatement ptst;
+		try {
+			
+			ptst = conect.prepareStatement(sql);		
+			ptst.setInt(1, admin.getId());
+			ptst.executeUpdate();
+			
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public List<AdminVO> listar() {
+		conect = getConnection();
+		String sql = "select * from admin";
 		Statement st;
 		ResultSet rs;
-		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
+		List<AdminVO> admin = new ArrayList<AdminVO>();
 		
 		try {
 			st = conect.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				OrcamentoVO orcamento = new OrcamentoVO();
-				Calendar data = Calendar.getInstance();
-				data.setTimeInMillis(rs.getDate("data").getTime());
+				AdminVO adm = new AdminVO();
+	
+				adm.setId(rs.getInt("idadmin")); 
+				adm.setName(rs.getString("nome"));
+				adm.setSenha(rs.getString("senha")); 
+			
 				
-				
-				orcamento.getClientName().setName(rs.getString("nome"));
-				orcamento.getServicos().setTipo(rs.getString("tipo"));
-				orcamento.setCusto(rs.getDouble("custo"));
-				orcamento.setData(data);
-				orcamento.setId(rs.getInt("idorm")); 
-				orc.add(orcamento);
+				admin.add(adm);
 				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return orc;
+		return admin;
 	}
 	
-	public void editarCliente(OrcamentoVO orc) {
+	public void editarSenha(AdminVO admin) {
 		conect = getConnection();
-		String sql = "update orcamentos set nomeCliente = ? where id = ?";
+		String sql = "update admin set senha = ? where id = ?";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, orc.getClientName().getName());
-			ptst.setInt(2, orc.getId());
+			ptst.setString(1, admin.getSenha());
+			ptst.setInt(2, admin.getId());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {
@@ -118,6 +129,8 @@ public class OrcamentoDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+
 }
-
-
