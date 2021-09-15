@@ -13,7 +13,7 @@ public class ServicosDAO extends BaseDAO {
 
 	public void inserir(ServicosVO servicos) {
 		conect = getConnection();
-		String sql = "insert into servicos (tipo, valor, finalizado) values (?,?,?)";
+		String sql = "insert into servicos (tipo, valor, idauto, idpeca, finalizado) values (?,?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			
@@ -21,6 +21,8 @@ public class ServicosDAO extends BaseDAO {
 			ptst.setString(1, servicos.getTipo());
 			ptst.setDouble(2, servicos.getValor());
 			ptst.setBoolean(3, servicos.getFinalizado());
+			ptst.setInt(4, servicos.getAuto().getId());
+			ptst.setInt(5, servicos.getPeca().getId());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -60,6 +62,48 @@ public class ServicosDAO extends BaseDAO {
 		try {
 			ptst = conect.prepareStatement(sql);
 			ptst.setString(1, servicos.getTipo());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByAuto(ServicosVO servicos) {
+		conect = getConnection();
+		String sql = "delete from servicos where idauto = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setInt(1, servicos.getAuto().getId());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByPeca(ServicosVO servicos) {
+		conect = getConnection();
+		String sql = "delete from servicos where idpeca = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setInt(1, servicos.getPeca().getId());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByFinalizado(ServicosVO servicos) {
+		conect = getConnection();
+		String sql = "delete from servicos where finalizado = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setBoolean(1, servicos.getFinalizado());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		

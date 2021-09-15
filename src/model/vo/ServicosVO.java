@@ -6,6 +6,8 @@ public class ServicosVO {
 	private String tipo;
 	private Double valor;
 	private Boolean finalizado;
+	private AutoVO auto;
+	private PecasVO peca;
 	
 	// ------------------- ID do Serviço ----------------------------
 	public Integer getId() {
@@ -43,6 +45,31 @@ public class ServicosVO {
 		}else {
 			if(valor > 0)
 				this.valor = valor;
+		}
+		
+	}
+	
+	public AutoVO getAuto() {
+		return auto;
+	}
+	public void setAuto(AutoVO auto) {
+		if(auto == null) {
+			
+		}else {
+			this.auto = auto;
+		}
+		
+	}
+	
+	
+	public PecasVO getPeca() {
+		return peca;
+	}
+	public void setPeca(PecasVO peca) {
+		if(peca == null) {
+			
+		}else {
+			this.peca = peca;
 		}
 		
 	}

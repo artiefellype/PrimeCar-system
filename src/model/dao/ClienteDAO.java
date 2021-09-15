@@ -123,6 +123,90 @@ public class ClienteDAO extends BaseDAO{
 		return client;
 	}
 	
+	public List<ClienteVO> findByName(String name){
+		conect = getConnection();
+		String sql = "select * from clientes where nome like '" + name + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<ClienteVO> client = new ArrayList<ClienteVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				ClienteVO cliente = new ClienteVO();
+				cliente.setName(rs.getString("nome"));
+				cliente.setCPF(rs.getString("cpf"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setId(rs.getInt("idcliente"));
+				client.add(cliente);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return client;
+		
+	}
+	
+	public List<ClienteVO> findByCPF(String cpf){
+		conect = getConnection();
+		String sql = "select * from clientes where cpf like '" + cpf + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<ClienteVO> client = new ArrayList<ClienteVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				ClienteVO cliente = new ClienteVO();
+				cliente.setName(rs.getString("nome"));
+				cliente.setCPF(rs.getString("cpf"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setId(rs.getInt("idcliente"));
+				client.add(cliente);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return client;
+		
+	}
+	
+	public List<ClienteVO> findByEndereco(String ende){
+		conect = getConnection();
+		String sql = "select * from clientes where endereco like '" + ende + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<ClienteVO> client = new ArrayList<ClienteVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				ClienteVO cliente = new ClienteVO();
+				cliente.setName(rs.getString("nome"));
+				cliente.setCPF(rs.getString("cpf"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setId(rs.getInt("idcliente"));
+				client.add(cliente);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return client;
+		
+	}
+	
 	public void editar(ClienteVO client) {
 		conect = getConnection();
 		String sql = "update clientes set nome = ? where idcliente= ?";

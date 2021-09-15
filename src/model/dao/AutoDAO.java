@@ -9,7 +9,6 @@ import java.util.List;
 
 import model.vo.AutoVO;
 
-
 public class AutoDAO extends BaseDAO{
 	public void inserir(AutoVO automovel) {
 		conect = getConnection();
@@ -25,7 +24,6 @@ public class AutoDAO extends BaseDAO{
 			ptst.setDouble(5, automovel.getQuilometragem());
 			ptst.setInt(6, automovel.getProprietario().getId());
 			ptst.execute();
-			
 			
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,6 +69,76 @@ public class AutoDAO extends BaseDAO{
 		}
 		
 	}
+	public void removeByCor(AutoVO automovel) {
+		conect = getConnection();
+		String sql = "delete from auto where cor = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setString(1, automovel.getCor());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByPlaca(AutoVO automovel) {
+		conect = getConnection();
+		String sql = "delete from auto where placa = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setString(1, automovel.getPlaca());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByAno(AutoVO automovel) {
+		conect = getConnection();
+		String sql = "delete from auto where ano = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setInt(1, automovel.getAno());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByQuilometragem(AutoVO automovel) {
+		conect = getConnection();
+		String sql = "delete from auto where quilometragem = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setDouble(1, automovel.getQuilometragem());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	public void removeByCliente(AutoVO automovel) {
+		conect = getConnection();
+		String sql = "delete from auto where idcliente = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = conect.prepareStatement(sql);
+			ptst.setInt(1, automovel.getProprietario().getId());
+			ptst.executeUpdate();
+			} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	public List<AutoVO> listar() {
@@ -86,13 +154,13 @@ public class AutoDAO extends BaseDAO{
 			while(rs.next()) {
 				AutoVO automovel = new AutoVO();
 				
+				automovel.setId(rs.getInt("idauto"));
 				automovel.setMarca(rs.getString("marca"));
 				automovel.setCor(rs.getString("cor"));
 				automovel.setPlaca(rs.getString("placa"));
 				automovel.setAno(rs.getInt("ano"));
 				automovel.setQuilometragem(rs.getDouble("quilometragem"));
 				automovel.getProprietario().setId(rs.getInt("idcliente"));
-				automovel.setId(rs.getInt("idauto"));
 				auto.add(automovel);
 				
 			}

@@ -32,6 +32,29 @@ public class OrcamentoDAO extends BaseDAO {
 		}
 	}
 	
+	public Integer getIdFromBD() { // RETORNA O ID DO REGISTRO MAIS RECENTE DO BANCO DE DADOS
+		conect = getConnection();
+		String sql = "select * from orcamentos order by idorm desc limit 1";
+		Statement st;
+		ResultSet rs;
+		int id = 0;
+		try {
+			OrcamentoVO orc = new OrcamentoVO();
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+			orc.setId(rs.getInt("idorm"));
+			}
+			id = orc.getId();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return id;
+		
+	}
+	
 	public void remover(OrcamentoVO orc) {
 		conect = getConnection();
 		String sql = "delete from orcamentos where idorc = ?";

@@ -9,7 +9,6 @@ public class ClienteVO {
 	private String cpf;
 	
 	
-	
 	// ------------------- ID do cliente ----------------------------
 	public Integer getId() {
 		return id;

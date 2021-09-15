@@ -11,6 +11,8 @@ public class AutoVO {
 	private Double quilometragem;
 	private ClienteVO proprietario;
 	
+	
+
 	// ------------------- ID do automóvel ----------------------------
 	public Integer getId() {
 		return id;
@@ -91,7 +93,7 @@ public class AutoVO {
 	}
 	public void setProprietario(ClienteVO proprietario) {
 		
-		if(proprietario.getName() == null || proprietario.getName().isBlank()) {
+		if(proprietario.getName() == null || proprietario.getName().equals("")) {
 			
 			
 		}else {
