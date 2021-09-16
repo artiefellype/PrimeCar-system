@@ -31,7 +31,7 @@ public class PecasDAO extends BaseDAO {
 	}
 	public Integer getIdFromBD() { // RETORNA O ID DO REGISTRO MAIS RECENTE DO BANCO DE DADOS
 		conect = getConnection();
-		String sql = "select * from pecas order by idpecas desc limit 1";
+		String sql = "select * from pecas order by idpeca desc limit 1";
 		Statement st;
 		ResultSet rs;
 		int id = 0;

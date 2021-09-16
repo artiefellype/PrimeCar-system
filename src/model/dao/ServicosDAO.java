@@ -7,15 +7,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.vo.ServicosVO;
 import model.vo.AutoVO;
 import model.vo.PecasVO;
+import model.vo.ServicosVO;
 
 public class ServicosDAO extends BaseDAO {
 
 	public void inserir(ServicosVO servicos) {
 		conect = getConnection();
-		String sql = "insert into servicos (tipo, valor, idauto, idpeca, finalizado) values (?,?,?,?,?)";
+		String sql = "insert into servicos (tipo, valor, finalizado, idauto, idpeca ) values (?,?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			
@@ -128,73 +128,10 @@ public class ServicosDAO extends BaseDAO {
 			while(rs.next()) {
 				ServicosVO servicos = new ServicosVO();
 				AutoVO auto = new AutoVO();
-				PecasVO peca = new PecaVO();
-				auto.getId(rs.getInt("idauto"));
-				peca.getId(rs.getInt("idpeca"));
-				servicos.setTipo(rs.getString("tipo"));
-				servicos.setValor(rs.getDouble("valor"));
-				servicos.setFinalizado(rs.getBoolean("finalizado"));
-				servicos.setId(rs.getInt("idservico"));
-				servicos.setAuto(auto);
-				servicos.setPeca(peca);
-				servico.add(servicos);
+				PecasVO peca = new PecasVO();
 				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return servico;
-	}
-	
-	public List<ServicosVO> findByTipo() {
-		conect = getConnection();
-		String sql = "select from servicos where tipo = ?";
-		Statement st;
-		ResultSet rs;
-		List<ServicosVO> servico = new ArrayList<ServicosVO>();
-		
-		try {
-			st = conect.createStatement();
-			rs = st.executeQuery(sql);
-			while(rs.next()) {
-				ServicosVO servicos = new ServicosVO();
-				AutoVO auto = new AutoVO();
-				PecasVO peca = new PecaVO();
-				auto.getId(rs.getInt("idauto"));
-				peca.getId(rs.getInt("idpeca"));
-				servicos.setTipo(rs.getString("tipo"));
-				servicos.setValor(rs.getDouble("valor"));
-				servicos.setFinalizado(rs.getBoolean("finalizado"));
-				servicos.setId(rs.getInt("idservico"));
-				servicos.setAuto(auto);
-				servicos.setPeca(peca);
-				servico.add(servicos);
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return servico;
-	}
-	
-	public List<ServicosVO> findByFinalizado() {
-		conect = getConnection();
-		String sql = "select from servicos where finalizado = ?";
-		Statement st;
-		ResultSet rs;
-		List<ServicosVO> servico = new ArrayList<ServicosVO>();
-		
-		try {
-			st = conect.createStatement();
-			rs = st.executeQuery(sql);
-			while(rs.next()) {
-				ServicosVO servicos = new ServicosVO();
-				AutoVO auto = new AutoVO();
-				PecasVO peca = new PecaVO();
-				auto.getId(rs.getInt("idauto"));
-				peca.getId(rs.getInt("idpeca"));
+				auto.setId(rs.getInt("idauto"));
+				peca.setId(rs.getInt("idpeca"));
 				servicos.setTipo(rs.getString("tipo"));
 				servicos.setValor(rs.getDouble("valor"));
 				servicos.setFinalizado(rs.getBoolean("finalizado"));
