@@ -129,7 +129,7 @@ public class testBD {
 		
 		//servicosD.inserir(servicosV);
 		
-		
+		/*
 		List<ServicosVO> servico = servicosD.listar();
 		
 		for(ServicosVO servicosShow : servico) {
@@ -141,6 +141,8 @@ public class testBD {
 			System.out.println("Finalizado:" + servicosShow.getFinalizado());
 			
 		}
+		
+		*/
 		
 		
 		

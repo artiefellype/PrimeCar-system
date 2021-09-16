@@ -2,9 +2,6 @@ package model.vo;
 
 
 import java.util.Calendar;
-import model.vo.ClienteVO;
-import model.vo.ServicosVO;
-import model.vo.AutoVO;
 
 public class OrcamentoVO {
 	private Integer id;

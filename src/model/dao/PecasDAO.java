@@ -131,7 +131,7 @@ public class PecasDAO extends BaseDAO {
 	
 	public List<PecasVO> findByNome(PecasVO peca) {
 		conect = getConnection();
-		String sql = "select * from pecas where nome like'" + peca.getNome();
+		String sql = "select * from pecas where nome like '" + peca.getName() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -140,12 +140,12 @@ public class PecasDAO extends BaseDAO {
 			st = conect.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				PecasVO peca = new PecasVO();
-				peca.setName(rs.getString("nome"));
-				peca.setFabricante(rs.getString("fabricante"));
-				peca.setPreco(rs.getDouble("preco"));
-				peca.setId(rs.getInt("id"));
-				pecas.add(peca);
+				PecasVO pecaV = new PecasVO();
+				pecaV.setName(rs.getString("nome"));
+				pecaV.setFabricante(rs.getString("fabricante"));
+				pecaV.setPreco(rs.getDouble("preco"));
+				pecaV.setId(rs.getInt("id"));
+				pecas.add(pecaV);
 				
 			}
 		} catch (SQLException e) {
@@ -157,7 +157,7 @@ public class PecasDAO extends BaseDAO {
 	
 	public List<PecasVO> findByFabricante(PecasVO peca) {
 		conect = getConnection();
-		String sql = "select from pecas where fabricante like'" + peca.getFabricante() ;
+		String sql = "select from pecas where fabricante like'" + peca.getFabricante() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -166,12 +166,12 @@ public class PecasDAO extends BaseDAO {
 			st = conect.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				PecasVO peca = new PecasVO();
-				peca.setName(rs.getString("nome"));
-				peca.setFabricante(rs.getString("fabricante"));
-				peca.setPreco(rs.getDouble("preco"));
-				peca.setId(rs.getInt("id"));
-				pecas.add(peca);
+				PecasVO pecaV = new PecasVO();
+				pecaV.setName(rs.getString("nome"));
+				pecaV.setFabricante(rs.getString("fabricante"));
+				pecaV.setPreco(rs.getDouble("preco"));
+				pecaV.setId(rs.getInt("id"));
+				pecas.add(pecaV);
 				
 			}
 		} catch (SQLException e) {
@@ -183,7 +183,7 @@ public class PecasDAO extends BaseDAO {
 	
 	public void editNome(PecasVO peca) {
 		conect = getConnection();
-		String sql = "update peca set nome = ? where idpeca" + peca.getId();
+		String sql = "update peca set nome = ? where idpeca = ?";
 		PreparedStatement ptst;
 		try {
 			
