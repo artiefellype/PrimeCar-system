@@ -7,13 +7,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.vo.AutoVO;
+import model.vo.PecasVO;
 import model.vo.ServicosVO;
 
 public class ServicosDAO extends BaseDAO {
 
 	public void inserir(ServicosVO servicos) {
 		conect = getConnection();
-		String sql = "insert into servicos (tipo, valor, idauto, idpeca, finalizado) values (?,?,?,?,?)";
+		String sql = "insert into servicos (tipo, valor, finalizado, idauto, idpeca ) values (?,?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			
@@ -125,10 +127,17 @@ public class ServicosDAO extends BaseDAO {
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				ServicosVO servicos = new ServicosVO();
+				AutoVO auto = new AutoVO();
+				PecasVO peca = new PecasVO();
+				
+				auto.setId(rs.getInt("idauto"));
+				peca.setId(rs.getInt("idpeca"));
 				servicos.setTipo(rs.getString("tipo"));
 				servicos.setValor(rs.getDouble("valor"));
 				servicos.setFinalizado(rs.getBoolean("finalizado"));
 				servicos.setId(rs.getInt("idservico"));
+				servicos.setAuto(auto);
+				servicos.setPeca(peca);
 				servico.add(servicos);
 				
 			}

@@ -4,7 +4,8 @@ import java.util.List;
 
 import model.vo.AutoVO;
 import model.vo.ClienteVO;
-//import model.vo.ServicosVO;
+import model.vo.PecasVO;
+import model.vo.ServicosVO;
 
 
 
@@ -21,10 +22,12 @@ public class testBD {
 		ClienteVO clientV = new ClienteVO();
 		
 		
-		clientV.setName("editado");
-		clientV.setCPF("123.9-23");
-		clientV.setEndereco("Rua chico freire");
+		clientV.setName("mariazinha");
+		clientV.setCPF("345.673.456-34");
+		clientV.setEndereco("Rua chico anizio");
 		clientV.setId(clientD.getIdFromBD());
+		
+		//clientD.inserir(clientV);
 		/*
 		
 		//List<ClienteVO> clientes = clientD.findByName(clientV.getName());
@@ -43,7 +46,7 @@ public class testBD {
 		*/
 		
 		
-		//clientD.inserir(clientV);
+		
 		
 	
 		
@@ -65,29 +68,7 @@ public class testBD {
 			
 		}
 		
-		*/
-		
-		/* -------------TESTE SERVIÇODAO------------------
-		ServicosDAO servicosD = new ServicosDAO();
-		ServicosVO servicosV = new ServicosVO();
-		
-		servicosV.setTipo("troca de vidraça");
-		servicosV.setValor(120.60);
-		servicosV.setFinalizado(false);
-		servicosV.setId(servicosD.getIdFromBD());
-		
-		//servicosD.inserir(servicosV);
-		
-		List<ServicosVO> servico = servicosD.listar();
-		
-		for(ServicosVO servicosShow : servico) {
-			System.out.println(servicosShow.getId());
-			System.out.println(servicosShow.getTipo());
-			System.out.println(servicosShow.getValor());
-			System.out.println("Finalizado:" + servicosShow.getFinalizado());
-			
-		}
-		*/
+	*/
 		
 		
 		 //-------------TESTE AUTOMOVELDAO---------------------
@@ -95,18 +76,18 @@ public class testBD {
 		AutoVO autoV = new AutoVO();
 		
 		
-		autoV.setMarca("toyota");
-		autoV.setCor("azul");
-		autoV.setPlaca("BRA1Z14");
-		autoV.setAno(2019);
-		autoV.setQuilometragem(2873823.0);// atenção para 0km
+		autoV.setMarca("Chevrolet chevete");
+		autoV.setCor("bege");
+		autoV.setPlaca("BRA9J34");
+		autoV.setAno(1989);
+		autoV.setQuilometragem(28209883.0);// atenção para 0km
 		autoV.setProprietario(clientV);
 		autoV.setId(autoD.getIdFromBD());
 		
 		//autoD.inserir(autoV);
 		
 		
-		
+		/*
 		List<AutoVO> auto = autoD.findByMarca(autoV.getMarca());
 		
 		for(AutoVO automovelShow : auto) {
@@ -120,9 +101,46 @@ public class testBD {
 			System.out.println("-------------------------------------------");
 			
 		}
-		
-		
 		//autoD.removeByCor(autoV);
+		
+			*/
+		//--------------TESTE DE PECADAO-------------------
+		PecasDAO pecaD = new PecasDAO();
+		PecasVO pecaV = new PecasVO();
+		
+		
+		pecaV.setName("Parafuso da parafuzeta");
+		pecaV.setFabricante("Tesla companies");
+		pecaV.setPreco(22.50);
+		pecaV.setId(pecaD.getIdFromBD());
+		
+		//pecaD.inserir(pecaV);
+		
+		// -------------TESTE SERVIÇODAO------------------
+		ServicosDAO servicosD = new ServicosDAO();
+		ServicosVO servicosV = new ServicosVO();
+		
+		servicosV.setTipo("instalação de retrovisor");
+		servicosV.setValor(220.60);
+		servicosV.setFinalizado(true);
+		servicosV.setAuto(autoV);
+		servicosV.setPeca(pecaV);
+		servicosV.setId(servicosD.getIdFromBD());
+		
+		//servicosD.inserir(servicosV);
+		
+		
+		List<ServicosVO> servico = servicosD.listar();
+		
+		for(ServicosVO servicosShow : servico) {
+			System.out.println(servicosShow.getId());
+			System.out.println(servicosShow.getTipo());
+			System.out.println(servicosShow.getAuto().getId());
+			System.out.println(servicosShow.getPeca().getId());
+			System.out.println(servicosShow.getValor());
+			System.out.println("Finalizado:" + servicosShow.getFinalizado());
+			
+		}
 		
 		
 		

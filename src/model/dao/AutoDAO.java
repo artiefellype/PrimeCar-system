@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.vo.AutoVO;
+import model.vo.ClienteVO;
 
 
 public class AutoDAO extends BaseDAO{
@@ -185,15 +186,16 @@ public class AutoDAO extends BaseDAO{
 			rs = ptst.executeQuery();
 			while(rs.next()) {
 				AutoVO automovel = new AutoVO();
+				ClienteVO client = new ClienteVO();
 				
-				
+				client.setId(rs.getInt("idcliente"));
 				automovel.setId(rs.getInt("idauto"));
 				automovel.setMarca(rs.getString("marca"));
 				automovel.setCor(rs.getString("cor"));
 				automovel.setPlaca(rs.getString("placa"));
 				automovel.setAno(rs.getInt("ano"));
 				automovel.setQuilometragem(rs.getDouble("quilometragem"));
-				automovel.getProprietario().setId(rs.getInt("idcliente"));;
+				automovel.setProprietario(client);
 				auto.add(automovel);
 				
 			}
