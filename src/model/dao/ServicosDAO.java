@@ -148,9 +148,15 @@ public class ServicosDAO extends BaseDAO {
 		return servico;
 	}
 	
+<<<<<<< HEAD
 	public List<ServicosVO> findByTipo(String tip) {
 		conect = getConnection();
 		String sql = "select * from servicos where tipo like'" + tip + "%'";
+=======
+	public List<ServicosVO> findByTipo() {
+		conect = getConnection();
+		String sql = "select * from servicos where tipo = ?";
+>>>>>>> 4a673b91cfa7e4289604e58c23c5b33f062d0fd5
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -181,6 +187,7 @@ public class ServicosDAO extends BaseDAO {
 		return servico;
 	}
 	
+<<<<<<< HEAD
 	public List<ServicosVO> findByValor(Double value) {
 		conect = getConnection();
 		String sql = "select * from servicos where valor like'" + value + "%'";
@@ -283,6 +290,11 @@ public class ServicosDAO extends BaseDAO {
 	public List<ServicosVO> findByPeca(ServicosVO value) {
 		conect = getConnection();
 		String sql = "select * from servicos where idpeca like'" + value.getPeca().getId() + "%'";
+=======
+	public List<ServicosVO> findByFinalizado() {
+		conect = getConnection();
+		String sql = "select * from servicos where finalizado = ?";
+>>>>>>> 4a673b91cfa7e4289604e58c23c5b33f062d0fd5
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();

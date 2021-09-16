@@ -128,6 +128,59 @@ public class PecasDAO extends BaseDAO {
 		}
 		return pecas;
 	}
+	
+	public List<PecasVO> findByNome() {
+		conect = getConnection();
+		String sql = "select * from pecas where nome = ?";
+		Statement st;
+		ResultSet rs;
+		List<PecasVO> pecas = new ArrayList<PecasVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				PecasVO peca = new PecasVO();
+				peca.setName(rs.getString("nome"));
+				peca.setFabricante(rs.getString("fabricante"));
+				peca.setPreco(rs.getDouble("preco"));
+				peca.setId(rs.getInt("id"));
+				pecas.add(peca);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pecas;
+	}
+	
+	public List<PecasVO> findByFabricante() {
+		conect = getConnection();
+		String sql = "select from pecas where fabricante = ?";
+		Statement st;
+		ResultSet rs;
+		List<PecasVO> pecas = new ArrayList<PecasVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				PecasVO peca = new PecasVO();
+				peca.setName(rs.getString("nome"));
+				peca.setFabricante(rs.getString("fabricante"));
+				peca.setPreco(rs.getDouble("preco"));
+				peca.setId(rs.getInt("id"));
+				pecas.add(peca);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pecas;
+	}
+	
 	public void editNome(PecasVO peca) {
 		conect = getConnection();
 		String sql = "update peca set nome = ? where idpeca = ?";

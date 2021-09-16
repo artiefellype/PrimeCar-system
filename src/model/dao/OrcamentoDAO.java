@@ -10,20 +10,24 @@ import java.util.List;
 import java.util.Calendar;
 
 import model.vo.OrcamentoVO;
+import model.vo.ClienteVO;
+import model.vo.ServicosVO;
+import model.vo.AutoVO;
 
 
 public class OrcamentoDAO extends BaseDAO {
 	public void inserir(OrcamentoVO orc) {
 		conect = getConnection();
-		String sql = "insert into orcamentos (idcliente, idservico, custo, data) values (?,?,?,?)";
+		String sql = "insert into orcamentos (idcliente, idservico, idauto, custo, data) values (?,?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
 			ptst.setInt(1, orc.getClientName().getId());
 			ptst.setInt(2, orc.getServicos().getId());
-			ptst.setDouble(3, orc.getCusto());
-			ptst.setDate(4, new java.sql.Date(orc.getData().getTimeInMillis()));
+			ptst.setInt(3, orc.getAuto().getId());
+			ptst.setDouble(4, orc.getCusto());
+			ptst.setDate(5, new java.sql.Date(orc.getData().getTimeInMillis()));
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -83,15 +87,95 @@ public class OrcamentoDAO extends BaseDAO {
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				OrcamentoVO orcamento = new OrcamentoVO();
+				ClienteVO cliente = new ClienteVO();
+				ServicosVO servico = new ServicosVO();
+				AutoVO auto = new AutoVO();
 				Calendar data = Calendar.getInstance();
 				data.setTimeInMillis(rs.getDate("data").getTime());
 				
-				
-				orcamento.getClientName().setName(rs.getString("nome"));
-				orcamento.getServicos().setTipo(rs.getString("tipo"));
+				cliente.getId(rs.getInt("idcliente"));
+				servicos.getId(rs.getInt("idservico"));
+				auto.getId(rs.getInt("idauto"));
 				orcamento.setCusto(rs.getDouble("custo"));
 				orcamento.setData(data);
-				orcamento.setId(rs.getInt("idorm")); 
+				orcamento.setId(rs.getInt("idorm"));
+				orcamento.setClientName(cliente);
+				orcamento.setServicos(servico);
+				orcamento.setAuto(auto);
+				orc.add(orcamento);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return orc;
+	}
+	
+	public List<OrcamentoVO> findByCliente() {
+		conect = getConnection();
+		String sql = "select * from orcamentos where idcliente = ? ";
+		Statement st;
+		ResultSet rs;
+		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				OrcamentoVO orcamento = new OrcamentoVO();
+				ClienteVO cliente = new ClienteVO();
+				ServicosVO servico = new ServicosVO();
+				AutoVO auto = new AutoVO();
+				Calendar data = Calendar.getInstance();
+				data.setTimeInMillis(rs.getDate("data").getTime());
+				
+				cliente.getId(rs.getInt("idcliente"));
+				servicos.getId(rs.getInt("idservico"));
+				auto.getId(rs.getInt("idauto"));
+				orcamento.setCusto(rs.getDouble("custo"));
+				orcamento.setData(data);
+				orcamento.setId(rs.getInt("idorm"));
+				orcamento.setClientName(cliente);
+				orcamento.setServicos(servico);
+				orcamento.setAuto(auto);
+				orc.add(orcamento);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return orc;
+	}
+	
+	public List<OrcamentoVO> findByAuto() {
+		conect = getConnection();
+		String sql = "select * from orcamentos where idauto = ? ";
+		Statement st;
+		ResultSet rs;
+		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				OrcamentoVO orcamento = new OrcamentoVO();
+				ClienteVO cliente = new ClienteVO();
+				ServicosVO servico = new ServicosVO();
+				AutoVO auto = new AutoVO();
+				Calendar data = Calendar.getInstance();
+				data.setTimeInMillis(rs.getDate("data").getTime());
+				
+				cliente.getId(rs.getInt("idcliente"));
+				servicos.getId(rs.getInt("idservico"));
+				auto.getId(rs.getInt("idauto"));
+				orcamento.setCusto(rs.getDouble("custo"));
+				orcamento.setData(data);
+				orcamento.setId(rs.getInt("idorm"));
+				orcamento.setClientName(cliente);
+				orcamento.setServicos(servico);
+				orcamento.setAuto(auto);
 				orc.add(orcamento);
 				
 			}
