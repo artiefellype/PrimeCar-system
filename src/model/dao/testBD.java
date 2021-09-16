@@ -1,9 +1,13 @@
 package model.dao;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import model.vo.AutoVO;
 import model.vo.ClienteVO;
+import model.vo.OrcamentoVO;
 import model.vo.PecasVO;
 import model.vo.ServicosVO;
 
@@ -144,7 +148,20 @@ public class testBD {
 		
 		*/
 		
+		OrcamentoVO orcV = new OrcamentoVO();
+		OrcamentoDAO orcD = new OrcamentoDAO();
+		Calendar data = Calendar.getInstance();
 		
+		data.setTimeInMillis(data.getTimeInMillis());
+		
+		
+		orcV.setClientName(clientV);
+		orcV.setServicos(servicosV);
+		orcV.setAuto(autoV);
+		orcV.setData(data);
+		orcV.setCusto(1359.90);
+		
+		orcD.inserir(orcV);
 		
 		
 		
