@@ -52,7 +52,7 @@ public class PecasDAO extends BaseDAO {
 		
 	}
 	
-	public void removeById(PecasVO peca) {
+	public void remove(PecasVO peca) {
 		conect = getConnection();
 		String sql = "delete from pecas where idpeca = ?";
 		PreparedStatement ptst;
@@ -69,39 +69,7 @@ public class PecasDAO extends BaseDAO {
 		
 	}
 	
-	public void removeByNome(PecasVO peca) {
-		conect = getConnection();
-		String sql = "delete from pecas where nome = ?";
-		PreparedStatement ptst;
-		try {
-			
-			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, peca.getName());
-			ptst.executeUpdate();
-			
-			} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
-	public void removeByFabricante(PecasVO peca) {
-		conect = getConnection();
-		String sql = "delete from pecas where fabricante = ?";
-		PreparedStatement ptst;
-		try {
-			
-			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, peca.getFabricante());
-			ptst.executeUpdate();
-			
-			} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
 	public List<PecasVO> listar() {
 		conect = getConnection();

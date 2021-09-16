@@ -57,83 +57,13 @@ public class AutoDAO extends BaseDAO{
 		
 	}
 	
-	public void removeByMarca(AutoVO automovel) {
+	public void remove(AutoVO automovel) {
 		conect = getConnection();
-		String sql = "delete from auto where marca = ?";
+		String sql = "delete from auto where idauto = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, automovel.getMarca());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByCor(AutoVO automovel) {
-		conect = getConnection();
-		String sql = "delete from auto where cor = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, automovel.getCor());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByPlaca(AutoVO automovel) {
-		conect = getConnection();
-		String sql = "delete from auto where placa = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, automovel.getPlaca());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByAno(AutoVO automovel) {
-		conect = getConnection();
-		String sql = "delete from auto where ano = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, automovel.getAno());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByQuilometragem(AutoVO automovel) {
-		conect = getConnection();
-		String sql = "delete from auto where quilometragem = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setDouble(1, automovel.getQuilometragem());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByCliente(AutoVO automovel) {
-		conect = getConnection();
-		String sql = "delete from auto where idcliente = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, automovel.getProprietario().getId());
+			ptst.setInt(1, automovel.getId());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		

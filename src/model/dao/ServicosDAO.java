@@ -57,13 +57,13 @@ public class ServicosDAO extends BaseDAO {
 		
 	}
 	
-	public void removeByTipo(ServicosVO servicos) {
+	public void remove(ServicosVO servicos) {
 		conect = getConnection();
-		String sql = "delete from servicos where tipo = ?";
+		String sql = "delete from servicos where idservico = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, servicos.getTipo());
+			ptst.setInt(1, servicos.getId());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		
@@ -71,48 +71,7 @@ public class ServicosDAO extends BaseDAO {
 		}
 		
 	}
-	public void removeByAuto(ServicosVO servicos) {
-		conect = getConnection();
-		String sql = "delete from servicos where idauto = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, servicos.getAuto().getId());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByPeca(ServicosVO servicos) {
-		conect = getConnection();
-		String sql = "delete from servicos where idpeca = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, servicos.getPeca().getId());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByFinalizado(ServicosVO servicos) {
-		conect = getConnection();
-		String sql = "delete from servicos where finalizado = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setBoolean(1, servicos.getFinalizado());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
+	
 	
 	
 	public List<ServicosVO> listar() {

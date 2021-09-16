@@ -54,41 +54,13 @@ public class ClienteDAO extends BaseDAO{
 		
 	}
 	
-	public void removeByName(ClienteVO client) {
+	public void remove(ClienteVO client) {
 		conect = getConnection();
-		String sql = "delete from clientes where nome = ?";
+		String sql = "delete from clientes where idcliente = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, client.getName());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByEndereco(ClienteVO client) {
-		conect = getConnection();
-		String sql = "delete from clientes where endereco = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, client.getEndereco());
-			ptst.executeUpdate();
-			} catch (SQLException e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	public void removeByCPF(ClienteVO client) {
-		conect = getConnection();
-		String sql = "delete from clientes where cpf = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conect.prepareStatement(sql);
-			ptst.setString(1, client.getCPF());
+			ptst.setInt(1, client.getId());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		

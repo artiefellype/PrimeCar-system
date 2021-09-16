@@ -28,7 +28,7 @@ public class OrcamentoVO {
 		return clientName;
 	}
 	public void setClientName(ClienteVO clientName) {
-		if(clientName.getName() == null || clientName.getName().isBlank()) {
+		if(clientName == null || clientName.equals("")) {
 			
 		}else {
 			this.clientName = clientName;
@@ -40,7 +40,7 @@ public class OrcamentoVO {
 		return servicos;
 	}
 	public void setServicos(ServicosVO servicos) {
-		if(servicos.getTipo() == null) {
+		if(servicos == null || servicos.equals(" ")) {
 			
 		}else {
 			this.servicos = servicos;
@@ -76,7 +76,7 @@ public class OrcamentoVO {
 		return auto;
 	}
 	public void setAuto(AutoVO auto) {
-		if (auto.getPlaca() == null) {
+		if (auto == null || auto.equals(" ")) {
 			
 		}else {
 			this.auto = auto;

@@ -2,6 +2,7 @@ package model.dao;
 
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import model.vo.ServicosVO;
 
 public class testBD {
 
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BaseDAO base = new BaseDAO();
@@ -148,23 +150,46 @@ public class testBD {
 		
 		*/
 		
+		 //-------------------TESTE ORCAMENTODAO-----------------
 		OrcamentoVO orcV = new OrcamentoVO();
 		OrcamentoDAO orcD = new OrcamentoDAO();
+		
 		Calendar data = Calendar.getInstance();
+		Calendar data01 = Calendar.getInstance();
+		Calendar data02 = Calendar.getInstance();
 		
+		SimpleDateFormat formatData = new SimpleDateFormat("yyyy-MM-dd");
+		
+		data.set(2013, 6, 12);
 		data.setTimeInMillis(data.getTimeInMillis());
-		
 		
 		orcV.setClientName(clientV);
 		orcV.setServicos(servicosV);
 		orcV.setAuto(autoV);
 		orcV.setData(data);
-		orcV.setCusto(1359.90);
-		
-		orcD.inserir(orcV);
+		orcV.setCusto(459.90);
 		
 		
 		
+		data01.set(2020, 3, 21);
+		data02.set(2012, 6, 2);
+		//orcD.inserir(orcV);
+		System.out.println(formatData.format(data01.getTime()));
+		System.out.println(orcV.getClientName().getId());
+		//orcD.findByData(orcV, formatO.format(data01.getTime()));
+		/*
+		List<OrcamentoVO> orc = orcD.findByData(orcV, formatData.format(data02.getTime()), formatData.format(data01.getTime()) );
+		//List<OrcamentoVO> orc = orcD.listar();
+		
+		for(OrcamentoVO dataShow : orc) {
+			System.out.println(dataShow.getId());
+			System.out.println(dataShow.getClientName().getId());
+			System.out.println(dataShow.getServicos().getId());
+			System.out.println(dataShow.getCusto());
+			System.out.println(dataShow.getData().getTime());
+			System.out.println("-------------------------------------------");
+			
+			}
+			*/
 	}
-
 }

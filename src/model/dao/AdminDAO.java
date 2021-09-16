@@ -53,23 +53,9 @@ public class AdminDAO extends BaseDAO {
 		
 	}
 	
-	public void removeByName(AdminVO admin) {
-		conect = getConnection();
-		String sql = "delete from admin where nome = ?";
-		PreparedStatement ptst;
-		try {
-			
-			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, admin.getName());
-			ptst.executeUpdate();
-			
-			} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
-	public void removeById(AdminVO admin) {
+	
+	public void remove(AdminVO admin) {
 		conect = getConnection();
 		String sql = "delete from admin where idadmin = ?";
 		PreparedStatement ptst;
