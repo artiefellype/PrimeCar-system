@@ -2,12 +2,15 @@ package model.vo;
 
 
 import java.util.Calendar;
-
+import model.vo.ClienteVO;
+import model.vo.ServicosVO;
+import model.vo.AutoVO;
 
 public class OrcamentoVO {
 	private Integer id;
 	private ClienteVO clientName;
 	private ServicosVO servicos;
+	private AutoVO auto;
 	private Double custo;
 	private Calendar data;
 
@@ -72,7 +75,16 @@ public class OrcamentoVO {
 		
 	}
 	
-	
+	public AutoVO getAuto() {
+		return auto;
+	}
+	public void setAuto(AutoVO auto) {
+		if (auto.getPlaca() == null) {
+			
+		}else {
+			this.auto = auto;
+		}
+	}
 	
 	
 }

@@ -1,6 +1,6 @@
 package model.vo;
 
-
+import model.vo.ClienteVO;
 
 public class AutoVO {
 	private Integer id;

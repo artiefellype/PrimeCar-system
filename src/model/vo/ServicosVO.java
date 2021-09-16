@@ -1,5 +1,7 @@
 package model.vo;
 
+import model.vo.AutoVO;
+import model.vo.PecasVO;
 
 public class ServicosVO {
 	private Integer id;
