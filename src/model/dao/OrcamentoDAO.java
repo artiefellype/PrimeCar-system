@@ -91,11 +91,12 @@ public class OrcamentoDAO extends BaseDAO {
 				ServicosVO servico = new ServicosVO();
 				AutoVO auto = new AutoVO();
 				Calendar data = Calendar.getInstance();
-				data.setTimeInMillis(rs.getDate("data").getTime());
 				
-				cliente.getId(rs.getInt("idcliente"));
-				servicos.getId(rs.getInt("idservico"));
-				auto.getId(rs.getInt("idauto"));
+				data.setTimeInMillis(rs.getDate("data").getTime());
+				cliente.getId();
+				servico.getId();
+				auto.getId();
+				
 				orcamento.setCusto(rs.getDouble("custo"));
 				orcamento.setData(data);
 				orcamento.setId(rs.getInt("idorm"));
@@ -114,7 +115,7 @@ public class OrcamentoDAO extends BaseDAO {
 	
 	public List<OrcamentoVO> findByCliente(OrcamentoVO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idcliente like'" + orca.getClienteName().getId();
+		String sql = "select * from orcamentos where idcliente like'" + orca.getClientName().getId() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -128,11 +129,12 @@ public class OrcamentoDAO extends BaseDAO {
 				ServicosVO servico = new ServicosVO();
 				AutoVO auto = new AutoVO();
 				Calendar data = Calendar.getInstance();
-				data.setTimeInMillis(rs.getDate("data").getTime());
 				
-				cliente.getId(rs.getInt("idcliente"));
-				servicos.getId(rs.getInt("idservico"));
-				auto.getId(rs.getInt("idauto"));
+				data.setTimeInMillis(rs.getDate("data").getTime());
+				cliente.getId();
+				servico.getId();
+				auto.getId();
+				
 				orcamento.setCusto(rs.getDouble("custo"));
 				orcamento.setData(data);
 				orcamento.setId(rs.getInt("idorm"));
@@ -151,7 +153,7 @@ public class OrcamentoDAO extends BaseDAO {
 	
 	public List<OrcamentoVO> findByAuto(OrcamentoVO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idauto like'" + orca.getAuto().getId();
+		String sql = "select * from orcamentos where idauto like'" + orca.getAuto().getId() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -167,9 +169,9 @@ public class OrcamentoDAO extends BaseDAO {
 				Calendar data = Calendar.getInstance();
 				data.setTimeInMillis(rs.getDate("data").getTime());
 				
-				cliente.getId(rs.getInt("idcliente"));
-				servicos.getId(rs.getInt("idservico"));
-				auto.getId(rs.getInt("idauto"));
+				cliente.getId();
+				servico.getId();
+				auto.getId();
 				orcamento.setCusto(rs.getDouble("custo"));
 				orcamento.setData(data);
 				orcamento.setId(rs.getInt("idorm"));
@@ -188,7 +190,7 @@ public class OrcamentoDAO extends BaseDAO {
 	
 	public void editarCliente(OrcamentoVO orc) {
 		conect = getConnection();
-		String sql = "update orcamentos set nomeCliente like' " + orc.getClientName().getName() " where id like'" + orc.getClientName().getId();
+		String sql = "update orcamentos set nomeCliente = ? where idorm= ?";
 		PreparedStatement ptst;
 		try {
 			

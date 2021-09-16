@@ -148,9 +148,9 @@ public class ServicosDAO extends BaseDAO {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByTipo() {
+	public List<ServicosVO> findByTipo(String tipo) {
 		conect = getConnection();
-		String sql = "select * from servicos where tipo = ?";
+		String sql = "select * from servicos where tipo like '" + tipo + "%'";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -181,9 +181,9 @@ public class ServicosDAO extends BaseDAO {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByFinalizado() {
+	public List<ServicosVO> findByFinalizado(Boolean value) {
 		conect = getConnection();
-		String sql = "select * from servicos where finalizado = ?";
+		String sql = "select * from servicos where finalizado like '" + value+ "%'";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -213,6 +213,73 @@ public class ServicosDAO extends BaseDAO {
 		}
 		return servico;
 	}
+	
+	public List<ServicosVO> findByAuto(AutoVO auto) {
+		conect = getConnection();
+		String sql = "select * from servicos where idauto like '" + auto.getId() + "%'";
+		Statement st;
+		ResultSet rs;
+		List<ServicosVO> servico = new ArrayList<ServicosVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				ServicosVO servicos = new ServicosVO();
+				AutoVO autoV = new AutoVO();
+				PecasVO peca = new PecasVO();
+				
+				autoV.setId(rs.getInt("idauto"));
+				peca.setId(rs.getInt("idpeca"));
+				servicos.setTipo(rs.getString("tipo"));
+				servicos.setValor(rs.getDouble("valor"));
+				servicos.setFinalizado(rs.getBoolean("finalizado"));
+				servicos.setId(rs.getInt("idservico"));
+				servicos.setAuto(autoV);
+				servicos.setPeca(peca);
+				servico.add(servicos);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return servico;
+	}
+	
+	public List<ServicosVO> findByPeca(PecasVO peca) {
+		conect = getConnection();
+		String sql = "select * from servicos where idpeca like '" + peca.getId() + "%'";
+		Statement st;
+		ResultSet rs;
+		List<ServicosVO> servico = new ArrayList<ServicosVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				ServicosVO servicos = new ServicosVO();
+				AutoVO auto = new AutoVO();
+				PecasVO pecaV = new PecasVO();
+				
+				auto.setId(rs.getInt("idauto"));
+				pecaV.setId(rs.getInt("idpeca"));
+				servicos.setTipo(rs.getString("tipo"));
+				servicos.setValor(rs.getDouble("valor"));
+				servicos.setFinalizado(rs.getBoolean("finalizado"));
+				servicos.setId(rs.getInt("idservico"));
+				servicos.setAuto(auto);
+				servicos.setPeca(peca);
+				servico.add(servicos);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return servico;
+	}
+	
 	
 	public void editar(ServicosVO servicos) {
 		conect = getConnection();
