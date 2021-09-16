@@ -129,9 +129,9 @@ public class PecasDAO extends BaseDAO {
 		return pecas;
 	}
 	
-	public List<PecasVO> findByNome() {
+	public List<PecasVO> findByNome(PecasVO peca) {
 		conect = getConnection();
-		String sql = "select * from pecas where nome = ?";
+		String sql = "select * from pecas where nome like'" + peca.getNome();
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -155,9 +155,9 @@ public class PecasDAO extends BaseDAO {
 		return pecas;
 	}
 	
-	public List<PecasVO> findByFabricante() {
+	public List<PecasVO> findByFabricante(PecasVO peca) {
 		conect = getConnection();
-		String sql = "select from pecas where fabricante = ?";
+		String sql = "select from pecas where fabricante like'" + peca.getFabricante() ;
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -183,7 +183,7 @@ public class PecasDAO extends BaseDAO {
 	
 	public void editNome(PecasVO peca) {
 		conect = getConnection();
-		String sql = "update peca set nome = ? where idpeca = ?";
+		String sql = "update peca set nome = ? where idpeca" + peca.getId();
 		PreparedStatement ptst;
 		try {
 			

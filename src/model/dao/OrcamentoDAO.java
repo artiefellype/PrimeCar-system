@@ -112,9 +112,9 @@ public class OrcamentoDAO extends BaseDAO {
 		return orc;
 	}
 	
-	public List<OrcamentoVO> findByCliente() {
+	public List<OrcamentoVO> findByCliente(OrcamentoVO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idcliente = ? ";
+		String sql = "select * from orcamentos where idcliente like'" + orca.getClienteName().getId();
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -149,9 +149,9 @@ public class OrcamentoDAO extends BaseDAO {
 		return orc;
 	}
 	
-	public List<OrcamentoVO> findByAuto() {
+	public List<OrcamentoVO> findByAuto(OrcamentoVO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idauto = ? ";
+		String sql = "select * from orcamentos where idauto like'" + orca.getAuto().getId();
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -188,7 +188,7 @@ public class OrcamentoDAO extends BaseDAO {
 	
 	public void editarCliente(OrcamentoVO orc) {
 		conect = getConnection();
-		String sql = "update orcamentos set nomeCliente = ? where id = ?";
+		String sql = "update orcamentos set nomeCliente like' " + orc.getClientName().getName() " where id like'" + orc.getClientName().getId();
 		PreparedStatement ptst;
 		try {
 			
