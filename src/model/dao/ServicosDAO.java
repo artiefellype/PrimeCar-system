@@ -148,6 +148,72 @@ public class ServicosDAO extends BaseDAO {
 		return servico;
 	}
 	
+	public List<ServicosVO> findByTipo() {
+		conect = getConnection();
+		String sql = "select * from servicos where tipo = ?";
+		Statement st;
+		ResultSet rs;
+		List<ServicosVO> servico = new ArrayList<ServicosVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				ServicosVO servicos = new ServicosVO();
+				AutoVO auto = new AutoVO();
+				PecasVO peca = new PecasVO();
+				
+				auto.setId(rs.getInt("idauto"));
+				peca.setId(rs.getInt("idpeca"));
+				servicos.setTipo(rs.getString("tipo"));
+				servicos.setValor(rs.getDouble("valor"));
+				servicos.setFinalizado(rs.getBoolean("finalizado"));
+				servicos.setId(rs.getInt("idservico"));
+				servicos.setAuto(auto);
+				servicos.setPeca(peca);
+				servico.add(servicos);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return servico;
+	}
+	
+	public List<ServicosVO> findByFinalizado() {
+		conect = getConnection();
+		String sql = "select * from servicos where finalizado = ?";
+		Statement st;
+		ResultSet rs;
+		List<ServicosVO> servico = new ArrayList<ServicosVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				ServicosVO servicos = new ServicosVO();
+				AutoVO auto = new AutoVO();
+				PecasVO peca = new PecasVO();
+				
+				auto.setId(rs.getInt("idauto"));
+				peca.setId(rs.getInt("idpeca"));
+				servicos.setTipo(rs.getString("tipo"));
+				servicos.setValor(rs.getDouble("valor"));
+				servicos.setFinalizado(rs.getBoolean("finalizado"));
+				servicos.setId(rs.getInt("idservico"));
+				servicos.setAuto(auto);
+				servicos.setPeca(peca);
+				servico.add(servicos);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return servico;
+	}
+	
 	public void editar(ServicosVO servicos) {
 		conect = getConnection();
 		String sql = "update servicos set tipo = ? where idservico= ?";
