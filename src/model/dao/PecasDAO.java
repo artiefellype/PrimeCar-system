@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.vo.PecasVO;
 
-public class PecasDAO extends BaseDAO {
+public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	public void inserir(PecasVO peca) {
 		conect = getConnection();
 		String sql = "insert into pecas (nome, fabricante, preco) values (?,?,?)";

@@ -11,7 +11,7 @@ import model.vo.AutoVO;
 import model.vo.PecasVO;
 import model.vo.ServicosVO;
 
-public class ServicosDAO extends BaseDAO {
+public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 
 	public void inserir(ServicosVO servicos) {
 		conect = getConnection();

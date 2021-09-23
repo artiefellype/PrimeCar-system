@@ -15,7 +15,7 @@ import model.vo.ServicosVO;
 import model.vo.AutoVO;
 
 
-public class OrcamentoDAO extends BaseDAO {
+public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	public void inserir(OrcamentoVO orc) {
 		conect = getConnection();
 		String sql = "insert into orcamentos (idcliente, idservico, idauto, custo, data) values (?,?,?,?,?)";

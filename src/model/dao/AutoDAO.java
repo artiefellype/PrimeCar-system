@@ -11,7 +11,7 @@ import model.vo.AutoVO;
 import model.vo.ClienteVO;
 
 
-public class AutoDAO extends BaseDAO{
+public abstract class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	public void inserir(AutoVO automovel) {
 		conect = getConnection();
 		String sql = "insert into auto (marca, cor, placa, ano, quilometragem, idcliente) values (?, ?, ?, ?, ?, ?)";

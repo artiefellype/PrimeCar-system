@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.vo.ClienteVO;
 
-public class ClienteDAO extends BaseDAO{
+public abstract class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	
 	public void inserir(ClienteVO client) {

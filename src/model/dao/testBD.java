@@ -19,10 +19,8 @@ public class testBD {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BaseDAO base = new BaseDAO();
-		System.out.println(base.getConnection());
 		
-		
+		/*
 		 // ---------------TESTE CLIENTEDAO --------------------
 		ClienteDAO clientD = new ClienteDAO();
 		ClienteVO clientV = new ClienteVO();
@@ -76,7 +74,7 @@ public class testBD {
 		
 	*/
 		
-		
+		/*
 		 //-------------TESTE AUTOMOVELDAO---------------------
 		AutoDAO autoD = new AutoDAO();
 		AutoVO autoV = new AutoVO();
@@ -110,6 +108,7 @@ public class testBD {
 		//autoD.removeByCor(autoV);
 		
 			*/
+		/*
 		//--------------TESTE DE PECADAO-------------------
 		PecasDAO pecaD = new PecasDAO();
 		PecasVO pecaV = new PecasVO();
@@ -149,7 +148,7 @@ public class testBD {
 		}
 		
 		*/
-		
+		/*
 		 //-------------------TESTE ORCAMENTODAO-----------------
 		OrcamentoVO orcV = new OrcamentoVO();
 		OrcamentoDAO orcD = new OrcamentoDAO();
@@ -191,5 +190,6 @@ public class testBD {
 			
 			}
 			*/
+		
 	}
 }

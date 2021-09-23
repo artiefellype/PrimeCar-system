@@ -10,9 +10,9 @@ import java.util.List;
 
 import model.vo.AdminVO;
 
-public class AdminDAO extends BaseDAO {
-	
-	public void inserir(AdminVO admin) {
+public abstract class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {  
+	@Override
+	public void inserir(VO admin) {
 		conect = getConnection();
 		String sql = "insert into admin (nome, senha) values (?,?)";
 		PreparedStatement ptst;
@@ -55,7 +55,7 @@ public class AdminDAO extends BaseDAO {
 	
 	
 	
-	public void remove(AdminVO admin) {
+	public void remove(VO admin) {
 		conect = getConnection();
 		String sql = "delete from admin where idadmin = ?";
 		PreparedStatement ptst;
@@ -99,7 +99,7 @@ public class AdminDAO extends BaseDAO {
 		return admin;
 	}
 	
-	public void editarSenha(AdminVO admin) {
+	public void editarSenha(VO admin) {
 		conect = getConnection();
 		String sql = "update admin set senha = ? where id = ?";
 		PreparedStatement ptst;
