@@ -11,7 +11,7 @@ import java.util.List;
 import model.vo.PecasVO;
 
 public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
-	public void inserir(PecasVO peca) {
+	public void inserir(VO peca) {
 		conect = getConnection();
 		String sql = "insert into pecas (nome, fabricante, preco) values (?,?,?)";
 		PreparedStatement ptst;
@@ -52,7 +52,7 @@ public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		
 	}
 	
-	public void remove(PecasVO peca) {
+	public void remove(VO peca) {
 		conect = getConnection();
 		String sql = "delete from pecas where idpeca = ?";
 		PreparedStatement ptst;
@@ -97,7 +97,7 @@ public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		return pecas;
 	}
 	
-	public List<PecasVO> findByNome(PecasVO peca) {
+	public List<PecasVO> findByNome(VO peca) {
 		conect = getConnection();
 		String sql = "select * from pecas where nome like '" + peca.getName() + "%'";
 		Statement st;
@@ -123,7 +123,7 @@ public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		return pecas;
 	}
 	
-	public List<PecasVO> findByFabricante(PecasVO peca) {
+	public List<PecasVO> findByFabricante(VO peca) {
 		conect = getConnection();
 		String sql = "select from pecas where fabricante like'" + peca.getFabricante() + "%'";
 		Statement st;
@@ -149,7 +149,7 @@ public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		return pecas;
 	}
 	
-	public void editNome(PecasVO peca) {
+	public void editNome(VO peca) {
 		conect = getConnection();
 		String sql = "update peca set nome = ? where idpeca = ?";
 		PreparedStatement ptst;

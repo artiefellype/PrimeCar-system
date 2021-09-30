@@ -12,7 +12,7 @@ import model.vo.ClienteVO;
 public abstract class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	
-	public void inserir(ClienteVO client) {
+	public void inserir(VO client) {
 		conect = getConnection();
 		String sql = "insert into clientes (nome, endereco, cpf) values (?,?,?)";
 		PreparedStatement ptst;
@@ -54,7 +54,7 @@ public abstract class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 		
 	}
 	
-	public void remove(ClienteVO client) {
+	public void remove(VO client) {
 		conect = getConnection();
 		String sql = "delete from clientes where idcliente = ?";
 		PreparedStatement ptst;
@@ -179,7 +179,7 @@ public abstract class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 		
 	}
 	
-	public void editar(ClienteVO client) {
+	public void editar(VO client) {
 		conect = getConnection();
 		String sql = "update clientes set nome = ? where idcliente= ?";
 		PreparedStatement ptst;

@@ -13,7 +13,7 @@ import model.vo.ServicosVO;
 
 public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 
-	public void inserir(ServicosVO servicos) {
+	public void inserir(VO servicos) {
 		conect = getConnection();
 		String sql = "insert into servicos (tipo, valor, finalizado, idauto, idpeca ) values (?,?,?,?,?)";
 		PreparedStatement ptst;
@@ -57,7 +57,7 @@ public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		
 	}
 	
-	public void remove(ServicosVO servicos) {
+	public void remove(VO servicos) {
 		conect = getConnection();
 		String sql = "delete from servicos where idservico = ?";
 		PreparedStatement ptst;
@@ -173,7 +173,7 @@ public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByAuto(AutoVO auto) {
+	public List<ServicosVO> findByAuto(VO auto) {
 		conect = getConnection();
 		String sql = "select * from servicos where idauto like '" + auto.getId() + "%'";
 		Statement st;
@@ -206,7 +206,7 @@ public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByPeca(PecasVO peca) {
+	public List<ServicosVO> findByPeca(VO peca) {
 		conect = getConnection();
 		String sql = "select * from servicos where idpeca like '" + peca.getId() + "%'";
 		Statement st;
@@ -228,7 +228,7 @@ public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 				servicos.setFinalizado(rs.getBoolean("finalizado"));
 				servicos.setId(rs.getInt("idservico"));
 				servicos.setAuto(auto);
-				servicos.setPeca(peca);
+				servicos.setPeca(pecaV);
 				servico.add(servicos);
 				
 			}
@@ -240,7 +240,7 @@ public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 	}
 	
 	
-	public void editar(ServicosVO servicos) {
+	public void editar(VO servicos) {
 		conect = getConnection();
 		String sql = "update servicos set tipo = ? where idservico= ?";
 		PreparedStatement ptst;
