@@ -16,7 +16,7 @@ import model.vo.AutoVO;
 
 
 public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
-	public void inserir(OrcamentoVO orc) {
+	public void inserir(VO orc) {
 		conect = getConnection();
 		String sql = "insert into orcamentos (idcliente, idservico, idauto, custo, data) values (?,?,?,?,?)";
 		PreparedStatement ptst;
@@ -59,7 +59,7 @@ public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		
 	}
 	
-	public void remover(OrcamentoVO orc) {
+	public void remover(VO orc) {
 		conect = getConnection();
 		String sql = "delete from orcamentos where idorc = ?";
 		PreparedStatement ptst;
@@ -113,7 +113,7 @@ public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		return orc;
 	}
 	
-	public List<OrcamentoVO> findByData(OrcamentoVO orca, String dataInit, String dataEnd) {
+	public List<OrcamentoVO> findByData(VO orca, String dataInit, String dataEnd) {
 		conect = getConnection();
 		String sql = "select * from orcamentos where idcliente =" + orca.getClientName().getId() + " and data between '"+ dataInit +"' "
 						+ " and '"+dataEnd+"'";
@@ -154,7 +154,7 @@ public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		return orc;
 	}
 	
-	public List<OrcamentoVO> findByCliente(OrcamentoVO orca) {
+	public List<OrcamentoVO> findByCliente(VO orca) {
 		conect = getConnection();
 		String sql = "select * from orcamentos where idcliente like'" + orca.getClientName().getId() + "%'";
 		Statement st;
@@ -192,7 +192,7 @@ public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		return orc;
 	}
 	
-	public List<OrcamentoVO> findByAuto(OrcamentoVO orca) {
+	public List<OrcamentoVO> findByAuto(VO orca) {
 		conect = getConnection();
 		String sql = "select * from orcamentos where idauto like'" + orca.getAuto().getId() + "%'";
 		Statement st;
@@ -230,7 +230,7 @@ public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		return orc;
 	}
 	
-	public void editarCliente(OrcamentoVO orc) {
+	public void editarCliente(VO orc) {
 		conect = getConnection();
 		String sql = "update orcamentos set nomeCliente = ? where idorm= ?";
 		PreparedStatement ptst;
