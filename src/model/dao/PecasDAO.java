@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.vo.PecasVO;
 
-public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
+public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	public void inserir(VO peca) {
 		conect = getConnection();
 		String sql = "insert into pecas (nome, fabricante, preco) values (?,?,?)";
@@ -52,7 +52,7 @@ public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		
 	}
 	
-	public void remove(VO peca) {
+	public void remover(VO peca) {
 		conect = getConnection();
 		String sql = "delete from pecas where idpeca = ?";
 		PreparedStatement ptst;
@@ -71,12 +71,12 @@ public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	
 	
-	public List<PecasVO> listar() {
+	public List<VO> listar() {
 		conect = getConnection();
 		String sql = "select * from pecas";
 		Statement st;
 		ResultSet rs;
-		List<PecasVO> pecas = new ArrayList<PecasVO>();
+		List<VO> pecas = new ArrayList<VO>();
 		
 		try {
 			st = conect.createStatement();
@@ -149,7 +149,7 @@ public abstract class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		return pecas;
 	}
 	
-	public void editNome(VO peca) {
+	public void editar(VO peca) {
 		conect = getConnection();
 		String sql = "update peca set nome = ? where idpeca = ?";
 		PreparedStatement ptst;

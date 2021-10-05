@@ -15,7 +15,7 @@ import model.vo.ServicosVO;
 import model.vo.AutoVO;
 
 
-public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
+public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	public void inserir(VO orc) {
 		conect = getConnection();
 		String sql = "insert into orcamentos (idcliente, idservico, idauto, custo, data) values (?,?,?,?,?)";
@@ -75,12 +75,12 @@ public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		}
 	}
 	
-	public List<OrcamentoVO> listar() {
+	public List<VO> listar() {
 		conect = getConnection();
 		String sql = "select * from orcamentos";
 		Statement st;
 		ResultSet rs;
-		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
+		List<VO> orc = new ArrayList<VO>();
 		
 		try {
 			st = conect.createStatement();
@@ -230,7 +230,7 @@ public abstract class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		return orc;
 	}
 	
-	public void editarCliente(VO orc) {
+	public void editar(VO orc) {
 		conect = getConnection();
 		String sql = "update orcamentos set nomeCliente = ? where idorm= ?";
 		PreparedStatement ptst;

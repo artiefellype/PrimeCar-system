@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.vo.AdminVO;
 
-public abstract class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {  
+public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {  
 	@Override
 	public void inserir(VO admin) {
 		conect = getConnection();
@@ -55,7 +55,7 @@ public abstract class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 	
 	
 	
-	public void remove(VO admin) {
+	public void remover(VO admin) {
 		conect = getConnection();
 		String sql = "delete from admin where idadmin = ?";
 		PreparedStatement ptst;
@@ -71,12 +71,12 @@ public abstract class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		}
 	}
 	
-	public List<AdminVO> listar() {
+	public List<VO> listar() {
 		conect = getConnection();
 		String sql = "select * from admin";
 		Statement st;
 		ResultSet rs;
-		List<AdminVO> admin = new ArrayList<AdminVO>();
+		List<VO> admin = new ArrayList<VO>();
 		
 		try {
 			st = conect.createStatement();

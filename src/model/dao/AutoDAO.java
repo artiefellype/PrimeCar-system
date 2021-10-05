@@ -11,7 +11,7 @@ import model.vo.AutoVO;
 import model.vo.ClienteVO;
 
 
-public abstract class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
+public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	public void inserir(VO automovel) {
 		conect = getConnection();
 		String sql = "insert into auto (marca, cor, placa, ano, quilometragem, idcliente) values (?, ?, ?, ?, ?, ?)";
@@ -57,7 +57,7 @@ public abstract class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 		
 	}
 	
-	public void remove(VO automovel) {
+	public void remover(VO automovel) {
 		conect = getConnection();
 		String sql = "delete from auto where idauto = ?";
 		PreparedStatement ptst;
@@ -73,12 +73,12 @@ public abstract class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	
 	
-	public List<AutoVO> listar() {
+	public List<VO> listar() {
 		conect = getConnection();
 		String sql = "select * from auto";
 		Statement st;
 		ResultSet rs;
-		List<AutoVO> auto = new ArrayList<AutoVO>();
+		List<VO> auto = new ArrayList<VO>();
 		
 		try {
 			st = conect.createStatement();

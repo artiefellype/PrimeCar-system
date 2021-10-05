@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public abstract class BaseDAO<VO> implements BaseInterDAO<VO> {
 	
@@ -41,10 +42,8 @@ public abstract class BaseDAO<VO> implements BaseInterDAO<VO> {
 	}
 	
 	public abstract void inserir(VO vo) throws SQLException;
-	public abstract void atualizar(VO vo) throws SQLException;
-	public abstract void deletar(VO vo) throws SQLException;
-	public abstract ResultSet list() throws SQLException; 
-	public abstract ResultSet listarPorId(VO vo) throws SQLException;
-	public abstract ResultSet listarPorNome(VO entity) throws SQLException;
+	public abstract void editar(VO vo) throws SQLException;
+	public abstract void remover(VO vo) throws SQLException;
+	public abstract List<VO> listar() throws SQLException; 
 	
 }

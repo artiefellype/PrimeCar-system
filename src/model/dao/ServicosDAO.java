@@ -11,7 +11,7 @@ import model.vo.AutoVO;
 import model.vo.PecasVO;
 import model.vo.ServicosVO;
 
-public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
+public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 
 	public void inserir(VO servicos) {
 		conect = getConnection();
@@ -57,7 +57,7 @@ public abstract class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		
 	}
 	
-	public void remove(VO servicos) {
+	public void remover(VO servicos) {
 		conect = getConnection();
 		String sql = "delete from servicos where idservico = ?";
 		PreparedStatement ptst;
