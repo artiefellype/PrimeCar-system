@@ -73,12 +73,12 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	
 	
-	public List<VO> listar() {
+	public List<AutoVO> listar() {
 		conect = getConnection();
 		String sql = "select * from auto";
 		Statement st;
 		ResultSet rs;
-		List<VO> auto = new ArrayList<VO>();
+		List<AutoVO> auto = new ArrayList<AutoVO>();
 		
 		try {
 			st = conect.createStatement();

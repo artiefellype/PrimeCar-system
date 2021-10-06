@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.vo.ClienteVO;
 
-public abstract class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
+public class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	
 	public void inserir(VO client) {
@@ -54,7 +54,7 @@ public abstract class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 		
 	}
 	
-	public void remove(VO client) {
+	public void remover(VO client) {
 		conect = getConnection();
 		String sql = "delete from clientes where idcliente = ?";
 		PreparedStatement ptst;

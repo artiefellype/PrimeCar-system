@@ -75,12 +75,12 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		}
 	}
 	
-	public List<VO> listar() {
+	public List<OrcamentoVO> listar() {
 		conect = getConnection();
 		String sql = "select * from orcamentos";
 		Statement st;
 		ResultSet rs;
-		List<VO> orc = new ArrayList<VO>();
+		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
 		
 		try {
 			st = conect.createStatement();
