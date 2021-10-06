@@ -2,7 +2,6 @@ package model.bo;
 
 
 import model.vo.AutoVO;
-import model.vo.ClienteVO;
 import model.dao.AutoDAO;
 import java.util.List;
 
@@ -98,8 +97,9 @@ public class AutoBO {
 		}
 	}
 	
-	public void listarByClienteBO(ClienteVO cliente){
-		Integer id = cliente.getId();
+	public void listarByClienteBO(AutoVO cliente){
+		
+		Integer id = cliente.getProprietario().getId();
 		List<AutoVO> l = autd.findByCliente(id);	
 		for(AutoVO aut : l) {
 			System.out.println(aut.getId());

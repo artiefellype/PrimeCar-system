@@ -46,8 +46,8 @@ public class ClienteBO {
 	}
 	
 	public void listarByCPF(ClienteVO client) {
-		String cpf = client.getName();
-		List<ClienteVO> clientes = cli.findByName(cpf);
+		String cpf = client.getCPF();
+		List<ClienteVO> clientes = cli.findByCPF(cpf);
 		
 		for(ClienteVO clientesShow : clientes) {
 			System.out.println(clientesShow.getId());
@@ -59,8 +59,8 @@ public class ClienteBO {
 	}
 	
 	public void listarByEndereco(ClienteVO client) {
-		String endereco = client.getName();
-		List<ClienteVO> clientes = cli.findByName(endereco);
+		String endereco = client.getEndereco();
+		List<ClienteVO> clientes = cli.findByEndereco(endereco);
 		
 		for(ClienteVO clientesShow : clientes) {
 			System.out.println(clientesShow.getId());
