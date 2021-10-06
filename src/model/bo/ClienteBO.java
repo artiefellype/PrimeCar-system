@@ -2,7 +2,6 @@ package model.bo;
 
 import model.vo.ClienteVO;
 import model.dao.ClienteDAO;
-import java.util.ArrayList;
 import java.util.List;
 
 

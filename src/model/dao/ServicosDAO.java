@@ -11,9 +11,10 @@ import model.vo.AutoVO;
 import model.vo.PecasVO;
 import model.vo.ServicosVO;
 
+
 public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 
-	public void inserir(VO servicos) {
+	public void inserir(ServicosVO servicos) {
 		conect = getConnection();
 		String sql = "insert into servicos (tipo, valor, finalizado, idauto, idpeca ) values (?,?,?,?,?)";
 		PreparedStatement ptst;
@@ -57,6 +58,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		
 	}
 	
+
 	public void remover(VO servicos) {
 		conect = getConnection();
 		String sql = "delete from servicos where idservico = ?";
@@ -107,9 +109,9 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByTipo(String tipo) {
+	public List<ServicosVO> findByTipo(VO tipo) {
 		conect = getConnection();
-		String sql = "select * from servicos where tipo like '" + tipo + "%'";
+		String sql = "select * from servicos where tipo like '" + tipo.getTipo() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -140,9 +142,9 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByFinalizado(Boolean value) {
+	public List<ServicosVO> findByFinalizado(VO value) {
 		conect = getConnection();
-		String sql = "select * from servicos where finalizado like '" + value+ "%'";
+		String sql = "select * from servicos where finalizado like '" + value.getFinalizado() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -173,7 +175,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByAuto(VO auto) {
+	public List<ServicosVO> findByAuto(AutoVO auto) {
 		conect = getConnection();
 		String sql = "select * from servicos where idauto like '" + auto.getId() + "%'";
 		Statement st;
@@ -206,7 +208,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		return servico;
 	}
 	
-	public List<ServicosVO> findByPeca(VO peca) {
+	public List<ServicosVO> findByPeca(PecasVO peca) {
 		conect = getConnection();
 		String sql = "select * from servicos where idpeca like '" + peca.getId() + "%'";
 		Statement st;
@@ -240,7 +242,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 	}
 	
 	
-	public void editar(VO servicos) {
+	public void editar(ServicosVO servicos) {
 		conect = getConnection();
 		String sql = "update servicos set tipo = ? where idservico= ?";
 		PreparedStatement ptst;

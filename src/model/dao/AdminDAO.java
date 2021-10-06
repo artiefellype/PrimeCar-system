@@ -11,7 +11,7 @@ import java.util.List;
 import model.vo.AdminVO;
 
 public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {  
-	@Override
+	
 	public void inserir(VO admin) {
 		conect = getConnection();
 		String sql = "insert into admin (nome, senha) values (?,?)";
@@ -53,6 +53,32 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		
 	}
 	
+	public List<AdminVO> findByName(AdminVO name){
+		conect = getConnection();
+		String sql = "select * from admin where nome like '" + name.getName() + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AdminVO> admin = new ArrayList<AdminVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AdminVO adm = new AdminVO();
+				adm.setName(rs.getString("nome"));
+				adm.setSenha(rs.getString("senha"));
+				admin.add(adm);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return admin;
+		
+	}
+	
 	
 	
 	public void remover(VO admin) {
@@ -71,12 +97,12 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		}
 	}
 	
-	public List<VO> listar() {
+	public List<AdminVO> listar(){
 		conect = getConnection();
 		String sql = "select * from admin";
 		Statement st;
 		ResultSet rs;
-		List<VO> admin = new ArrayList<VO>();
+		List<AdminVO> admin = new ArrayList<AdminVO>();
 		
 		try {
 			st = conect.createStatement();
@@ -99,7 +125,7 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		return admin;
 	}
 	
-	public void editarSenha(VO admin) {
+	public void editarSenha(VO admin){
 		conect = getConnection();
 		String sql = "update admin set senha = ? where id = ?";
 		PreparedStatement ptst;
