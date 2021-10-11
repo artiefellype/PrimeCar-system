@@ -31,7 +31,7 @@ public class testBD {
 		
 		//admin.inserir(adminV);
 		
-		List<AdminVO> clientes = admin.findByEmail(adminV);
+		List<AdminVO> clientes = admin.listar();
 		
 		for(AdminVO clientesShow : clientes) {
 			System.out.println(clientesShow.getId());
