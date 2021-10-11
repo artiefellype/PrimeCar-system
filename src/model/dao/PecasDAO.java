@@ -114,7 +114,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 				pecaV.setName(rs.getString("nome"));
 				pecaV.setFabricante(rs.getString("fabricante"));
 				pecaV.setPreco(rs.getDouble("preco"));
-				pecaV.setId(rs.getInt("id"));
+				pecaV.setId(rs.getInt("idpeca"));
 				pecas.add(pecaV);
 				
 			}

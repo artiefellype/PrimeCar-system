@@ -48,14 +48,17 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 			while(rs.next()) {
 			serv.setId(rs.getInt("idservico"));
 			}
-			id = serv.getId();
+			if(serv.getId() == null) {
+				id = 1;
+			}else {
+				id = serv.getId();
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return id;
-		
+			return id;
 	}
 	
 

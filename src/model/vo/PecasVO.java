@@ -8,6 +8,8 @@ public class PecasVO {
 	private String fabricante;
 	private Double preco;
 	
+	
+	
 	// ------------------- ID da peça ----------------------------
 	public Integer getId() {
 		return id;
