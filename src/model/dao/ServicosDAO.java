@@ -245,15 +245,19 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 	}
 	
 	
-	public void editar(ServicosVO servicos) {
+	public void editar(VO servicos) {
 		conect = getConnection();
-		String sql = "update servicos set tipo = ? where idservico= ?";
+		String sql = "update servicos set tipo = ?, set valor = ?, set finalizado = ?, set idauto = ?, set idpeca = ? where idservico= ?";
 		PreparedStatement ptst;
 		
 		try {
 			ptst = conect.prepareStatement(sql);
 			ptst.setString(1, servicos.getTipo());
-			ptst.setInt(2, servicos.getId());
+			ptst.setDouble(2, servicos.getValor());
+			ptst.setBoolean(3, servicos.getFinalizado());
+			ptst.setInt(4, servicos.getAuto().getId());
+			ptst.setInt(5, servicos.getPeca().getId());
+			ptst.setInt(6, servicos.getId());
 			ptst.execute();
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block

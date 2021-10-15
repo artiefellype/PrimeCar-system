@@ -232,13 +232,16 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public void editar(VO orc) {
 		conect = getConnection();
-		String sql = "update orcamentos set nomeCliente = ? where idorm= ?";
+		String sql = "update orcamentos set custo = ?, set data = ?, set idcliente = ?, setidauto = ? where idorm= ?";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, orc.getClientName().getName());
-			ptst.setInt(2, orc.getId());
+			ptst.setDouble(1, orc.getCusto());
+			ptst.setDate(2, new java.sql.Date(orc.getData().getTimeInMillis()));
+			ptst.setInt(3, orc.getClientName().getId());
+			ptst.setInt(4, orc.getAuto().getId());
+			ptst.setInt(5, orc.getId());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {

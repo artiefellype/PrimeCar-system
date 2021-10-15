@@ -166,13 +166,15 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 	
 	public void editarSenha(VO admin){
 		conect = getConnection();
-		String sql = "update admin set senha = ? where id = ?";
+		String sql = "update admin set nome = ?, set senha = ?, set email = ? where id = ?";
 		PreparedStatement ptst;
 		try {
 			
-			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, admin.getSenha());
-			ptst.setInt(2, admin.getId());
+			ptst = conect.prepareStatement(sql);
+			ptst.setString(1, admin.getName());
+			ptst.setString(2, admin.getSenha());
+			ptst.setString(3, admin.getEmail());
+			ptst.setInt(4, admin.getId());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {

@@ -300,12 +300,17 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public void editar(VO automovel) {
 		conect = getConnection();
-		String sql = "update auto set tipo = ? where idauto= ?";
+		String sql = "update auto set marca = ?, set cor = ?, set placa = ?, set ano = ?, set quilometragem = ?, set idcliente = ? where idauto= ?";
 		PreparedStatement ptst;
 		
 		try {
 			ptst = conect.prepareStatement(sql);
 			ptst.setString(1, automovel.getMarca());
+			ptst.setString(1, automovel.getCor());
+			ptst.setString(1, automovel.getPlaca());
+			ptst.setInt(1, automovel.getAno());
+			ptst.setDouble(1, automovel.getQuilometragem());
+			ptst.setInt(1, automovel.getProprietario().getId());
 			ptst.setInt(2, automovel.getId());
 			ptst.execute();
 			} catch (SQLException e) {

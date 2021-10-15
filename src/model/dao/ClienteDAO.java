@@ -181,13 +181,15 @@ public class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	public void editar(VO client) {
 		conect = getConnection();
-		String sql = "update clientes set nome = ? where idcliente= ?";
+		String sql = "update clientes set nome = ?, set endereco = ?, set cpf = ? where idcliente= ?";
 		PreparedStatement ptst;
 		
 		try {
 			ptst = conect.prepareStatement(sql);
 			ptst.setString(1, client.getName());
-			ptst.setInt(2, client.getId());
+			ptst.setString(2, client.getEndereco());
+			ptst.setString(3, client.getCPF());
+			ptst.setInt(4, client.getId());
 			ptst.execute();
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
