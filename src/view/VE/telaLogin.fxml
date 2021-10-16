@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController.java">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #fff;">
+         <children>
+            <PasswordField id="passBar" fx:id="passText" layoutX="56.0" layoutY="224.0" prefHeight="34.0" prefWidth="189.0" style="-fx-background-radius: 30px; -fx-background-color: #fff; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" />
+            <ImageView fitHeight="77.0" fitWidth="72.0" layoutX="114.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagem-Engrenagem-PNG.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="99.0" layoutY="94.0" prefHeight="34.0" prefWidth="103.0" style="-fx-alignment: center;" text="PRIME CAR" textAlignment="CENTER">
+               <font>
+                  <Font name="Monospaced Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="146.0" prefHeight="17.0" prefWidth="42.0" text="NOME" />
+            <Label layoutX="58.0" layoutY="207.0" text="SENHA" />
+            <Hyperlink id="hiperlinkForgotPassword" layoutX="137.0" layoutY="258.0" text="Esqueceu a senha?" />
+            <TextField id="textArea" fx:id="loginText" layoutX="56.0" layoutY="163.0" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-alignment: left;" />
+            <Button id="loginButton" fx:id="loginButton" layoutX="56.0" layoutY="298.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #2A24BF; -fx-background-radius: 30px;" text="LOGIN" textFill="WHITE" />
+            <Button id="cadastroButton" fx:id="cadButton" layoutX="56.0" layoutY="339.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #FFF; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" text="CADASTRE-SE" textFill="#2a24bf" />
+         </children>
+      </Pane>
+      <Pane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #433DF2;">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="300.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@d9e69b67e9c92aa71016106ce0ca9d8c.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>
