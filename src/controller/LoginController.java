@@ -61,7 +61,7 @@ public class LoginController {
 	    }
 	    public void toServicos(ActionEvent event){
 	    	try {
-	    		Telas.telaDeClientes();
+	    		Telas.telaDeServicos();
 	    	}catch(Exception e) {
 	    		System.out.println(e);
 	    	}
@@ -69,7 +69,7 @@ public class LoginController {
 	    }
 	    public void toOrcamentos(ActionEvent event){
 	    	try {
-	    		Telas.telaDeClientes();
+	    		Telas.telaDeOrcamentos();
 	    	}catch(Exception e) {
 	    		System.out.println(e);
 	    	}
