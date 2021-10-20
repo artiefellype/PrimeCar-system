@@ -38,5 +38,53 @@ public class LoginController {
 	    	}
 	    	
 	    }
+	    public void toClientes(ActionEvent event){
+	    	try {
+	    		Telas.telaDeClientes();
+	    	}catch(Exception e) {
+	    		System.out.println(e);
+	    	}
+	    	
+	    }
+	    public void toAutomoveis(ActionEvent event){
+	    	try {
+	    		Telas.telaDeAutomoveis();
+	    	}catch(Exception e) {
+	    		System.out.println(e);
+	    	}
+	    	
+	    }  public void toPecas(ActionEvent event){
+	    	try {
+	    		Telas.telaDeClientes();
+	    	}catch(Exception e) {
+	    		System.out.println(e);
+	    	}
+	    	
+	    }
+	    public void toServicos(ActionEvent event){
+	    	try {
+	    		Telas.telaDeClientes();
+	    	}catch(Exception e) {
+	    		System.out.println(e);
+	    	}
+	    	
+	    }
+	    public void toOrcamentos(ActionEvent event){
+	    	try {
+	    		Telas.telaDeClientes();
+	    	}catch(Exception e) {
+	    		System.out.println(e);
+	    	}
+	    	
+	    }
+	    
+	    public void logout(ActionEvent event){
+	    	try {
+	    		Telas.telaDeLogin();
+	    	}catch(Exception e) {
+	    		System.out.println(e);
+	    	}
+	    	
+	    }
 
 }

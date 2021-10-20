@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#827ef2" height="377.0" layoutX="-167.0" layoutY="-100.0" rotate="-30.1" stroke="BLACK" strokeType="INSIDE" width="763.0" />
       <Pane prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: #433DF2;">
@@ -30,7 +30,7 @@
             <Button id="autoButton" layoutX="-14.0" layoutY="151.0" mnemonicParsing="false" onAction="#toAutomoveis" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="AUTOMÓVEIS" />
             <Button id="pecasButton" layoutX="-14.0" layoutY="191.0" mnemonicParsing="false" onAction="#toPecas" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="PEÇAS" />
             <Button id="servicosButton" layoutX="-14.0" layoutY="231.0" mnemonicParsing="false" onAction="#toServicos" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="SERVIÇOS" />
-            <Button id="orcamentosButton" fx:id="toOrcamentos" layoutX="-14.0" layoutY="270.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="ORÇAMENTOS" />
+            <Button id="orcamentosButton" layoutX="-14.0" layoutY="270.0" mnemonicParsing="false" onAction="#toOrcamentos" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="ORÇAMENTOS" />
             <Button id="exitButton" layoutX="-14.0" layoutY="355.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="SAIR" />
          </children>
       </Pane>
@@ -66,7 +66,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="addButton" layoutX="510.0" layoutY="87.0" mnemonicParsing="false" onAction="#addCliente" prefHeight="25.0" prefWidth="27.0">
+      <Button fx:id="addButton" layoutX="510.0" layoutY="87.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0">
          <effect>
             <ImageInput y="-3.0">
                <source>
