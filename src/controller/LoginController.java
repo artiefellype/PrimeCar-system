@@ -25,13 +25,11 @@ public class LoginController {
 	    	System.out.println("Foi");
 	    	
 	    	try {
-	    		AdminVO AdminAutenticado = new AdminVO();
-	    		if(AdminAutenticado instanceof AdminVO) {
-	    			System.out.println("Foi no instance");
+	    		if(admin.login(adm)) {
 	    			Telas.telaDeSplash();
 	    			//Abrir splashScreen
 	    		}else {
-	    			System.out.println("Foi não");
+	    			throw new Exception("Administrador não encontrado");
 	    		}
 	    	}catch(Exception e) {
 	    		System.out.print(e);

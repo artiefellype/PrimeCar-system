@@ -29,6 +29,20 @@ public class AdminBO<VO extends AdminVO> {
         }
     }
 	
+	public boolean login(VO admin) throws Exception{
+		try {
+			if(!this.admin.findByName(admin).isEmpty()) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
 	public void editar(VO admin) throws Exception {
 		try {
 			this.admin.editarSenha(admin);
