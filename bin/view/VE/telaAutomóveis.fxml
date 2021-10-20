@@ -27,12 +27,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button id="clientButton" layoutX="-14.0" layoutY="111.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="CLIENTES" textFill="#2a24bf" />
-            <Button id="autoButton" layoutX="-14.0" layoutY="151.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="AUTOMÓVEIS" textFill="#2a24bf" />
-            <Button id="pecasButton" layoutX="-14.0" layoutY="191.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="PEÇAS" textFill="#2a24bf" />
-            <Button id="servicosButton" layoutX="-14.0" layoutY="231.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="SERVIÇOS" textFill="#2a24bf" />
-            <Button id="orcamentosButton" layoutX="-14.0" layoutY="270.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="ORÇAMENTOS" textFill="#2a24bf" />
-            <Button id="exitButton" layoutX="-14.0" layoutY="355.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="SAIR" textFill="#2a24bf" />
+            <Button id="clientButton" layoutX="-14.0" layoutY="111.0" mnemonicParsing="false" onAction="#toClientes" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="CLIENTES" textFill="#2a24bf" />
+            <Button id="autoButton" layoutX="-14.0" layoutY="151.0" mnemonicParsing="false" onAction="#toAutomoveis" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="AUTOMÓVEIS" textFill="#2a24bf" />
+            <Button id="pecasButton" layoutX="-14.0" layoutY="191.0" mnemonicParsing="false" onAction="#toPecas" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="PEÇAS" textFill="#2a24bf" />
+            <Button id="servicosButton" layoutX="-14.0" layoutY="231.0" mnemonicParsing="false" onAction="#toServicos" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="SERVIÇOS" textFill="#2a24bf" />
+            <Button id="orcamentosButton" layoutX="-14.0" layoutY="270.0" mnemonicParsing="false" onAction="#toOrcamentos" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="ORÇAMENTOS" textFill="#2a24bf" />
+            <Button id="exitButton" layoutX="-14.0" layoutY="355.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="SAIR" textFill="#2a24bf" />
          </children>
       </Pane>
       <Pane id="panelList" layoutX="166.0" layoutY="116.0" prefHeight="270.0" prefWidth="417.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-radius: 30px;">

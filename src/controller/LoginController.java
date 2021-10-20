@@ -55,7 +55,7 @@ public class LoginController {
 	    	
 	    }  public void toPecas(ActionEvent event){
 	    	try {
-	    		Telas.telaDeClientes();
+	    		Telas.telaDePecas();
 	    	}catch(Exception e) {
 	    		System.out.println(e);
 	    	}
