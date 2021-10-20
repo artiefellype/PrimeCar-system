@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #fff;">
          <children>
-            <PasswordField id="passBar" fx:id="passText" layoutX="56.0" layoutY="224.0" prefHeight="34.0" prefWidth="189.0" style="-fx-background-radius: 30px; -fx-background-color: #fff; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" />
+            
             <ImageView fitHeight="77.0" fitWidth="72.0" layoutX="114.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagem-Engrenagem-PNG.png" />
@@ -26,10 +26,11 @@
                </font>
             </Label>
             <Label layoutX="56.0" layoutY="146.0" prefHeight="17.0" prefWidth="42.0" text="NOME" />
-            <Label layoutX="58.0" layoutY="207.0" text="SENHA" />
-            <Hyperlink id="hiperlinkForgotPassword" layoutX="137.0" layoutY="258.0" text="Esqueceu a senha?" />
             <TextField id="textArea" fx:id="loginText" layoutX="56.0" layoutY="163.0" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-alignment: left;" />
-            <Button id="loginButton" fx:id="loginButton" layoutX="56.0" layoutY="298.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #2A24BF; -fx-background-radius: 30px;" text="LOGIN" textFill="WHITE" />
+            <Label layoutX="58.0" layoutY="207.0" text="SENHA" />
+            <PasswordField id="passBar" fx:id="passText" layoutX="56.0" layoutY="224.0" prefHeight="34.0" prefWidth="189.0" style="-fx-background-radius: 30px; -fx-background-color: #fff; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" />
+            <Hyperlink id="hiperlinkForgotPassword" layoutX="137.0" layoutY="258.0" text="Esqueceu a senha?" />
+            <Button id="loginButton" fx:id="loginButton" layoutX="56.0" layoutY="298.0" mnemonicParsing="false" onAction="#autenticate" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #2A24BF; -fx-background-radius: 30px;" text="LOGIN" textFill="WHITE" />
             <Button id="cadastroButton" fx:id="cadButton" layoutX="56.0" layoutY="339.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #FFF; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" text="CADASTRE-SE" textFill="#2a24bf" />
          </children>
       </Pane>

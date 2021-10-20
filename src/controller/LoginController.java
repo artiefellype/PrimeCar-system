@@ -1,43 +1,42 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import model.bo.AdminBO;
+import model.vo.AdminVO;
+import view.Telas;
 
 public class LoginController {
 	
-	 @FXML
+	 	@FXML
 	    // The reference of inputText will be injected by the FXML loader
-	    private TextField inputText;
-	     
-	    // The reference of outputText will be injected by the FXML loader
+	    private TextField loginText;
 	    @FXML
-	    private TextArea outputText;
-	     
-	    // location and resources will be automatically injected by the FXML loader 
-	    @FXML
-	    private URL location;
-	     
-	    @FXML
-	    private ResourceBundle resources;
-	     
-	    // Add a public no-args constructor
-	    public LoginController() 
-	    {
-	    }
-	     
-	    @FXML
-	    private void initialize() 
-	    {
-	    }
-	     
-	    @FXML
-	    private void printOutput() 
-	    {
-	        outputText.setText(inputText.getText());
+	    private PasswordField passText;
+	    
+	    
+	    AdminBO<AdminVO> admin = new AdminBO<AdminVO>();
+	    public void autenticate(ActionEvent event) {
+	    	AdminVO adm = new AdminVO();
+	    	adm.setName(loginText.getText());
+	    	adm.setSenha(passText.getText());
+	    	System.out.println("Foi");
+	    	
+	    	try {
+	    		AdminVO AdminAutenticado = new AdminVO();
+	    		if(AdminAutenticado instanceof AdminVO) {
+	    			System.out.println("Foi no instance");
+	    			Telas.telaDeSplash();
+	    			//Abrir splashScreen
+	    		}else {
+	    			System.out.println("Foi não");
+	    		}
+	    	}catch(Exception e) {
+	    		System.out.print(e);
+	    	}
+	    	
 	    }
 
 }

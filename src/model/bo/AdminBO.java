@@ -7,10 +7,10 @@ import model.dao.AdminDAO;
 import model.vo.AdminVO;
 import model.vo.ClienteVO;
 
-public class AdminBO {
+public class AdminBO<VO extends AdminVO> {
 	AdminDAO<AdminVO> admin = new AdminDAO<AdminVO>();
 	
-	public boolean cadastrar(AdminVO admin) throws Exception{
+	public boolean cadastrar(VO admin) throws Exception{
         try {
         	
             if(!this.admin.findByEmail(admin).isEmpty() ) {
@@ -29,7 +29,7 @@ public class AdminBO {
         }
     }
 	
-	public void editar(AdminVO admin) throws Exception {
+	public void editar(VO admin) throws Exception {
 		try {
 			this.admin.editarSenha(admin);
 			System.out.println("Administrador editado");
@@ -38,7 +38,7 @@ public class AdminBO {
 		}
 	}
 	
-	public void findByName(AdminVO admin) throws Exception {
+	public void findByName(VO admin) throws Exception {
 		try {
 			this.admin.findByName(admin);
 		}catch(Exception e) {
@@ -47,7 +47,7 @@ public class AdminBO {
 		
 	}
 	
-	public void remover(AdminVO admin) throws Exception {
+	public void remover(VO admin) throws Exception {
 		try {
 			this.admin.remover(admin);
 			System.out.println("Administrador removido");
