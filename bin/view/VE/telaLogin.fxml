@@ -17,7 +17,7 @@
             
             <ImageView fitHeight="77.0" fitWidth="72.0" layoutX="114.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Imagem-Engrenagem-PNG.png" />
+                  <Image url="@img/Imagem-Engrenagem-PNG.png" />
                </image>
             </ImageView>
             <Label layoutX="99.0" layoutY="94.0" prefHeight="34.0" prefWidth="103.0" style="-fx-alignment: center;" text="PRIME CAR" textAlignment="CENTER">
@@ -38,7 +38,7 @@
          <children>
             <ImageView fitHeight="400.0" fitWidth="300.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@d9e69b67e9c92aa71016106ce0ca9d8c.png" />
+                  <Image url="@img/d9e69b67e9c92aa71016106ce0ca9d8c.png" />
                </image>
             </ImageView>
          </children>
