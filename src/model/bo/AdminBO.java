@@ -5,7 +5,6 @@ import java.util.List;
 
 import model.dao.AdminDAO;
 import model.vo.AdminVO;
-import model.vo.ClienteVO;
 
 public class AdminBO<VO extends AdminVO> {
 	AdminDAO<AdminVO> admin = new AdminDAO<AdminVO>();

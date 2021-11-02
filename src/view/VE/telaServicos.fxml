@@ -73,7 +73,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="addButton" layoutX="510.0" layoutY="87.0" mnemonicParsing="false" onAction="#addServicos" prefHeight="25.0" prefWidth="27.0">
+      <Button fx:id="addButton" layoutX="510.0" layoutY="87.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0">
          <effect>
             <ImageInput y="-3.0">
                <source>
@@ -86,7 +86,7 @@
          </cursor>
       </Button>
       <TextField fx:id="searchFieldPecas" layoutX="368.0" layoutY="39.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="175.0" promptText="Nome do serviço" style="-fx-background-color: #fff; -fx-background-radius: 30px;" />
-      <Button fx:id="searhButton" layoutX="543.0" layoutY="39.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="27.0">
+      <Button fx:id="searhButton" layoutX="543.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0">
          <effect>
             <ImageInput>
                <source>

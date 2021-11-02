@@ -5,22 +5,22 @@ import model.dao.ClienteDAO;
 import java.util.List;
 
 
-public class ClienteBO {
+public class ClienteBO<VO extends ClienteVO> {
 	ClienteDAO<ClienteVO> cli = new ClienteDAO<>();
 	
-	public void inserirBO(ClienteVO client) {
+	public void inserirBO(VO client) {
 		cli.inserir(client);
 	}
 	
-	public void editarBO(ClienteVO client) {
+	public void editarBO(VO client) {
 		cli.editar(client);
 	}
 	
-	public void removerBO(ClienteVO client) {
+	public void removerBO(VO client) {
 		cli.remover(client);
 	}
 	
-	public void listarBO() {
+	public List<ClienteVO> listarBO() {
 		List<ClienteVO> clientes = cli.listar();
 		
 		for(ClienteVO clientesShow : clientes) {
@@ -30,9 +30,11 @@ public class ClienteBO {
 			System.out.println(clientesShow.getCPF());
 			
 		}
+		
+		return clientes;
 	}
 	
-	public void listarByNome(ClienteVO client) {
+	public void listarByNome(VO client) {
 		String nome = client.getName();
 		List<ClienteVO> clientes = cli.findByName(nome);
 		
@@ -45,7 +47,7 @@ public class ClienteBO {
 		}
 	}
 	
-	public void listarByCPF(ClienteVO client) {
+	public void listarByCPF(VO client) {
 		String cpf = client.getCPF();
 		List<ClienteVO> clientes = cli.findByCPF(cpf);
 		
@@ -58,7 +60,7 @@ public class ClienteBO {
 		}
 	}
 	
-	public void listarByEndereco(ClienteVO client) {
+	public void listarByEndereco(VO client) {
 		String endereco = client.getEndereco();
 		List<ClienteVO> clientes = cli.findByEndereco(endereco);
 		

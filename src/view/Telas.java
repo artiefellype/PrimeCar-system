@@ -24,6 +24,7 @@ public class Telas extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setResizable(false);
 		setPrimaryStage(primaryStage);
 		primaryStage.setTitle("Sistema de Oficina");
 		primaryStage.show();
