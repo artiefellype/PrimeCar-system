@@ -7,8 +7,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import model.bo.AdminBO;
 import model.bo.ClienteBO;
@@ -20,15 +22,21 @@ public class LoginController{
 	
 		
 	
-	 	@FXML
-	    private TextField loginText;
-	    @FXML
-	    private PasswordField passText;
+	 	
 	    
 	    
 	    
 	    // ---------------- Admin functions --------------------------
+	
+		@FXML
+	    private TextField loginText;
+	    @FXML
+	    private PasswordField passText;
+	    
 	    AdminBO<AdminVO> admin = new AdminBO<AdminVO>();
+	    
+	    // Realizar login com admin cadastrado
+	    
 	    public void autenticate(ActionEvent event) {
 	    	AdminVO adm = new AdminVO();
 	    	adm.setName(loginText.getText());
@@ -49,6 +57,9 @@ public class LoginController{
 	    }
 	    
 	 // ---------------- END Admin functions --------------------------
+	     
+	 // ---------------- Clientes functions --------------------------
+	    
 	    @FXML
 	    private ListView<String> clienteListCpf;
 
@@ -66,9 +77,9 @@ public class LoginController{
 	    private List<String> clientEnderecos = new ArrayList<>();
 	    private List<String> clientCpfs = new ArrayList<>();
 	    
-	    
-	 // ---------------- Clientes functions --------------------------
 	    ClienteBO<ClienteVO> client = new ClienteBO<ClienteVO>();
+	    
+	    // Carregar clientes cadastrados
 	    
 	     public void loadDataClientes() {
 	    	 //list.removeAll(list);
@@ -89,6 +100,21 @@ public class LoginController{
 	    	 clienteListNome.setItems(obsClientNames);
 	    	 clienteListEndereco.setItems(obsClientEnder);
 	    	 clienteListCpf.setItems(obsClientCpf);
+	    	 
+	    	 Node n1 = clienteListNome.lookup(".scroll-bar");
+	         if (n1 instanceof ScrollBar) {
+	             final ScrollBar bar1 = (ScrollBar) n1;
+	             Node n2 = clienteListEndereco.lookup(".scroll-bar");
+	             if (n2 instanceof ScrollBar) {
+	                 final ScrollBar bar2 = (ScrollBar) n2;
+	                 Node n3 = clienteListCpf.lookup(".scroll-bar");
+	                 if (n3 instanceof ScrollBar) {
+		                 final ScrollBar bar3 = (ScrollBar) n3;
+		                 bar1.valueProperty().bindBidirectional(bar2.valueProperty());
+		                 bar1.valueProperty().bindBidirectional(bar3.valueProperty());
+	                 }    
+	             }
+	         }
 	    	 
 	    	 
 	    	 
