@@ -75,7 +75,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	
 	public List<AutoVO> listar() {
 		conect = getConnection();
-		String sql = "select * from auto";
+		String sql = "select * from auto,clientes where auto.idcliente = clientes.idcliente ";
 		Statement st;
 		ResultSet rs;
 		List<AutoVO> auto = new ArrayList<AutoVO>();
@@ -85,14 +85,17 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				AutoVO automovel = new AutoVO();
+				ClienteVO cliente = new ClienteVO();
 				
+				cliente.setCPF(rs.getString("cpf"));
+				cliente.setId(rs.getInt("idcliente"));
 				automovel.setId(rs.getInt("idauto"));
 				automovel.setMarca(rs.getString("marca"));
 				automovel.setCor(rs.getString("cor"));
 				automovel.setPlaca(rs.getString("placa"));
 				automovel.setAno(rs.getInt("ano"));
 				automovel.setQuilometragem(rs.getDouble("quilometragem"));
-				automovel.getProprietario().setId(rs.getInt("idcliente"));
+				automovel.setProprietario(cliente);
 				auto.add(automovel);
 				
 			}

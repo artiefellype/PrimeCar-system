@@ -1,6 +1,8 @@
 package model.vo;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.regex.Pattern;
 
 public class ClienteVO {
 	private Integer id;
@@ -33,7 +35,7 @@ public class ClienteVO {
 		}
 		
 	}
-	//-----------------------Endereço do cliente--------------------------------
+	//-----------------------Endereï¿½o do cliente--------------------------------
 	public String getEndereco() {
 		return endereco;
 	}
@@ -53,17 +55,26 @@ public class ClienteVO {
 		 if(cpf == null || cpf.isBlank()) {
 			 
 		 }else {
-			 //Caso o numero de cpf tenha números iguais é considerado erro
-			 if (cpf.equals("00000000000") ||
-			            cpf.equals("11111111111") ||
-			            cpf.equals("22222222222") || cpf.equals("33333333333") ||
-			            cpf.equals("44444444444") || cpf.equals("55555555555") ||
-			            cpf.equals("66666666666") || cpf.equals("77777777777") ||
-			            cpf.equals("88888888888") || cpf.equals("99999999999") ||
-			            (cpf.length() != 11)) {
-				 
-				 System.out.println("CPF inválido");
+			 
+			 //this.cpf = cpf;
+			 String[] Mesclado = cpf.split(Pattern.quote("."));
+			String cpfMesclado =  String.join("", Mesclado);
+			Mesclado = cpfMesclado.split("-");
+			cpfMesclado = String.join("", Mesclado);
+			 //Caso o numero de cpf tenha nï¿½meros iguais ï¿½ considerado erro
+			 if (cpfMesclado.equals("00000000000") ||
+			            cpfMesclado.equals("11111111111") ||
+			            cpfMesclado.equals("22222222222") || cpfMesclado.equals("33333333333") ||
+			            cpfMesclado.equals("44444444444") || cpfMesclado.equals("55555555555") ||
+			            cpfMesclado.equals("66666666666") || cpfMesclado.equals("77777777777") ||
+			            cpfMesclado.equals("88888888888") || cpfMesclado.equals("99999999999") ||
+			            (cpfMesclado.length() != 11)) {
+				 System.out.println(cpfMesclado);
+				 System.out.println("CPF invï¿½lido");
 			 }else {
+				 
+				 //this.cpf = cpf;
+	
 				 char dig10, dig11;
 			        int sm, i, r, num, peso;
 
@@ -76,7 +87,7 @@ public class ClienteVO {
 			            	// por exemplo, transforma o caractere '0' no inteiro 0
 			            	// (48 eh a posicao de '0' na tabela ASCII)
 			            	
-			            num = (int)(cpf.charAt(i) - 48);
+			            num = (int)(cpfMesclado.charAt(i) - 48);
 			            sm = sm + (num * peso);
 			            peso = peso - 1;
 			            }
@@ -90,7 +101,7 @@ public class ClienteVO {
 			            sm = 0;
 			            peso = 11;
 			            for(i=0; i<10; i++) {
-			            num = (int)(cpf.charAt(i) - 48);
+			            num = (int)(cpfMesclado.charAt(i) - 48);
 			            sm = sm + (num * peso);
 			            peso = peso - 1;
 			            }
@@ -100,23 +111,23 @@ public class ClienteVO {
 			                 dig11 = '0';
 			            else dig11 = (char)(r + 48);
 
-			        // Verifica se os digitos informados estão de acordo.
-			            if ((dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10))) {
-			            			this.cpf = cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." +
-						            cpf.substring(6, 9) + "-" + cpf.substring(9, 11);
+			        // Verifica se os digitos informados estï¿½o de acordo.
+			            if ((dig10 == cpfMesclado.charAt(9)) && (dig11 == cpfMesclado.charAt(10))) {
+			            			this.cpf = cpfMesclado.substring(0, 3) + "." + cpfMesclado.substring(3, 6) + "." +
+						            cpfMesclado.substring(6, 9) + "-" + cpfMesclado.substring(9, 11);
 			            			System.out.println("tudo ok");
 			            } else {
-			            	System.out.println("Digitos inválidos");
+			            	System.out.println("Digitos invï¿½lidos");
 			            }
 			                } catch (InputMismatchException erro) {
 			                System.out.println(erro);
 			            }
 
-			 }
+			 } // fim do segundo if else
 			 
 			 
 		 }
-
+		 
 		        
 				 
 			 

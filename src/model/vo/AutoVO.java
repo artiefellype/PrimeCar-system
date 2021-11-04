@@ -12,7 +12,7 @@ public class AutoVO {
 	
 	
 
-	// ------------------- ID do automóvel ----------------------------
+	// ------------------- ID do automï¿½vel ----------------------------
 	public Integer getId() {
 		return id;
 	}
@@ -25,7 +25,7 @@ public class AutoVO {
 		
 	}
 	
-	//-----------------------Marca do automóvel------------------------------------
+	//-----------------------Marca do automï¿½vel------------------------------------
 	public String getMarca() {
 		return marca;
 		
@@ -37,7 +37,7 @@ public class AutoVO {
 			this.marca = marca;
 		}
 	}
-	//----------------------Cor do automóvel-------------------------------------
+	//----------------------Cor do automï¿½vel-------------------------------------
 	public String getCor() {
 		return cor;
 	}
@@ -49,7 +49,7 @@ public class AutoVO {
 			this.cor = cor;
 		}
 	}
-	//----------------------placa do automóvel-------------------------------------
+	//----------------------placa do automï¿½vel-------------------------------------
 	public String getPlaca() {
 		return placa;
 	}
@@ -60,7 +60,7 @@ public class AutoVO {
 			this.placa = placa;
 		}
 	}
-	//-----------------------Ano do automóvel------------------------------------
+	//-----------------------Ano do automï¿½vel------------------------------------
 	public Integer getAno() {
 		return ano;
 	}
@@ -68,12 +68,12 @@ public class AutoVO {
 		if(ano == null || ano.equals("")) {
 			
 		}else {
-			if (ano > 1920) {  // Não deve existir carros antes dessa década
+			if (ano > 1920) {  // Nï¿½o deve existir carros antes dessa dï¿½cada
 				this.ano = ano;
 			}
 		}
 	}
-	//-----------------------Quilometragem do automóvel------------------------------------
+	//-----------------------Quilometragem do automï¿½vel------------------------------------
 	public Double getQuilometragem() {
 		return quilometragem;
 	}
@@ -86,14 +86,13 @@ public class AutoVO {
 			}
 		}
 	}
-	//-----------------------Proprietario do automóvel-----------------------------------
+	//-----------------------Proprietario do automï¿½vel-----------------------------------
 	public ClienteVO getProprietario() {
 		return proprietario;
 	}
 	public void setProprietario(ClienteVO proprietario) {
 		
-		if(proprietario == null || proprietario.equals("")) {
-		
+		if(proprietario == null) {
 			
 		}else {
 			this.proprietario = proprietario;
