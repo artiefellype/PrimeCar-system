@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AutoController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#827ef2" height="694.0" layoutX="26.0" layoutY="-214.0" rotate="-30.1" stroke="BLACK" strokeType="INSIDE" width="1270.0" />
       <Pane prefHeight="800.0" prefWidth="300.0" style="-fx-background-color: #433DF2; -fx-border-color: #000; -fx-effect: dropshadow( one-pass-box, black, 8, 0.0, 1, 0 );">
@@ -76,7 +76,7 @@
             <ListView fx:id="AutoListPlaca" layoutX="351.0" layoutY="71.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="158.0" style="-fx-background-radius: 10px; -fx-background-color: #fff;" stylesheets="@stylesheets/OutListviewStylesheet.css" />
             <ListView fx:id="AutoListAno" layoutX="516.0" layoutY="69.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="80.0" style="-fx-background-radius: 10px; -fx-background-color: #fff;" stylesheets="@stylesheets/OutListviewStylesheet.css" />
             <ListView fx:id="AutoListKm" layoutX="604.0" layoutY="69.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="112.0" style="-fx-background-radius: 10px; -fx-background-color: #fff;" stylesheets="@stylesheets/OutListviewStylesheet.css" />
-            <ListView fx:id="AutoListCliente" layoutX="723.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="112.0" style="-fx-background-radius: 10px; -fx-background-color: #fff;" stylesheets="@stylesheets/ListviewStylesheet.css" />
+            <ListView fx:id="AutoListCliente" layoutX="723.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="134.0" style="-fx-background-radius: 10px; -fx-background-color: #fff;" stylesheets="@stylesheets/ListviewStylesheet.css" />
             <Label layoutX="517.0" layoutY="24.0" prefHeight="44.0" prefWidth="72.0" text="ANO" textFill="#2a24bf">
                <font>
                   <Font name="System Bold" size="20.0" />

@@ -15,15 +15,18 @@ import javafx.scene.control.TextField;
 import model.bo.AdminBO;
 import model.bo.AutoBO;
 import model.bo.ClienteBO;
+import model.bo.ServicoBO;
 import model.vo.AdminVO;
 import model.vo.AutoVO;
 import model.vo.ClienteVO;
+import model.vo.ServicosVO;
 import view.Telas;
 
 public class LoginController{
 	
 	// ---------------- Admin functions --------------------------
-	
+		
+		
 		@FXML
 	    private TextField loginText;
 	    @FXML
@@ -53,7 +56,7 @@ public class LoginController{
 	    }
 	    
 	 // ---------------- END Admin functions --------------------------
-	     
+	  /*   
 	 // ---------------- Clientes functions --------------------------
 	    
 	    @FXML
@@ -111,9 +114,9 @@ public class LoginController{
 	    	 
 	    	 
 	    	 
-	    	 /* Fazendo com que cada listview 'escute' o scroll do outro
+	    	 Fazendo com que cada listview 'escute' o scroll do outro
 	    	  para que possam realizar a ação do scroll em conjunto
-	    	 */
+	    	 
 	    	 Node n1 = clienteListNome.lookup(".scroll-bar");
 	         if (n1 instanceof ScrollBar) {
 	             final ScrollBar bar1 = (ScrollBar) n1;
@@ -130,11 +133,14 @@ public class LoginController{
 	         }
 	    	 
 	    	 
-	    	 
-	     }
-	 // ---------------- END Clientes functions --------------------------
-	 // ---------------- Automovel functions --------------------------
 	     
+	     }
+	     */
+	 // ---------------- END Clientes functions --------------------------
+     
+	 // ---------------- Automovel functions --------------------------
+	   
+	    /*
 	     @FXML
 	     private ListView<String> AutoListAno;
 
@@ -223,9 +229,9 @@ public class LoginController{
 		    	 AutoListPlaca.setItems(obsAutoListPlaca);
 		    	 
 		    	 
-		    	 /* Fazendo com que cada listview 'escute' o scroll do outro
+		    	  Fazendo com que cada listview 'escute' o scroll do outro
 		    	  para que possam realizar a ação do scroll em conjunto
-		    	 */
+		    	 
 		    	 Node n1 = AutoListMarca.lookup(".scroll-bar");
 		         if (n1 instanceof ScrollBar) {
 		             final ScrollBar bar1 = (ScrollBar) n1;
@@ -262,11 +268,86 @@ public class LoginController{
 		    	 
 		    	 
 		 }
+
+			*/
 	  // ---------------- END Automovel functions --------------------------
+	  // ---------------- Servicos functions --------------------------	 
+		 
+		 	
+		 
+		 	@FXML
+		    private TextField clienteInput;
+
+		    @FXML
+		    private ListView<String> servicosListCarro;
+
+		    @FXML
+		    private ListView<String> servicosListFinalizado;
+
+		    @FXML
+		    private ListView<String> servicosListNome;
+
+		    @FXML
+		    private ListView<String> servicosListValor;
+
+		    private ObservableList<String> obsServicosListCarro;
+			private ObservableList<String> obsServicosListFinalizado;
+			private ObservableList<String> obsServicosListNome;
+			private ObservableList<String> obsServicosListValor;
+		    
+			 private List<String> servicosNome = new ArrayList<>();
+			 private List<String> servicosCarro = new ArrayList<>();
+			 private List<String> servicosFinalizado = new ArrayList<>();
+			 private List<String> servicosValor = new ArrayList<>();
+			 
+			 
+		    ServicoBO<ServicosVO> servicos = new ServicoBO<ServicosVO>();
+		    
+		    public void loadDataServicos() {
+		    	if(obsServicosListNome != null) {
+		    		servicosNome.removeAll(servicosNome);
+		    		servicosCarro.removeAll(servicosCarro);
+		    		servicosFinalizado.removeAll(servicosFinalizado);
+		    		servicosValor.removeAll(servicosValor);
+		    		
+		    	 }
+		    	
+		    	 servicosListNome.refresh();
+		    	 servicosListCarro.refresh();
+		    	 servicosListFinalizado.refresh();
+		    	 servicosListValor.refresh();
+		    	
+		    	List<ServicosVO> servs = servicos.listarBO();
+		    	 //Adicionando propriedades selecionadas da lista AutoVO a cada lista de strings
+		    	 for(ServicosVO servShow : servs) {
+			 			servicosNome.add(servShow.getTipo());
+			 			servicosCarro.add(servShow.getAuto().getPlaca());
+			 			servicosFinalizado.add(servShow.getFinalizado().toString());
+			 			servicosValor.add((servShow.getValor()).toString());
+			 		}
+		    	 
+		    	 // Transformando as listas de strings já preenchidas em listas observáveis
+		    	 obsServicosListNome = FXCollections.observableArrayList(servicosNome);
+		    	 obsServicosListCarro = FXCollections.observableArrayList(servicosCarro);
+		    	 obsServicosListFinalizado = FXCollections.observableArrayList(servicosFinalizado);
+		    	 obsServicosListValor = FXCollections.observableArrayList(servicosValor);
+		    	 
+		    	 System.out.println(servicosNome);
+		    	 // Pondo as listas observáveis dentro do listview da tela para visualização
+		    	 servicosListNome.setItems(obsServicosListNome);
+		    	 servicosListCarro.setItems(obsServicosListCarro);
+		    	 servicosListValor.setItems(obsServicosListValor);
+		    	 servicosListFinalizado.setItems(obsServicosListFinalizado);
+		    	
+		    	
+		    }
+		    
+		   
+		    
+		 
+	  // ---------------- END Servicos functions --------------------------
 	    
-	    
-	    
-	    
+		
 	    public void toClientes(ActionEvent event){
 	    	try {
 	    		Telas.telaDeClientes();

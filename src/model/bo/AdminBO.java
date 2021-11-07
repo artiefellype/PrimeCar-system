@@ -12,14 +12,13 @@ public class AdminBO<VO extends AdminVO> {
 	public boolean cadastrar(VO admin) throws Exception{
         try {
         	
-            if(!this.admin.findByEmail(admin).isEmpty() ) {
-                throw new Exception("Ja existe um administrador com esse email");
-            }
+            if(!this.admin.findByEmail(admin).isEmpty() || !this.admin.findByName(admin).isEmpty()) {
+                throw new Exception("Ja existe um administrador com esse nome ou email");
+            }else {
             	this.admin.inserir(admin); 
             	return true;
-            
-        	
-
+            }
+            	
             
         } catch(Exception err) {
             //Handle exception.
@@ -30,8 +29,12 @@ public class AdminBO<VO extends AdminVO> {
 	
 	public boolean login(VO admin) throws Exception{
 		try {
-			if(!this.admin.findByName(admin).isEmpty()) {
-				return true;
+			AdminBO<VO> adminFind = new AdminBO<VO>();
+			List<AdminVO> findAdm = this.admin.findByName(admin);
+			if(!findAdm.isEmpty()){
+				if( admin.getSenha().equals(adminFind.findByPass(admin).getSenha())) {
+					return true;
+				}
 			}else {
 				return false;
 			}
@@ -51,13 +54,25 @@ public class AdminBO<VO extends AdminVO> {
 		}
 	}
 	
-	public void findByName(VO admin) throws Exception {
-		try {
-			this.admin.findByName(admin);
-		}catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	public List<AdminVO> findByName(VO admin) throws Exception {
 		
+		return this.admin.findByName(admin);
+	}
+	
+	public AdminVO findByPass(VO admin) {
+		
+            AdminVO findedUser = new AdminVO();
+            
+            List<AdminVO> findAdmin = this.admin.findByName(admin);
+            
+            findedUser = findAdmin.get(0);
+            
+            if(findedUser == null) {
+            	return null;
+            }else {
+            	return findedUser;
+            }
+     
 	}
 	
 	public void remover(VO admin) throws Exception {

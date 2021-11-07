@@ -81,7 +81,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 	
 	public List<ServicosVO> listar() {
 		conect = getConnection();
-		String sql = "select * from servicos";
+		String sql = "select * from servicos,auto where auto.idauto = servicos.idauto";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -92,16 +92,17 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 			while(rs.next()) {
 				ServicosVO servicos = new ServicosVO();
 				AutoVO auto = new AutoVO();
-				PecasVO peca = new PecasVO();
+				//PecasVO peca = new PecasVO();
 				
+				auto.setPlaca(rs.getString("placa"));
 				auto.setId(rs.getInt("idauto"));
-				peca.setId(rs.getInt("idpeca"));
+				//peca.setId(rs.getInt("idpeca"));
 				servicos.setTipo(rs.getString("tipo"));
 				servicos.setValor(rs.getDouble("valor"));
 				servicos.setFinalizado(rs.getBoolean("finalizado"));
 				servicos.setId(rs.getInt("idservico"));
 				servicos.setAuto(auto);
-				servicos.setPeca(peca);
+				//servicos.setPeca(peca);
 				servico.add(servicos);
 				
 			}

@@ -60,7 +60,7 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		return id;
 		
 	}
-	
+	//adm.setSenha(rs.getString("senha"));
 	public List<AdminVO> findByName(VO name){
 		conect = getConnection();
 		String sql = "select * from admin where nome like '" + name.getName() + "%'" ;
@@ -88,6 +88,7 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		return admin;
 		
 	}
+	
 	
 	public List<AdminVO> findByEmail(VO email){
 		conect = getConnection();
