@@ -273,7 +273,7 @@ public class LoginController{
 	  // ---------------- END Automovel functions --------------------------
 	  // ---------------- Servicos functions --------------------------	 
 		 
-		 	
+		 	/*
 		 
 		 	@FXML
 		    private TextField clienteInput;
@@ -343,7 +343,7 @@ public class LoginController{
 		    }
 		    
 		   
-		    
+		    */
 		 
 	  // ---------------- END Servicos functions --------------------------
 	    

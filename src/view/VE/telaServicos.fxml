@@ -4,7 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ServicosController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#827ef2" height="694.0" layoutX="26.0" layoutY="-214.0" rotate="-30.1" stroke="BLACK" strokeType="INSIDE" width="1270.0" />
       <Pane prefHeight="800.0" prefWidth="300.0" style="-fx-background-color: #433DF2; -fx-border-color: #000; -fx-effect: dropshadow( one-pass-box, black, 8, 0.0, 1, 0 );">
@@ -62,30 +63,15 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Label layoutX="31.0" layoutY="31.0" prefHeight="44.0" prefWidth="142.0" text="NOME" textFill="#2a24bf">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="233.0" layoutY="30.0" prefHeight="44.0" prefWidth="142.0" text="VALOR" textFill="#2a24bf">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="396.0" layoutY="30.0" prefHeight="44.0" prefWidth="159.0" text="CARRO(PLACA)" textFill="#2a24bf">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="591.0" layoutY="30.0" prefHeight="44.0" prefWidth="142.0" text="FINALIZADO" textFill="#2a24bf">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <ListView fx:id="servicosListNome" layoutX="30.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="181.0" style="-fx-background-radius: 10px; -fx-background-color: #c4c4c4;" stylesheets="@stylesheets/OutListviewStylesheet.css" />
-            <ListView fx:id="servicosListValor" layoutX="231.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="149.0" style="-fx-background-radius: 10px; -fx-background-color: #c4c4c4;" stylesheets="@stylesheets/OutListviewStylesheet.css" />
-            <ListView fx:id="servicosListCarro" layoutX="397.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="149.0" style="-fx-background-radius: 10px; -fx-background-color: #c4c4c4;" stylesheets="@stylesheets/OutListviewStylesheet.css" />
-            <ListView fx:id="servicosListFinalizado" layoutX="588.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="76.0" style="-fx-background-radius: 10px; -fx-background-color: #c4c4c4;" stylesheets="@stylesheets/OutListviewStylesheet.css" />
+            <TableView fx:id="servicosTableView" layoutX="21.0" layoutY="17.0" prefHeight="521.0" prefWidth="886.0">
+              <columns>
+                <TableColumn fx:id="servicosColumnNome" prefWidth="283.2000427246094" text="NOME" />
+                <TableColumn fx:id="servicosColumnValor" prefWidth="216.00003051757812" text="VALOR" />
+                  <TableColumn fx:id="servicosColumnCarro" prefWidth="225.60006713867188" text="CARRO(PLACA)" />
+                  <TableColumn fx:id="servicosColumnFinalizado" prefWidth="82.6666259765625" text="FINALIZADO" />
+                  <TableColumn fx:id="servicosIcons" prefWidth="78.93341064453125" text="Icons" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
       <Label layoutX="333.0" layoutY="65.0" prefHeight="106.0" prefWidth="406.0" text="SERVIÇOS" textFill="WHITE">
