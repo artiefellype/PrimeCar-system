@@ -7,14 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import model.vo.AutoVO;
 import model.vo.PecasVO;
 
 
 public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	public void inserir(VO peca) {
 		conect = getConnection();
-		String sql = "insert into pecas (nome, fabricante, preco) values (?,?,?)";
+		String sql = "insert into pecas (nome, fabricante, preco, idauto) values (?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			
@@ -22,6 +22,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 			ptst.setString(1, peca.getName());
 			ptst.setString(2, peca.getFabricante());
 			ptst.setDouble(3, peca.getPreco());
+			ptst.setInt(4, peca.getAuto().getId());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -75,7 +76,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	public List<PecasVO> listar() {
 		conect = getConnection();
-		String sql = "select * from pecas";
+		String sql = "select * from pecas inner join auto on pecas.idauto = auto.idauto";
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -85,10 +86,16 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				PecasVO peca = new PecasVO();
+				AutoVO autoV = new AutoVO();
+				
+				autoV.setId(rs.getInt("idauto"));
+				autoV.setPlaca(rs.getString("placa"));
+				
 				peca.setName(rs.getString("nome"));
 				peca.setFabricante(rs.getString("fabricante"));
 				peca.setPreco(rs.getDouble("preco"));
-				peca.setId(rs.getInt("id"));
+				peca.setId(rs.getInt("idpeca"));
+				peca.setAuto(autoV);
 				pecas.add(peca);
 				
 			}
@@ -101,7 +108,9 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	public List<PecasVO> findByNome(VO peca) {
 		conect = getConnection();
-		String sql = "select * from pecas where nome like '" + peca.getName() + "%'";
+		
+		String sql = "select * from pecas inner join auto on pecas.nome"
+					+ " like '" + peca.getName() + "%' and pecas.idauto = auto.idauto";
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -111,10 +120,16 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				PecasVO pecaV = new PecasVO();
+				AutoVO autoV = new AutoVO();
+				
+				autoV.setId(rs.getInt("idauto"));
+				autoV.setPlaca(rs.getString("placa"));
+				
 				pecaV.setName(rs.getString("nome"));
 				pecaV.setFabricante(rs.getString("fabricante"));
 				pecaV.setPreco(rs.getDouble("preco"));
 				pecaV.setId(rs.getInt("idpeca"));
+				pecaV.setAuto(autoV);
 				pecas.add(pecaV);
 				
 			}
@@ -137,6 +152,37 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				PecasVO pecaV = new PecasVO();
+				pecaV.setName(rs.getString("nome"));
+				pecaV.setFabricante(rs.getString("fabricante"));
+				pecaV.setPreco(rs.getDouble("preco"));
+				pecaV.setId(rs.getInt("id"));
+				pecas.add(pecaV);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pecas;
+	}
+	
+	public List<PecasVO> findByAuto(VO peca) {
+		conect = getConnection();
+		String sql = "select from pecas inner join auto on idauto like'" + peca.getAuto().getId() + "%' and pecas.idauto = auto.idauto";
+		Statement st;
+		ResultSet rs;
+		List<PecasVO> pecas = new ArrayList<PecasVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				PecasVO pecaV = new PecasVO();
+				AutoVO autoV = new AutoVO();
+				
+				autoV.setId(rs.getInt("idauto"));
+				autoV.setPlaca(rs.getString("placa"));
+				
 				pecaV.setName(rs.getString("nome"));
 				pecaV.setFabricante(rs.getString("fabricante"));
 				pecaV.setPreco(rs.getDouble("preco"));

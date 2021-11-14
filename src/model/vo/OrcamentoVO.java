@@ -11,7 +11,7 @@ public class OrcamentoVO {
 	private Double custo;
 	private Calendar data;
 
-	// ------------------- ID do orçamento ----------------------------
+	// ------------------- ID do orï¿½amento ----------------------------
 	public Integer getId() {
 		return id;
 	}
@@ -23,7 +23,7 @@ public class OrcamentoVO {
 		}
 		
 	}
-	//--------------------Nome do cliente a qual pertence o orçamento---------------------------
+	//--------------------Nome do cliente a qual pertence o orï¿½amento---------------------------
 	public ClienteVO getClientName() {
 		return clientName;
 	}
@@ -35,7 +35,7 @@ public class OrcamentoVO {
 		}
 		
 	}
-    //-------------------Serviços prestados --------------------------------------------
+    //-------------------Serviï¿½os prestados --------------------------------------------
 	public ServicosVO getServicos() {
 		return servicos;
 	}
@@ -55,11 +55,11 @@ public class OrcamentoVO {
 		if(custo == null || custo.equals("")) {
 			
 		}else { 
-			if(custo > 0)  // Não existe custo negativo
+			if(custo > 0)  // Nï¿½o existe custo negativo
 				this.custo = custo;
 		}
 	}
-	// ------------------------ data de orçamento ----------------------------
+	// ------------------------ data de orï¿½amento ----------------------------
 	public Calendar getData() {
 		return data;
 	}

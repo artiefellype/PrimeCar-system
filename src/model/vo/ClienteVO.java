@@ -1,6 +1,6 @@
 package model.vo;
 
-import java.util.Arrays;
+
 import java.util.InputMismatchException;
 import java.util.regex.Pattern;
 
@@ -8,7 +8,7 @@ public class ClienteVO {
 	private Integer id;
 	private String name;
 	private String endereco;
-	private String cpf;
+	private String CPF;
 	
 	
 	// ------------------- ID do cliente ----------------------------
@@ -49,7 +49,7 @@ public class ClienteVO {
 	}
 	//-----------------------CPF do cliente--------------------------------
 	public String getCPF() {
-		return cpf;
+		return CPF;
 	}
 	public void setCPF(String cpf) {
 		 if(cpf == null || cpf.isBlank()) {
@@ -113,7 +113,7 @@ public class ClienteVO {
 
 			        // Verifica se os digitos informados est�o de acordo.
 			            if ((dig10 == cpfMesclado.charAt(9)) && (dig11 == cpfMesclado.charAt(10))) {
-			            			this.cpf = cpfMesclado.substring(0, 3) + "." + cpfMesclado.substring(3, 6) + "." +
+			            			this.CPF = cpfMesclado.substring(0, 3) + "." + cpfMesclado.substring(3, 6) + "." +
 						            cpfMesclado.substring(6, 9) + "-" + cpfMesclado.substring(9, 11);
 			            			System.out.println("tudo ok");
 			            } else {

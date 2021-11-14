@@ -51,15 +51,13 @@ public class ServicoBO<VO extends ServicosVO> {
 		}
 	}
 	
-	public void findByAuto(AutoVO auto) throws Exception {
+	public List<ServicosVO> findByAuto(AutoVO auto) throws Exception {
 		if(this.auto.findByPlaca(auto.getPlaca()) == null) {
 			throw new Exception("Automovel n�o encontrado");
 		}
-		try {
-			services.findByAuto(auto);
-		}catch(Exception e){
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	
+			return services.findByAuto(auto);
+		
 	}
 	
 	public void findByPeca(PecasVO peca) throws Exception {

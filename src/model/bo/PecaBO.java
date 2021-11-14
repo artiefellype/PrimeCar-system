@@ -1,16 +1,16 @@
 package model.bo;
 
 import java.sql.SQLException;
-
+import java.util.List;
 
 import model.dao.PecasDAO;
 import model.vo.PecasVO;
 
-public class PecaBO {
+public class PecaBO<VO extends PecasVO> {
 	
 	PecasDAO<PecasVO> pec = new PecasDAO<PecasVO>();
 	
-	public void inserir(PecasVO peca) throws SQLException {
+	public void inserir(VO peca) throws SQLException {
 		try {
 			pec.inserir(peca);
 			System.out.println("Peca inserida!");
@@ -19,7 +19,7 @@ public class PecaBO {
 		}
 	}
 	
-	public void editar(PecasVO peca) throws SQLException{
+	public void editar(VO peca) throws SQLException{
 		try {
 			pec.editar(peca);
 			System.out.println("Peca editada");
@@ -28,7 +28,7 @@ public class PecaBO {
 		}
 	}
 	
-	public void findByName(PecasVO peca) throws SQLException {
+	public void findByName(VO peca) throws SQLException {
 		try {
 			
 			pec.findByNome(peca);
@@ -39,7 +39,7 @@ public class PecaBO {
 		
 	}
 	
-	public void findByFab(PecasVO peca) throws SQLException {
+	public void findByFab(VO peca) throws SQLException {
 		try {
 			pec.findByFabricante(peca);
 		}catch(Exception e){
@@ -47,17 +47,13 @@ public class PecaBO {
 			
 		}
 	}
-	public void listar() throws SQLException{
+	public List<PecasVO> listarBO(){
 		
-		try{
-			pec.listar();
-		}catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
+		return pec.listar();
 		
 	}
 	
-	public void remove(PecasVO peca) throws SQLException {
+	public void remove(VO peca) throws SQLException {
 		try {
 			pec.remover(peca);
 			System.out.println("Peca removida !");
