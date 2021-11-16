@@ -57,13 +57,14 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 		
 	}
 	
+	
 	public void remover(VO automovel) {
 		conect = getConnection();
-		String sql = "delete from auto where idauto = ?";
+		String sql = "delete from auto where placa = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, automovel.getId());
+			ptst.setString(1, automovel.getPlaca());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		
@@ -303,18 +304,18 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public void editar(VO automovel) {
 		conect = getConnection();
-		String sql = "update auto set marca = ?, set cor = ?, set placa = ?, set ano = ?, set quilometragem = ?, set idcliente = ? where idauto= ?";
+		String sql = "update auto set marca = ?, cor = ?, placa = ?, ano = ?, quilometragem = ?, idcliente = ? where idauto= ?";
 		PreparedStatement ptst;
 		
 		try {
 			ptst = conect.prepareStatement(sql);
 			ptst.setString(1, automovel.getMarca());
-			ptst.setString(1, automovel.getCor());
-			ptst.setString(1, automovel.getPlaca());
-			ptst.setInt(1, automovel.getAno());
-			ptst.setDouble(1, automovel.getQuilometragem());
-			ptst.setInt(1, automovel.getProprietario().getId());
-			ptst.setInt(2, automovel.getId());
+			ptst.setString(2, automovel.getCor());
+			ptst.setString(3, automovel.getPlaca());
+			ptst.setInt(4, automovel.getAno());
+			ptst.setDouble(5, automovel.getQuilometragem());
+			ptst.setInt(6, automovel.getProprietario().getId());
+			ptst.setInt(7, automovel.getId());
 			ptst.execute();
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block

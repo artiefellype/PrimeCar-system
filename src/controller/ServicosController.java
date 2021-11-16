@@ -1,6 +1,7 @@
 package controller;
 
 
+
 import java.util.List;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -45,8 +46,25 @@ public class ServicosController {
 		obsServicosList.clear();
 		
     	servicosColumnNome.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-    	servicosColumnFinalizado.setCellValueFactory(new PropertyValueFactory<>("finalizado"));
-    	servicosColumnValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
+    	servicosColumnFinalizado.setCellValueFactory(new 
+    			Callback<TableColumn.CellDataFeatures<ServicosVO, String>, ObservableValue<String>>(){
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ServicosVO, String> c){
+				if(c.getValue().getFinalizado()) {
+					return new SimpleStringProperty("V");
+				}else {
+					return new SimpleStringProperty("X");
+				}
+				
+			}
+    	});;
+    	servicosColumnValor.setCellValueFactory(new 
+    			Callback<TableColumn.CellDataFeatures<ServicosVO, String>, ObservableValue<String>>(){
+    			@Override
+    			public ObservableValue<String> call(CellDataFeatures<ServicosVO, String> c){
+    				return new SimpleStringProperty("R$ " + c.getValue().getValor());
+    			}
+    	});
     	servicosColumnCarro.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ServicosVO, String>, ObservableValue<String>>(){
     		@Override    
     	    public ObservableValue<String> call(CellDataFeatures<ServicosVO, String> c) {

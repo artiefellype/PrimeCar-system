@@ -248,7 +248,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 	
 	public void editar(VO servicos) {
 		conect = getConnection();
-		String sql = "update servicos set tipo = ?, set valor = ?, set finalizado = ?, set idauto = ?, set idpeca = ? where idservico= ?";
+		String sql = "update servicos set tipo = ?, valor = ?, finalizado = ?, idauto = ?, idpeca = ? where idservico= ?";
 		PreparedStatement ptst;
 		
 		try {

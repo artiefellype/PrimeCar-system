@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addcontrollers.AddAutoController">
+   <children>
+      <HBox prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="118.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="MARCA" />
+         </children>
+         <VBox.margin>
+            <Insets left="35.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <TextField fx:id="autoMarcaField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="214.0" prefWidth="600.0" spacing="50.0">
+         <children>
+            <VBox prefHeight="186.0" prefWidth="220.0">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="46.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="COR" />
+                  <TextField fx:id="autoCorField" prefHeight="46.0" prefWidth="197.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="30.0" prefWidth="50.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="ANO" />
+                  <TextField fx:id="autoAnoField" prefHeight="50.0" prefWidth="246.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="186.0" prefWidth="220.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="76.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="PLACA" />
+                  <TextField fx:id="autoPlacaField" prefHeight="46.0" prefWidth="197.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="30.0" prefWidth="179.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="QUILOMETRAGEM" />
+                  <TextField fx:id="autoKmField" prefHeight="50.0" prefWidth="246.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="150.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="PROPRIETARIO">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="autoProprietarioField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="627.0" spacing="60.0">
+         <VBox.margin>
+            <Insets top="40.0" />
+         </VBox.margin>
+         <children>
+            <Button fx:id="autoAddButton" mnemonicParsing="false" onMouseClicked="#adicionar" prefHeight="39.0" prefWidth="162.0" stylesheets="@../stylesheets/PrimaryButtonStylesheet.css" text="ADICIONAR" />
+            <Button fx:id="autoCancelButton" mnemonicParsing="false" onMouseClicked="#close" stylesheets="@../stylesheets/SecondaryButtonStylesheet.css" text="CANCELAR">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" top="20.0" />
+   </padding>
+</VBox>

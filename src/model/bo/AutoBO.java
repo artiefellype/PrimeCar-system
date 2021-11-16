@@ -2,7 +2,6 @@ package model.bo;
 
 
 import model.vo.AutoVO;
-import model.vo.ClienteVO;
 import model.dao.AutoDAO;
 import java.util.List;
 
@@ -11,6 +10,9 @@ public class AutoBO<VO extends AutoVO> {
 	AutoDAO<AutoVO> autd = new AutoDAO<>();
 	public void inserirBO(VO auto) {
 		autd.inserir(auto);
+	}
+	public int getIdFromBD() {
+		return autd.getIdFromBD();
 	}
 	
 	public void removerBO(VO auto) {

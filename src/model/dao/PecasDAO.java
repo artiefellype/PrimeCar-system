@@ -200,7 +200,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	public void editar(VO peca) {
 		conect = getConnection();
-		String sql = "update peca set nome = ?, set fabricante = ?, set preco = ? where idpeca = ?";
+		String sql = "update peca set nome = ?, fabricante = ?, preco = ? where idpeca = ?";
 		PreparedStatement ptst;
 		try {
 			

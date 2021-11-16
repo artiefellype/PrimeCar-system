@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="600.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addcontrollers.AddPecasController">
    <children>
       <HBox prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="34.0" prefWidth="118.0" stylesheets="@stylesheets/fontFieldStylesheet.css" text="NOME" />
+            <Label prefHeight="34.0" prefWidth="118.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="NOME" />
          </children>
          <VBox.margin>
             <Insets left="50.0" />
@@ -29,10 +28,10 @@
          <children>
             <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/wrench%20(1).png" />
+                  <Image url="@../img/person-outline.png" />
                </image>
             </ImageView>
-            <TextField fx:id="serviceNameField" prefHeight="58.0" prefWidth="490.0" stylesheets="@stylesheets/TextFiledsStylesheet.css">
+            <TextField fx:id="pecasNameField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -41,7 +40,7 @@
       </HBox>
       <HBox layoutX="60.0" layoutY="70.0" prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="34.0" prefWidth="118.0" stylesheets="@stylesheets/fontFieldStylesheet.css" text="VALOR" />
+            <Label prefHeight="34.0" prefWidth="118.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="PREÇO" />
          </children>
          <VBox.margin>
             <Insets left="50.0" top="20.0" />
@@ -51,10 +50,10 @@
          <children>
             <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/pricetags-outline.png" />
+                  <Image url="@../img/pricetags-outline.png" />
                </image>
             </ImageView>
-            <TextField fx:id="serviceValorField" prefHeight="58.0" prefWidth="490.0" stylesheets="@stylesheets/TextFiledsStylesheet.css">
+            <TextField fx:id="pecasPrecoField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -64,9 +63,31 @@
             <Insets />
          </VBox.margin>
       </HBox>
+      <HBox prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="174.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="VEÍCULO(PLACA)" />
+         </children>
+         <VBox.margin>
+            <Insets left="75.0" top="20.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/plus-outline.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="pecasPlacaField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
       <HBox layoutX="60.0" layoutY="70.0" prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="201.0" stylesheets="@stylesheets/fontFieldStylesheet.css" text="PLACA DO VEÍCULO" />
+            <Label prefHeight="30.0" prefWidth="130.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="FABRICANTE" />
          </children>
          <VBox.margin>
             <Insets left="75.0" top="20.0" />
@@ -76,10 +97,10 @@
          <children>
             <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/wrench.png" />
+                  <Image url="@../img/car-outline.png" />
                </image>
             </ImageView>
-            <TextField fx:id="servicePlacaField" prefHeight="58.0" prefWidth="490.0" stylesheets="@stylesheets/TextFiledsStylesheet.css">
+            <TextField fx:id="pecasFabricanteField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -91,8 +112,8 @@
             <Insets top="40.0" />
          </VBox.margin>
          <children>
-            <Button fx:id="serviceAddButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="162.0" stylesheets="@stylesheets/PrimaryButtonStylesheet.css" text="ADICIONAR" />
-            <Button fx:id="serviceCancelButton" mnemonicParsing="false" stylesheets="@stylesheets/SecondaryButtonStylesheet.css" text="CANCELAR">
+            <Button fx:id="serviceAddButton" mnemonicParsing="false" onMouseClicked="#adicionar" prefHeight="39.0" prefWidth="162.0" stylesheets="@../stylesheets/PrimaryButtonStylesheet.css" text="ADICIONAR" />
+            <Button fx:id="serviceCancelButton" mnemonicParsing="false" onMouseClicked="#close" stylesheets="@../stylesheets/SecondaryButtonStylesheet.css" text="CANCELAR">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

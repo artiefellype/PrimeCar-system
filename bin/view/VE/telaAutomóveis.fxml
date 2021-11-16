@@ -70,8 +70,8 @@
                   <TableColumn fx:id="autoColumnPlaca" prefWidth="136.53338623046875" text="PLACA" />
                   <TableColumn fx:id="autoColumnAno" prefWidth="67.4666748046875" text="ANO" />
                   <TableColumn fx:id="autoColumnKm" prefWidth="76.800048828125" text="KM" />
-                  <TableColumn fx:id="autoColumnCliente" prefWidth="199.199951171875" text="CLIENTE(CPF)" />
-                  <TableColumn prefWidth="78.66650390625" text="ICONS" />
+                  <TableColumn fx:id="autoColumnCliente" prefWidth="173.60009765625" text="CLIENTE(CPF)" />
+                  <TableColumn fx:id="autoColumnIcons" prefWidth="104.7999267578125" text=" " />
               </columns>
             </TableView>
          </children>

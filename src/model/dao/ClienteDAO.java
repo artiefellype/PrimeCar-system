@@ -56,11 +56,11 @@ public class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	public void remover(VO client) {
 		conect = getConnection();
-		String sql = "delete from clientes where idcliente = ?";
+		String sql = "delete from clientes where cpf = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, client.getId());
+			ptst.setString(1, client.getCPF());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		
@@ -181,7 +181,7 @@ public class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	public void editar(VO client) {
 		conect = getConnection();
-		String sql = "update clientes set nome = ?, set endereco = ?, set cpf = ? where idcliente= ?";
+		String sql = "update clientes set nome = ?, endereco = ?, cpf = ? where idcliente= ?";
 		PreparedStatement ptst;
 		
 		try {

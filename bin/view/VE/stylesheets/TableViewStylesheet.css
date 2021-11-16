@@ -38,7 +38,7 @@
 
 
 .table-row-cell:selected {
-    -fx-background-color: #005797;
+    -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }

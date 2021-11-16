@@ -167,7 +167,7 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 	
 	public void editarSenha(VO admin){
 		conect = getConnection();
-		String sql = "update admin set nome = ?, set senha = ?, set email = ? where id = ?";
+		String sql = "update admin set nome = ?, senha = ?, email = ? where id = ?";
 		PreparedStatement ptst;
 		try {
 			

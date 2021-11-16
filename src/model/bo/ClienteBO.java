@@ -47,7 +47,7 @@ public class ClienteBO<VO extends ClienteVO> {
 		}
 	}
 	
-	public void listarByCPF(VO client) {
+	public ClienteVO listarByCPF(VO client) {
 		String cpf = client.getCPF();
 		List<ClienteVO> clientes = cli.findByCPF(cpf);
 		
@@ -58,6 +58,7 @@ public class ClienteBO<VO extends ClienteVO> {
 			System.out.println(clientesShow.getCPF());
 			
 		}
+		return clientes.get(0);
 	}
 	
 	public void listarByEndereco(VO client) {

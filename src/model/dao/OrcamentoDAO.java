@@ -243,7 +243,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public void editar(VO orc) {
 		conect = getConnection();
-		String sql = "update orcamentos set custo = ?, set data = ?, set idcliente = ?, setidauto = ? where idorm= ?";
+		String sql = "update orcamentos set custo = ?, data = ?, idcliente = ?, idauto = ? where idorm= ?";
 		PreparedStatement ptst;
 		try {
 			
