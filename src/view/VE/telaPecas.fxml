@@ -85,18 +85,24 @@
             <Image url="@img/search-outline.png" />
          </image>
          <cursor>
-            <Cursor fx:constant="DEFAULT" />
+            <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
       <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="403.0" layoutY="169.0" onMouseClicked="#addDataPecas" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/plus-square-outline.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="359.0" layoutY="171.0" onMousePressed="#loadDataPecas" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="359.0" layoutY="169.0" onMousePressed="#loadDataPecas" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/refresh-outline-white.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
 </Pane>

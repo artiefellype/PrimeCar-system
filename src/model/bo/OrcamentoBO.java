@@ -51,9 +51,9 @@ public class OrcamentoBO<VO extends OrcamentoVO> {
 		return orcamento.listar();
 	}
 	
-	public List<OrcamentoVO> findByAuto(VO orm) throws Exception{
+	public List<OrcamentoVO> findByAuto(VO orm){
 		if(this.auto.findByPlaca(orm.getAuto().getPlaca()) == null) {
-			throw new Exception ("Automovel n�o encontrado");
+			System.out.println("Automovel n�o encontrado");
 		}
 		
 			return orcamento.findByAuto(orm);

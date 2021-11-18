@@ -196,7 +196,7 @@ public class AutoController {
 	    		List<AutoVO> listaAuto = new ArrayList<>();
 	    		for(ClienteVO cliShow : listaCliente) {
 	    			auto.setProprietario(cliShow);
-	    			List<AutoVO> listaAuto2 = new ArrayList<>();
+	    			List<AutoVO> listaAutoArray = new ArrayList<>();
 	    			for(AutoVO autoShow : listaAuto2) {
 	    				listaAuto.add(autoShow);
 	    			}

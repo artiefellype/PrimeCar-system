@@ -66,11 +66,12 @@
          <children>
             <TableView fx:id="orcamentosTableView" layoutX="12.0" layoutY="11.0" prefHeight="524.0" prefWidth="895.0" stylesheets="@stylesheets/TableViewStylesheet.css">
               <columns>
-                <TableColumn fx:id="orcamentosColumnCliente" prefWidth="220.53338623046875" text="CLIENTE" />
-                <TableColumn fx:id="orcamentoColumnVeiculo" prefWidth="235.7332763671875" text="VEÍCULO" />
-                  <TableColumn fx:id="orcamentoColumnServicos" prefWidth="134.13336181640625" text="SERVIÇO" />
-                  <TableColumn fx:id="orcamentoColumnCusto" prefWidth="211.199951171875" text="VALOR" />
-                  <TableColumn fx:id="orcamentoColumnIcons" prefWidth="92.0001220703125" />
+                <TableColumn fx:id="orcamentosColumnCliente" prefWidth="218.39999389648438" text="CLIENTE" />
+                <TableColumn fx:id="orcamentoColumnVeiculo" prefWidth="180.0" text="VEÍCULO" />
+                  <TableColumn fx:id="orcamentoColumnServicos" prefWidth="195.199951171875" text="SERVIÇO" />
+                  <TableColumn fx:id="orcamentoColumnCusto" prefWidth="106.39990234375" text="VALOR" />
+                  <TableColumn fx:id="orcamentoColumnData" prefWidth="119.2000732421875" text="DATA" />
+                  <TableColumn fx:id="orcamentoColumnIcons" prefWidth="75.199951171875" />
               </columns>
             </TableView>
          </children>
@@ -80,16 +81,16 @@
             <Font name="System Bold" size="60.0" />
          </font>
       </Label>
-      <TextField fx:id="clienteInput" layoutX="868.0" layoutY="92.0" prefHeight="58.0" prefWidth="307.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-font-size: 15px;" />
-      <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="1190.0" layoutY="91.0" onMousePressed="#searchOrcamentos" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="clienteInput" layoutX="868.0" layoutY="92.0" prefHeight="58.0" prefWidth="307.0" promptText="Pesquisar por cliente, serviço ..." style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-font-size: 15px;" />
+      <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="1190.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/search-outline.png" />
          </image>
          <cursor>
-            <Cursor fx:constant="DEFAULT" />
+            <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="395.0" layoutY="172.0" onMousePressed="#addDataOrcamentos" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="395.0" layoutY="169.0" onMousePressed="#addDataOrcamentos" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/plus-square-outline.png" />
          </image>
@@ -97,7 +98,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="351.0" layoutY="174.0" onMouseClicked="#loadDataOrcamentos" onMousePressed="#loadDataOrcamentos" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="351.0" layoutY="171.0" onMouseClicked="#loadDataOrcamento" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/refresh-outline-white.png" />
          </image>
@@ -107,7 +108,7 @@
       </ImageView>
       <DatePicker fx:id="ormDataStart" layoutX="835.0" layoutY="162.0" prefHeight="33.0" prefWidth="168.0" />
       <DatePicker fx:id="ormDataEnd" layoutX="1022.0" layoutY="162.0" prefHeight="33.0" prefWidth="168.0" />
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="441.0" layoutY="170.0" onMouseClicked="#gerarPdf" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="441.0" layoutY="170.0" onMouseClicked="#listaGeradorPdf" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/printer-outline.png" />
          </image>
@@ -120,7 +121,7 @@
             <Image url="@img/search-outline.png" />
          </image>
          <cursor>
-            <Cursor fx:constant="DEFAULT" />
+            <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
    </children>

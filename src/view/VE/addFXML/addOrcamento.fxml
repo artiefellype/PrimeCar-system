@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="663.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addcontrollers.AddOrcamentosController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="663.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addcontrollers.addBudgetController">
    <children>
       <HBox prefHeight="30.0" prefWidth="550.0">
          <children>
@@ -32,7 +32,7 @@
                   <Image url="@../img/person-outline.png" />
                </image>
             </ImageView>
-            <TextField fx:id="orcamentosClienteField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+            <TextField fx:id="orcamentosClienteField" prefHeight="58.0" prefWidth="490.0" promptText="CPF do cliente" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -54,7 +54,7 @@
                   <Image url="@../img/wrench%20(1).png" />
                </image>
             </ImageView>
-            <TextField fx:id="orcamentosServicoField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+            <TextField fx:id="orcamentosServicoField" prefHeight="58.0" prefWidth="490.0" promptText="Nome do serviço" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Image url="@../img/pricetags-outline.png" />
                </image>
             </ImageView>
-            <TextField fx:id="orcamentosValorField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+            <TextField fx:id="orcamentosValorField" prefHeight="58.0" prefWidth="490.0" promptText="Valor total" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
                <font>
                   <Font size="20.0" />
                </font>

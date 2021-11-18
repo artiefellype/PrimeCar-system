@@ -56,7 +56,7 @@ public class addBudgetController {
     PecaBO<PecasVO> peca = new PecaBO<PecasVO>();
     
     @FXML
-    private void adicionar() throws ParseException {
+    private void adicionar(MouseEvent event) throws ParseException {
 
         String cliente = orcamentosClienteField.getText();
         String placa = orcamentosPlacaField.getText();
@@ -103,7 +103,7 @@ public class addBudgetController {
         
         orcamentov.setClientName(clientev);
         orcamentov.setAuto(autov);
-        orcamentov.setCusto(pecasv.getPreco() + servicov.getValor());
+        orcamentov.setCusto(servicov.getValor());
         orcamentov.setServicos(servicov);
         orcamentov.setData(cal);
         
@@ -151,7 +151,7 @@ public class addBudgetController {
  	public void update(OrcamentoVO ormv) {
 
         try {
-            orm.cadastrar(ormv);
+            orm.editar(ormv);
 
         } catch (Exception ex) {
             Logger.getLogger(AddAutoController.class.getName()).log(Level.SEVERE, null, ex);

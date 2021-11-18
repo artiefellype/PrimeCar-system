@@ -61,7 +61,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public void remover(VO orc) {
 		conect = getConnection();
-		String sql = "delete from orcamentos where idorc = ?";
+		String sql = "delete from orcamentos where idorm = ?";
 		PreparedStatement ptst;
 		try {
 			
@@ -93,6 +93,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 				ClienteVO cliente = new ClienteVO();
 				ServicosVO servico = new ServicosVO();
 				AutoVO auto = new AutoVO();
+				
 				Calendar data = Calendar.getInstance();
 				
 				data.setTimeInMillis(rs.getDate("data").getTime());
@@ -104,9 +105,9 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 				auto.setId(rs.getInt("idauto"));
 				auto.setPlaca(rs.getString("placa"));
 				
+				servico.setTipo(rs.getString("tipo"));
 				servico.setValor(rs.getDouble("valor"));
 				servico.setId(rs.getInt("idservico"));
-				
 				
 				orcamento.setCusto(rs.getDouble("custo"));
 				orcamento.setData(data);
@@ -167,7 +168,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public List<OrcamentoVO> findByCliente(VO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idcliente like'" + orca.getClientName().getId() + "%'";
+		String sql = "select * from orcamentos where idcliente = " + orca.getClientName().getId() + "";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -205,7 +206,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public List<OrcamentoVO> findByAuto(VO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idauto like'" + orca.getAuto().getId() + "%'";
+		String sql = "select * from orcamentos where idauto = " + orca.getAuto().getId() + "";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -263,7 +264,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public List<OrcamentoVO> findByServico(VO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idservico = '" + orca.getServicos().getId() + "'";
+		String sql = "select * from orcamentos where idservico = " + orca.getServicos().getId() + "";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();

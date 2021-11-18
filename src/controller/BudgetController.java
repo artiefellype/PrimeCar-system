@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +17,6 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import controller.addcontrollers.AddClienteController;
 import controller.addcontrollers.addBudgetController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -33,7 +34,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -95,38 +95,57 @@ public class BudgetController {
 
     @FXML
     void addDataOrcamentos(MouseEvent event) {
-    	System.out.println("A ser implementado");
+    	FXMLLoader loader = new FXMLLoader ();
+        loader.setLocation(getClass().getResource("../view/VE/addFXML/addOrcamento.fxml"));
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(Telas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        addBudgetController addOrcamentosController = loader.getController();
+        addOrcamentosController.setUpdate(false);
+        Parent parent = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
     	
     }
     
     @FXML
-    public void searchBudgetByData() {
-    	List<OrcamentoVO> lista = orcamentos.findByData(ormDataStart.getValue(DateTimeFormatter.ofPattern("yyyy-MM-dd"), 
-    			ormDataEnd.getValueformat(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    	
+    public void searchData() {
+    	List<OrcamentoVO> lista = orcamentos.findByData(ormDataStart.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+    													ormDataEnd.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    	obsOrmList.clear();
     	for(OrcamentoVO ormList : lista) {
     		obsOrmList.clear();
     		
+    		orcamentoColumnIcons.setCellFactory(cellFoctory);
     		obsOrmList.add(ormList);
     		orcamentosTableView.setItems(obsOrmList);
     		
     	}
-    	
     }
+    
     @FXML
     public void searchBudget() {
+    	obsOrmList.clear();
+    	
     	OrcamentoVO orca = new OrcamentoVO();
-    	AutoVO auto = new AutoVO();
-    	AutoBO<AutoVO> autoBO = new AutoBO<>();
+    	AutoVO autov = new AutoVO();
+    	AutoBO<AutoVO> autoBO = new AutoBO<>(); // Não ta sendo utilizada na pesquisa
     	ClienteVO cliente = new ClienteVO();
     	ClienteBO<ClienteVO> clienteBO = new ClienteBO<>();
     	ServicosVO servico = new ServicosVO();
     	ServicoBO<ServicosVO> servicoBO = new ServicoBO<>();
-    	auto.setPlaca(clienteInput.getText());
+    	autov.setPlaca(clienteInput.getText());
     	cliente.setName(clienteInput.getText());
     	servico.setTipo(clienteInput.getText());
     	
-    	orca.setAuto(autoBO.listarByPlacaBO(auto));
+    	
+    	orca.setAuto(autov);
+    	
     	List<ClienteVO> listaCliente = clienteBO.listarByNome(cliente);
     	List<ServicosVO> listaServico = servicoBO.findByTipo(servico);
     	
@@ -135,6 +154,7 @@ public class BudgetController {
     		for(OrcamentoVO ormShow : listaOrc) {
         		System.out.println(ormShow.getAuto().getPlaca());
         		
+        		orcamentoColumnIcons.setCellFactory(cellFoctory);
         		obsOrmList.add(ormShow);
         		orcamentosTableView.setItems(obsOrmList);
         		
@@ -156,6 +176,7 @@ public class BudgetController {
     			obsOrmList.clear();
         		System.out.println(ormShow.getAuto().getPlaca());
         		
+        		orcamentoColumnIcons.setCellFactory(cellFoctory);
         		obsOrmList.add(ormShow);
         		orcamentosTableView.setItems(obsOrmList);
         		
@@ -178,26 +199,25 @@ public class BudgetController {
     			obsOrmList.clear();
         		System.out.println(ormShow.getAuto().getPlaca());
         		
+        		orcamentoColumnIcons.setCellFactory(cellFoctory);
         		obsOrmList.add(ormShow);
         		orcamentosTableView.setItems(obsOrmList);
         		
      		}
     	}
     	
-    	
-    	
-    	
     }
 
 
     @FXML
-    void loadDataOrcamentos() {
+    void loadDataOrcamento() {
     	obsOrmList.clear();
 		
     	orcamentosColumnCliente.setCellValueFactory(
     			new Callback<TableColumn.CellDataFeatures<OrcamentoVO, String>, ObservableValue<String>>(){
     		@Override    
     	    public ObservableValue<String> call(CellDataFeatures<OrcamentoVO, String> c) {
+    			System.out.println("entrou noc lein");
     	        return new SimpleStringProperty(c.getValue().getClientName().getName());
     	    }
     	});
@@ -217,12 +237,35 @@ public class BudgetController {
     	    }
     	});
     	
-    	orcamentoColumnData.setCellValueFactory(new PropertyValueFactory<>("data"));
+    	orcamentoColumnServicos.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrcamentoVO, String>, ObservableValue<String>>(){
+    		@Override    
+    	    public ObservableValue<String> call(CellDataFeatures<OrcamentoVO, String> c) {
+    			
+    	        return new SimpleStringProperty(c.getValue().getServicos().getTipo());
+    	    }
+    	});
     	
+    	orcamentoColumnData.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<OrcamentoVO, String>, ObservableValue<String>>(){
+    		@Override    
+    	    public ObservableValue<String> call(CellDataFeatures<OrcamentoVO, String> c) {
+    			
+    			Calendar datec = c.getValue().getData();
+    			
+    			SimpleDateFormat date =new SimpleDateFormat("dd/MM/yyyy");
+    			String dataView = date.format(datec.getTime());
+    			
+    			System.out.println(dataView);
+    	        return new SimpleStringProperty(dataView);
+    	    }
+    	});
+    	
+    	
+    	
+    	System.out.println( "@>>" + orcamentoColumnCusto.getColumns());
     	List<OrcamentoVO> orms = orcamentos.listarBO();
     	
     	for(OrcamentoVO ormShow : orms) {
-    		System.out.println(ormShow.getAuto().getPlaca());
+    		System.out.println(ormShow.getServicos().getTipo());
     		
     		orcamentoColumnIcons.setCellFactory(cellFoctory);
     		obsOrmList.add(ormShow);
@@ -232,101 +275,17 @@ public class BudgetController {
 
     }
 	// -------------------- END Orcamento functions -------------------------
- // ------------------- CREATE CELL FACTORY -------------------------------------
-	
-	Callback<TableColumn<OrcamentoVO, String>, TableCell<OrcamentoVO, String>> cellFoctory = (TableColumn<OrcamentoVO, String> param) -> {
-        // make cell containing buttons
-        final TableCell<OrcamentoVO, String> cell = new TableCell<OrcamentoVO, String>() {
-            @Override
-            public void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                //that cell created only on non-empty rows
-                if (empty) {
-                    setGraphic(null);
-                    setText(null);
 
-                } else {
-                	
-                	try {
-                		
-                		FileInputStream input = new FileInputStream("src/view/VE/img/edit-2-outline.png");
-                        Image editIcon = new Image(input);
-                        ImageView editIconImg = new ImageView(editIcon); // Objeto para uso
-                        
-                        FileInputStream input2 = new FileInputStream("src/view/VE/img/trash-2-outline.png");
-                        Image removeIcon = new Image(input2);
-                        ImageView removeIconImg = new ImageView(removeIcon); // Objeto para uso
-                		
-                	editIconImg.setFitHeight(20);
-                	editIconImg.setFitWidth(20);
-                	editIconImg.setPreserveRatio(true);
-
-                    editIconImg.setStyle(
-                            " -fx-cursor: hand ;"
-                    );
-                    
-                    removeIconImg.setFitHeight(20);
-                	removeIconImg.setFitWidth(20);
-                	removeIconImg.setPreserveRatio(true);
-                	
-                    removeIconImg.setStyle(
-                            " -fx-cursor: hand ;"
-                    );
-                    removeIconImg.setOnMouseClicked((MouseEvent event) -> {
-                            ormIcon = orcamentosTableView.getSelectionModel().getSelectedItem();
-                            orcamentos.remover(ormIcon);
-                            
-                            loadDataOrcamentos();
-                            
-
-                    });
-                    editIconImg.setOnMouseClicked((MouseEvent event) -> {
-                        ormIcon = orcamentosTableView.getSelectionModel().getSelectedItem();
-                        System.out.println(ormIcon);
-                        FXMLLoader loader = new FXMLLoader ();
-                        loader.setLocation(getClass().getResource("../view/VE/addFXML/addOrcamento.fxml"));
-                        try {
-                            loader.load();
-                        } catch (IOException ex) {
-                            Logger.getLogger(Telas.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        
-                        addBudgetController addOrcamentosController = loader.getController();
-                        addOrcamentosController.setUpdate(true);
-                        addOrcamentosController.setTextField(ormIcon.getClientName(), ormIcon.getAuto(), 
-                                ormIcon.getCusto(), ormIcon.getServicos(), ormIcon.getData());
-                        Parent parent = loader.getRoot();
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(parent));
-                        stage.initStyle(StageStyle.UTILITY);
-                        stage.show();
-                        
-
-                    });
-
-                    HBox managebtn = new HBox(editIconImg, removeIconImg);
-                    managebtn.setStyle("-fx-alignment:center");
-                    HBox.setMargin(removeIconImg, new Insets(2, 2, 0, 3));
-                    HBox.setMargin(editIconImg, new Insets(2, 3, 0, 2));
-
-                    setGraphic(managebtn);
-
-                    setText(null);
-                		
-                	}catch(Exception e) {
-                		System.out.println("ERRO:" + e);
-                	}
-               
-                }
-            }
-
-        };
-
-        return cell;
-    };
-	
-	// ----------------------- END CREATE CELL FACTORY---------------------------------
-    public void gerarPFD(List<OrcamentoVO> lista) throws Exception {
+    public void listaGeradorPdf() {
+    	List<OrcamentoVO> orms = orcamentos.listarBO();
+    	try {
+    		gerarPdf(orms);
+    	}catch(Exception e) {
+    		System.out.println("ERROR @>> " + e);
+    	}
+    	
+    }
+    public void gerarPdf(List<OrcamentoVO> lista) throws Exception {
 		Double total = 0.0;
 		Document doc = new Document();
 		PdfWriter.getInstance(doc, new FileOutputStream("relatorio.pdf"));
@@ -352,9 +311,9 @@ public class BudgetController {
 		tabela.addCell(data);
 		
 		for(OrcamentoVO orc : lista) {
-			SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-			String datapdf = date.format(orc.getData());
-			total += orc.getCusto();
+			SimpleDateFormat date =new SimpleDateFormat(" dd/MM/yyyy ");
+			String datapdf = date.format(orc.getData().getTime()); // Ao usar datas ponha o 'getTime' 
+			total += orc.getCusto();								// pra retornar direito
 			
 			cliente = new PdfPCell(new Paragraph(orc.getClientName().getName()));
 			carro = new PdfPCell(new Paragraph(orc.getAuto().getPlaca()));
@@ -385,6 +344,100 @@ public class BudgetController {
 
 		doc.close();
 	}
+    // ------------------- CREATE CELL FACTORY -------------------------------------
+	
+   	Callback<TableColumn<OrcamentoVO, String>, TableCell<OrcamentoVO, String>> cellFoctory = (TableColumn<OrcamentoVO, String> param) -> {
+           // make cell containing buttons
+           final TableCell<OrcamentoVO, String> cell = new TableCell<OrcamentoVO, String>() {
+               @Override
+               public void updateItem(String item, boolean empty) {
+                   super.updateItem(item, empty);
+                   //that cell created only on non-empty rows
+                   if (empty) {
+                       setGraphic(null);
+                       setText(null);
+
+                   } else {
+                   	
+                   	try {
+                   		
+                   		FileInputStream input = new FileInputStream("src/view/VE/img/edit-2-outline.png");
+                           Image editIcon = new Image(input);
+                           ImageView editIconImg = new ImageView(editIcon); // Objeto para uso
+                           
+                           FileInputStream input2 = new FileInputStream("src/view/VE/img/trash-2-outline.png");
+                           Image removeIcon = new Image(input2);
+                           ImageView removeIconImg = new ImageView(removeIcon); // Objeto para uso
+                   		
+                   	editIconImg.setFitHeight(20);
+                   	editIconImg.setFitWidth(20);
+                   	editIconImg.setPreserveRatio(true);
+
+                       editIconImg.setStyle(
+                               " -fx-cursor: hand ;"
+                       );
+                       
+                       removeIconImg.setFitHeight(20);
+                   	removeIconImg.setFitWidth(20);
+                   	removeIconImg.setPreserveRatio(true);
+                   	
+                       removeIconImg.setStyle(
+                               " -fx-cursor: hand ;"
+                       );
+                       removeIconImg.setOnMouseClicked((MouseEvent event) -> {
+                               ormIcon = orcamentosTableView.getSelectionModel().getSelectedItem();
+                               orcamentos.remover(ormIcon);
+                               
+                               loadDataOrcamento();
+                               
+
+                       });
+                       editIconImg.setOnMouseClicked((MouseEvent event) -> {
+                           ormIcon = orcamentosTableView.getSelectionModel().getSelectedItem();
+                           System.out.println(ormIcon);
+                           FXMLLoader loader = new FXMLLoader ();
+                           loader.setLocation(getClass().getResource("../view/VE/addFXML/addOrcamento.fxml"));
+                           try {
+                               loader.load();
+                           } catch (IOException ex) {
+                               Logger.getLogger(Telas.class.getName()).log(Level.SEVERE, null, ex);
+                           }
+                           
+                           addBudgetController addOrcamentosController = loader.getController();
+                           addOrcamentosController.setUpdate(true);
+                           addOrcamentosController.setTextField(ormIcon.getClientName(), ormIcon.getAuto(), 
+                                   ormIcon.getCusto(), ormIcon.getServicos(), ormIcon.getData());
+                           Parent parent = loader.getRoot();
+                           Stage stage = new Stage();
+                           stage.setScene(new Scene(parent));
+                           stage.initStyle(StageStyle.UTILITY);
+                           stage.show();
+                           
+
+                       });
+
+                       HBox managebtn = new HBox(editIconImg, removeIconImg);
+                       managebtn.setStyle("-fx-alignment:center");
+                       HBox.setMargin(removeIconImg, new Insets(2, 2, 0, 3));
+                       HBox.setMargin(editIconImg, new Insets(2, 3, 0, 2));
+
+                       setGraphic(managebtn);
+
+                       setText(null);
+                   		
+                   	}catch(Exception e) {
+                   		System.out.println("ERRO:" + e);
+                   	}
+                  
+                   }
+               }
+
+           };
+
+           return cell;
+       };
+   	
+   	// ----------------------- END CREATE CELL FACTORY---------------------------------
 
 	// -------------------- Funções comuns ----------------------------------
 	 public void toClientes(ActionEvent event){

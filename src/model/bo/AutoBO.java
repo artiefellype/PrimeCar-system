@@ -37,7 +37,7 @@ public class AutoBO<VO extends AutoVO> {
 		return automoveis;
 	}
 	
-	public void listarByMarcaBO(VO auto){
+	public List<AutoVO> listarByMarcaBO(VO auto){
 		String marca = auto.getMarca();
 		List<AutoVO> l = autd.findByMarca(marca);	
 		for(AutoVO aut : l) {
@@ -48,9 +48,11 @@ public class AutoBO<VO extends AutoVO> {
 			System.out.println(aut.getQuilometragem());
 			System.out.println(aut.getProprietario());
 		}
+		
+		return l;
 	}
 	
-	public void listarByCorBO(VO auto){
+	public List<AutoVO> listarByCorBO(VO auto){
 		String cor = auto.getCor();
 		List<AutoVO> l = autd.findByCor(cor);	
 		for(AutoVO aut : l) {
@@ -61,6 +63,8 @@ public class AutoBO<VO extends AutoVO> {
 			System.out.println(aut.getQuilometragem());
 			System.out.println(aut.getProprietario());
 		}
+		
+		return l;
 	}
 	
 	public List<AutoVO> listarByPlacaBO(VO auto){
@@ -81,7 +85,7 @@ public class AutoBO<VO extends AutoVO> {
 		
 	}
 	
-	public void listarByAnoBO(VO auto){
+	public List<AutoVO> listarByAnoBO(VO auto){
 		Integer ano = auto.getAno();
 		List<AutoVO> l = autd.findByAno(ano);	
 		for(AutoVO aut : l) {
@@ -92,9 +96,11 @@ public class AutoBO<VO extends AutoVO> {
 			System.out.println(aut.getQuilometragem());
 			System.out.println(aut.getProprietario());
 		}
+		
+		return l;
 	}
 	
-	public void listarByKmBO(VO auto){
+	public List<AutoVO> listarByKmBO(VO auto){
 		Double km = auto.getQuilometragem();
 		List<AutoVO> l = autd.findByQuilom(km);	
 		for(AutoVO aut : l) {
@@ -105,6 +111,8 @@ public class AutoBO<VO extends AutoVO> {
 			System.out.println(aut.getQuilometragem());
 			System.out.println(aut.getProprietario());
 		}
+		
+		return l;
 	}
 	
 	public List<AutoVO> listarByClienteBO(VO cliente){

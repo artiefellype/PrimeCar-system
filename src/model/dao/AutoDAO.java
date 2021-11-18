@@ -207,7 +207,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByAno(Integer ano){
 		conect = getConnection();
-		String sql = "select * from auto where ano like '%" + ano + "%'" ;
+		String sql = "select * from auto where ano = " + ano + "" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -240,7 +240,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByQuilom(Double km){
 		conect = getConnection();
-		String sql = "select * from auto where quilometragem like '%" + km + "%'" ;
+		String sql = "select * from auto where quilometragem = " + km + " " ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
