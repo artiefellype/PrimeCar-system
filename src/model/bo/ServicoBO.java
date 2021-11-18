@@ -34,21 +34,17 @@ public class ServicoBO<VO extends ServicosVO> {
 		}
 	}
 	
-	public void remover(VO serv) throws Exception {
-		try {
+	public void remover(VO serv) {
+		
 			services.remover(serv);
 			System.out.println("Servico removido");
-		}catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
+		
 	}
 	
-	public void findByTipo(VO serv) throws Exception {
-		try {
-			services.findByTipo(serv);
-		}catch(Exception e){
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	public List<ServicosVO> findByTipo(VO serv) {
+		
+			return services.findByTipo(serv);
+		
 	}
 	
 	public List<ServicosVO> findByAuto(AutoVO auto) throws Exception {
@@ -59,7 +55,7 @@ public class ServicoBO<VO extends ServicosVO> {
 			return services.findByAuto(auto);
 		
 	}
-	
+	/*
 	public void findByPeca(PecasVO peca) throws Exception {
 		if(this.peca.findByNome(peca) == null) {
 			throw new Exception("Peca n�o encontrada");
@@ -71,7 +67,7 @@ public class ServicoBO<VO extends ServicosVO> {
 			System.out.println("ERRO: " + e.getMessage());
 		}
 	}
-	
+	*/
 	public void findByFinished(VO serv) throws Exception {
 		
 		try {

@@ -167,7 +167,7 @@ public class testBD {
 		servicosV.setValor(220.60);
 		servicosV.setFinalizado(true);
 		servicosV.setAuto(autoV);
-		servicosV.setPeca(pecaV);
+		//servicosV.setPeca(pecaV);
 		servicosV.setId(servicosD.getIdFromBD());
 		
 		//servicosD.inserir(servicosV);

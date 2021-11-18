@@ -36,7 +36,7 @@ public class OrcamentoBO<VO extends OrcamentoVO> {
 		}
 	}
 	
-	public void remover(VO orm) throws Exception {
+	public void remover(VO orm) {
 		try {
 			orcamento.remover(orm);
 			System.out.println("Orcamento removido");
@@ -60,23 +60,33 @@ public class OrcamentoBO<VO extends OrcamentoVO> {
 		
 	}
 	
-	public void findByClient(VO orm) throws Exception{
+	public List<OrcamentoVO> findByClient(VO orm){
 		if(this.client.findByCPF(orm.getClientName().getCPF()) == null) {
-			throw new Exception ("Cliente n�o encontrado");
+			System.out.println("Cliente n�o encontrado");
 		}
 		try {
 			orcamento.findByCliente(orm);
 		}catch(Exception e) {
 			System.out.println("Desista n�o, pegue outro ERRO: " + e.getMessage());
 		}
+		
+		return orcamento.findByCliente(orm);
 	}
 	
-	public void findByData(VO orm, String dataOne, String dataTwo) throws Exception {
+	public List<OrcamentoVO> findByData( String dataOne, String dataTwo){
 		try {
-			orcamento.findByData(orm, dataOne , dataTwo);
+			orcamento.findByData( dataOne , dataTwo);
 		}catch(Exception e){
 			System.out.println("Desista n�o, pegue outro ERRO: " + e.getMessage());
 		}
+		
+		return orcamento.findByData( dataOne , dataTwo);
+	}
+	
+	public List<OrcamentoVO> findByServico(VO orm){
+
+		return orcamento.findByServico(orm);
+
 	}
 
 }

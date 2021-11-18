@@ -27,7 +27,7 @@ public class AdminBO<VO extends AdminVO> {
         }
     }
 	
-	public boolean login(VO admin) throws Exception{
+	public boolean login(VO admin){
 		try {
 			AdminBO<VO> adminFind = new AdminBO<VO>();
 			List<AdminVO> findAdm = this.admin.findByName(admin);
@@ -57,6 +57,10 @@ public class AdminBO<VO extends AdminVO> {
 	public List<AdminVO> findByName(VO admin) throws Exception {
 		
 		return this.admin.findByName(admin);
+	}
+	public List<AdminVO> findByEmail(VO admin) throws Exception {
+		
+		return this.admin.findByEmail(admin);
 	}
 	
 	public AdminVO findByPass(VO admin) {

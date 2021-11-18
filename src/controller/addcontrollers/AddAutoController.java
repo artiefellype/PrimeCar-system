@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -36,6 +37,9 @@ public class AddAutoController {
     @FXML
     private TextField autoProprietarioField;
 
+    @FXML
+    private Label warningTextField;
+    
     private boolean update = false;
     Integer clienteId = 0;
     AutoBO<AutoVO> auto = new AutoBO<AutoVO>();
@@ -58,14 +62,21 @@ public class AddAutoController {
             
             // -------- get id from cliente --------------------
             clientev.setId(cli.listarByCPF(clientev).getId());
+            if(clientev.getId() == null) {
+            	warningTextField.setText("PROPRIETÁRIO INVÁLIDO");
+            }
             // -------- END get id from cliente --------------------
-            autov.setId(auto.getIdFromBD());
             autov.setMarca(autoMarcaField.getText());
             autov.setAno(Integer.parseInt(autoAnoField.getText()));
             autov.setCor(autoCorField.getText());
             autov.setPlaca(autoPlacaField.getText());
             autov.setQuilometragem(Double.parseDouble(autoKmField.getText()));
             autov.setProprietario(clientev);
+            
+            if(update== true) {
+            	autov.setId(auto.listarByClienteBO(autov).get(0).getId());
+            }
+           
 
 	        if (marca.isEmpty() || placa.isEmpty() || proprietario.isEmpty() || cor.isEmpty() || km.isEmpty() || ano.isEmpty()) {
 	            Alert alert = new Alert(Alert.AlertType.ERROR);

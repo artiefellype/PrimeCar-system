@@ -97,7 +97,7 @@ public class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	public List<ClienteVO> findByName(String name){
 		conect = getConnection();
-		String sql = "select * from clientes where nome like '" + name + "%'" ;
+		String sql = "select * from clientes where nome like '%" + name + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -125,7 +125,7 @@ public class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	public List<ClienteVO> findByCPF(String cpf){
 		conect = getConnection();
-		String sql = "select * from clientes where cpf like '" + cpf + "%'" ;
+		String sql = "select * from clientes where cpf like '%" + cpf + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -153,7 +153,7 @@ public class ClienteDAO<VO extends ClienteVO> extends BaseDAO<VO>{
 	
 	public List<ClienteVO> findByEndereco(String ende){
 		conect = getConnection();
-		String sql = "select * from clientes where endereco like '" + ende + "%'" ;
+		String sql = "select * from clientes where endereco like '%" + ende + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		

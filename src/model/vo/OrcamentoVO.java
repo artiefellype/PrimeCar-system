@@ -55,7 +55,6 @@ public class OrcamentoVO {
 		if(custo == null || custo.equals("")) {
 			
 		}else { 
-			if(custo > 0)  // N�o existe custo negativo
 				this.custo = custo;
 		}
 	}

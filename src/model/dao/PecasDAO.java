@@ -110,7 +110,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		conect = getConnection();
 		
 		String sql = "select * from pecas inner join auto on pecas.nome"
-					+ " like '" + peca.getName() + "%' and pecas.idauto = auto.idauto";
+					+ " like '%" + peca.getName() + "%' and pecas.idauto = auto.idauto";
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -142,7 +142,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	public List<PecasVO> findByFabricante(VO peca) {
 		conect = getConnection();
-		String sql = "select from pecas where fabricante like'" + peca.getFabricante() + "%'";
+		String sql = "select * from pecas where fabricante like'%" + peca.getFabricante() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -155,7 +155,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 				pecaV.setName(rs.getString("nome"));
 				pecaV.setFabricante(rs.getString("fabricante"));
 				pecaV.setPreco(rs.getDouble("preco"));
-				pecaV.setId(rs.getInt("id"));
+				pecaV.setId(rs.getInt("idpeca"));
 				pecas.add(pecaV);
 				
 			}
@@ -168,7 +168,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	public List<PecasVO> findByAuto(VO peca) {
 		conect = getConnection();
-		String sql = "select from pecas inner join auto on idauto like'" + peca.getAuto().getId() + "%' and pecas.idauto = auto.idauto";
+		String sql = "select * from pecas,auto  where auto.placa = '%" + peca.getAuto().getPlaca() + "%' and pecas.idauto = auto.idauto";
 		Statement st;
 		ResultSet rs;
 		List<PecasVO> pecas = new ArrayList<PecasVO>();
@@ -186,7 +186,67 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 				pecaV.setName(rs.getString("nome"));
 				pecaV.setFabricante(rs.getString("fabricante"));
 				pecaV.setPreco(rs.getDouble("preco"));
-				pecaV.setId(rs.getInt("id"));
+				pecaV.setId(rs.getInt("idpeca"));
+				pecas.add(pecaV);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pecas;
+	}
+	public List<PecasVO> findByPreco(VO peca) {
+		conect = getConnection();
+		String sql = "select * from pecas,auto  where preco = '" + peca.getPreco() + "' and pecas.idauto = auto.idauto";
+		Statement st;
+		ResultSet rs;
+		List<PecasVO> pecas = new ArrayList<PecasVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				PecasVO pecaV = new PecasVO();
+				AutoVO autoV = new AutoVO();
+				
+				autoV.setId(rs.getInt("idauto"));
+				autoV.setPlaca(rs.getString("placa"));
+				
+				pecaV.setName(rs.getString("nome"));
+				pecaV.setFabricante(rs.getString("fabricante"));
+				pecaV.setPreco(rs.getDouble("preco"));
+				pecaV.setId(rs.getInt("idpeca"));
+				pecas.add(pecaV);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pecas;
+	}
+	public List<PecasVO> findByAutoPl(AutoVO pl) {
+		conect = getConnection();
+		String sql = "select * from pecas,auto  where auto.placa = '%" + pl.getPlaca() + "%' and pecas.idauto = auto.idauto";
+		Statement st;
+		ResultSet rs;
+		List<PecasVO> pecas = new ArrayList<PecasVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				PecasVO pecaV = new PecasVO();
+				AutoVO autoV = new AutoVO();
+				
+				autoV.setId(rs.getInt("idauto"));
+				autoV.setPlaca(rs.getString("placa"));
+				
+				pecaV.setName(rs.getString("nome"));
+				pecaV.setFabricante(rs.getString("fabricante"));
+				pecaV.setPreco(rs.getDouble("preco"));
+				pecaV.setId(rs.getInt("idpeca"));
 				pecas.add(pecaV);
 				
 			}
@@ -200,7 +260,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	public void editar(VO peca) {
 		conect = getConnection();
-		String sql = "update peca set nome = ?, fabricante = ?, preco = ? where idpeca = ?";
+		String sql = "update pecas set nome = ?, fabricante = ?, preco = ? where idpeca = ?";
 		PreparedStatement ptst;
 		try {
 			

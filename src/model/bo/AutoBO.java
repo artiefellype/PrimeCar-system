@@ -63,17 +63,22 @@ public class AutoBO<VO extends AutoVO> {
 		}
 	}
 	
-	public void listarByPlacaBO(VO auto){
+	public List<AutoVO> listarByPlacaBO(VO auto){
 		String placa = auto.getPlaca();
-		List<AutoVO> l = autd.findByPlaca(placa);	
-		for(AutoVO aut : l) {
-			System.out.println(aut.getId());
-			System.out.println(aut.getMarca());
-			System.out.println(aut.getCor());
-			System.out.println(aut.getAno());
-			System.out.println(aut.getQuilometragem());
-			System.out.println(aut.getProprietario());
+		System.out.println("@>>>porcaria" + placa);
+		return autd.findByPlaca(placa);
+	}
+	
+	public AutoVO findByPlacaBO(VO auto){
+		String placa = auto.getPlaca();
+		AutoVO result = null;
+		if(placa == null) {
+			System.out.println("NNULO");
+		}else {
+			result = autd.findByPlaca(placa).get(0);
 		}
+		return result;
+		
 	}
 	
 	public void listarByAnoBO(VO auto){
@@ -102,18 +107,11 @@ public class AutoBO<VO extends AutoVO> {
 		}
 	}
 	
-	public void listarByClienteBO(VO cliente){
+	public List<AutoVO> listarByClienteBO(VO cliente){
 		
 		Integer id = cliente.getProprietario().getId();
-		List<AutoVO> l = autd.findByCliente(id);	
-		for(AutoVO aut : l) {
-			System.out.println(aut.getId());
-			System.out.println(aut.getMarca());
-			System.out.println(aut.getCor());
-			System.out.println(aut.getAno());
-			System.out.println(aut.getQuilometragem());
-			System.out.println(aut.getProprietario());
-		}
+		return autd.findByCliente(id);	
+		
 	}
 
 }

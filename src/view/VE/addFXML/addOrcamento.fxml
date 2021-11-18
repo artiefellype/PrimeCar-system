@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="761.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addcontrollers.AddOrcamentosController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="663.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addcontrollers.AddOrcamentosController">
    <children>
       <HBox prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="298.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="CLIENTE" />
+            <Label prefHeight="30.0" prefWidth="201.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="CLIENTE" />
          </children>
          <VBox.margin>
             <Insets left="50.0" />
@@ -41,7 +41,7 @@
       </HBox>
       <HBox layoutX="60.0" layoutY="70.0" prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="298.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="SERVIÇO" />
+            <Label prefHeight="30.0" prefWidth="200.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="SERVIÇO" />
          </children>
          <VBox.margin>
             <Insets left="50.0" top="20.0" />
@@ -54,7 +54,7 @@
                   <Image url="@../img/wrench%20(1).png" />
                </image>
             </ImageView>
-            <TextField fx:id="orcamentosServiçoField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+            <TextField fx:id="orcamentosServicoField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -66,13 +66,13 @@
       </HBox>
       <HBox prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="226.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="VALOR" />
+            <Label prefHeight="30.0" prefWidth="146.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="VALOR" />
          </children>
          <VBox.margin>
             <Insets left="75.0" top="20.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="44.0" prefWidth="732.0">
          <children>
             <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -93,7 +93,7 @@
       </HBox>
       <HBox prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="333.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="VEÍCULO(PLACA)" />
+            <Label prefHeight="30.0" prefWidth="237.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="VEÍCULO(PLACA)" />
          </children>
          <VBox.margin>
             <Insets left="70.0" />
@@ -115,19 +115,22 @@
       </HBox>
       <HBox prefHeight="30.0" prefWidth="550.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="250.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="DATA" />
+            <Label prefHeight="30.0" prefWidth="163.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="DATA " />
          </children>
          <VBox.margin>
-            <Insets left="60.0" />
+            <Insets left="60.0" top="20.0" />
          </VBox.margin>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <DatePicker fx:id="orcamentoDataField" prefHeight="66.0" prefWidth="309.0" />
-         </children>
+      <HBox fx:id="orcam" prefHeight="44.0" prefWidth="508.0" spacing="30.0">
          <VBox.margin>
-            <Insets left="155.0" />
+            <Insets left="110.0" />
          </VBox.margin>
+         <children>
+            <DatePicker fx:id="orcamentosDatepickerStart" prefHeight="26.0" prefWidth="200.0" stylesheets="@../stylesheets/DatePickerStylesheet.css" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
       </HBox>
       <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0" spacing="60.0">
          <VBox.margin>

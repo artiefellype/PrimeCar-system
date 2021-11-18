@@ -28,18 +28,20 @@ public class AddClienteController {
     ClienteBO<ClienteVO> cliente = new ClienteBO<ClienteVO>();
     
     @FXML
-    private void adicionar(MouseEvent event) {
+    public void adicionar(MouseEvent event) {
 
         String nome = clienteNameField.getText();
         String cpf = clienteCpfField.getText();
         String endereco = clienteEnderecoField.getText();
         
         ClienteVO clientev = new ClienteVO();
-        
+        clientev.search(true);
         clientev.setCPF(cpf);
-        clientev.setId(cliente.listarByCPF(clientev).getId());
         clientev.setName(nome);
         clientev.setEndereco(endereco);
+        if(update== true) {
+        	clientev.setId(cliente.findByCPF(clientev).get(0).getId());
+        }
 
         if (nome.isEmpty() || cpf.isEmpty() || endereco.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

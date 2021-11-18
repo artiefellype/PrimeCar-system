@@ -6,7 +6,6 @@ public class ServicosVO {
 	private Double valor;
 	private Boolean finalizado;
 	private AutoVO auto;
-	private PecasVO peca;
 	
 	
 	
@@ -58,19 +57,6 @@ public class ServicosVO {
 			
 		}else {
 			this.auto = auto;
-		}
-		
-	}
-	
-	
-	public PecasVO getPeca() {
-		return peca;
-	}
-	public void setPeca(PecasVO peca) {
-		if(peca == null) {
-			
-		}else {
-			this.peca = peca;
 		}
 		
 	}

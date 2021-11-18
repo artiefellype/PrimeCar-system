@@ -16,7 +16,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 
 	public void inserir(ServicosVO servicos) {
 		conect = getConnection();
-		String sql = "insert into servicos (tipo, valor, finalizado, idauto, idpeca ) values (?,?,?,?,?)";
+		String sql = "insert into servicos (tipo, valor, finalizado, idauto ) values (?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			
@@ -25,7 +25,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 			ptst.setDouble(2, servicos.getValor());
 			ptst.setBoolean(3, servicos.getFinalizado());
 			ptst.setInt(4, servicos.getAuto().getId());
-			ptst.setInt(5, servicos.getPeca().getId());
+			//ptst.setInt(5, servicos.getPeca().getId());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -64,11 +64,11 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 
 	public void remover(VO servicos) {
 		conect = getConnection();
-		String sql = "delete from servicos where idservico = ?";
+		String sql = "delete from servicos where tipo = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, servicos.getId());
+			ptst.setString(1, servicos.getTipo());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		
@@ -115,7 +115,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 	
 	public List<ServicosVO> findByTipo(VO tipo) {
 		conect = getConnection();
-		String sql = "select * from servicos where tipo like '" + tipo.getTipo() + "%'";
+		String sql = "select * from servicos where tipo like '%" + tipo.getTipo() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -135,7 +135,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 				servicos.setFinalizado(rs.getBoolean("finalizado"));
 				servicos.setId(rs.getInt("idservico"));
 				servicos.setAuto(auto);
-				servicos.setPeca(peca);
+				//servicos.setPeca(peca);
 				servico.add(servicos);
 				
 			}
@@ -168,7 +168,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 				servicos.setFinalizado(rs.getBoolean("finalizado"));
 				servicos.setId(rs.getInt("idservico"));
 				servicos.setAuto(auto);
-				servicos.setPeca(peca);
+				//servicos.setPeca(peca);
 				servico.add(servicos);
 				
 			}
@@ -181,7 +181,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 	
 	public List<ServicosVO> findByAuto(AutoVO auto) {
 		conect = getConnection();
-		String sql = "select * from servicos where idauto like '" + auto.getId() + "%'";
+		String sql = "select * from servicos where idauto like '%" + auto.getId() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -201,7 +201,7 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 				servicos.setFinalizado(rs.getBoolean("finalizado"));
 				servicos.setId(rs.getInt("idservico"));
 				servicos.setAuto(autoV);
-				servicos.setPeca(peca);
+				//servicos.setPeca(peca);
 				servico.add(servicos);
 				
 			}
@@ -211,10 +211,10 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		}
 		return servico;
 	}
-	
+	/*
 	public List<ServicosVO> findByPeca(PecasVO peca) {
 		conect = getConnection();
-		String sql = "select * from servicos where idpeca like '" + peca.getId() + "%'";
+		String sql = "select * from servicos where idpeca like '%" + peca.getId() + "%'";
 		Statement st;
 		ResultSet rs;
 		List<ServicosVO> servico = new ArrayList<ServicosVO>();
@@ -244,11 +244,11 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 		}
 		return servico;
 	}
-	
+	*/
 	
 	public void editar(VO servicos) {
 		conect = getConnection();
-		String sql = "update servicos set tipo = ?, valor = ?, finalizado = ?, idauto = ?, idpeca = ? where idservico= ?";
+		String sql = "update servicos set tipo = ?, valor = ?, finalizado = ?, idauto = ? where idservico= ?";
 		PreparedStatement ptst;
 		
 		try {
@@ -257,8 +257,8 @@ public class ServicosDAO<VO extends ServicosVO> extends BaseDAO<VO> {
 			ptst.setDouble(2, servicos.getValor());
 			ptst.setBoolean(3, servicos.getFinalizado());
 			ptst.setInt(4, servicos.getAuto().getId());
-			ptst.setInt(5, servicos.getPeca().getId());
-			ptst.setInt(6, servicos.getId());
+			//ptst.setInt(5, servicos.getPeca().getId());
+			ptst.setInt(5, servicos.getId());
 			ptst.execute();
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block

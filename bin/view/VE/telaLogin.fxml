@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <Pane prefHeight="800.0" prefWidth="640.0" style="-fx-background-color: #fff;">
+      <Pane prefHeight="800.0" prefWidth="640.0" style="-fx-background-color: #fff;" stylesheets="@stylesheets/TextFiledsStylesheet.css">
          <children>
             
             <ImageView fitHeight="177.0" fitWidth="202.0" layoutX="229.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +35,7 @@
                   <Font size="20.0" />
                </font></Label>
             <PasswordField id="passBar" fx:id="passText" layoutX="121.0" layoutY="414.0" prefHeight="65.0" prefWidth="377.0" style="-fx-background-radius: 30px; -fx-background-color: #fff; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-font-size: 20px;" />
-            <Hyperlink id="hiperlinkForgotPassword" layoutX="355.0" layoutY="483.0" prefHeight="27.0" prefWidth="138.0" text="Esqueceu a senha?">
+            <Hyperlink id="hiperlinkForgotPassword" layoutX="355.0" layoutY="483.0" onAction="#toRecuperacao" onMouseClicked="#toRecuperacao" prefHeight="27.0" prefWidth="138.0" text="Esqueceu a senha?">
                <font>
                   <Font size="15.0" />
                </font></Hyperlink>
@@ -43,10 +43,11 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button id="cadastroButton" fx:id="cadButton" layoutX="202.0" layoutY="646.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #FFF; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" text="CADASTRE-SE" textFill="#2a24bf">
+            <Button id="cadastroButton" fx:id="cadButton" layoutX="202.0" layoutY="646.0" mnemonicParsing="false" onAction="#toCadastro" onMouseClicked="#toCadastro" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #FFF; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" text="CADASTRE-SE" textFill="#2a24bf">
                <font>
                   <Font size="20.0" />
                </font></Button>
+            <Label fx:id="warningTextField" layoutX="136.0" layoutY="514.0" prefHeight="36.0" prefWidth="361.0" />
          </children>
       </Pane>
       <Pane layoutX="640.0" prefHeight="800.0" prefWidth="640.0" style="-fx-background-color: #433DF2;">

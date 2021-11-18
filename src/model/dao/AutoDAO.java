@@ -109,7 +109,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	
 	public List<AutoVO> findByMarca(String marca){
 		conect = getConnection();
-		String sql = "select * from auto where marca like '" + marca + "%'" ;
+		String sql = "select * from auto where marca like '%" + marca + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -142,7 +142,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByCor(String cor){
 		conect = getConnection();
-		String sql = "select * from auto where cor like '" + cor + "%'" ;
+		String sql = "select * from auto where cor like '%" + cor + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -175,7 +175,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByPlaca(String placa){
 		conect = getConnection();
-		String sql = "select * from auto where placa like '" + placa + "%'" ;
+		String sql = "select * from auto where placa like '%" + placa + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -207,7 +207,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByAno(Integer ano){
 		conect = getConnection();
-		String sql = "select * from auto where ano like '" + ano + "%'" ;
+		String sql = "select * from auto where ano like '%" + ano + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -240,7 +240,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByQuilom(Double km){
 		conect = getConnection();
-		String sql = "select * from auto where quilometragem like '" + km + "%'" ;
+		String sql = "select * from auto where quilometragem like '%" + km + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -272,7 +272,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByCliente(Integer idClient){
 		conect = getConnection();
-		String sql = "select * from auto where idcliente like '" + idClient + "%'" ;
+		String sql = "select * from auto where idcliente = " + idClient + "" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		

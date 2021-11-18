@@ -90,15 +90,21 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="400.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="400.0" layoutY="167.0" onMouseClicked="#addDataAuto" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/plus-square-outline.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="349.0" layoutY="167.0" onMousePressed="#loadDataAuto" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/refresh-outline-white.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
 </Pane>

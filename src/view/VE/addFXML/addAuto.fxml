@@ -85,6 +85,7 @@
             </TextField>
          </children>
       </HBox>
+      <Label fx:id="warningTextField" prefHeight="30.0" prefWidth="447.0" />
       <HBox alignment="CENTER" prefHeight="74.0" prefWidth="627.0" spacing="60.0">
          <VBox.margin>
             <Insets top="40.0" />

@@ -66,7 +66,7 @@ public class PecasVO {
 	}
 	public void setAuto(AutoVO auto) {
 		if(auto == null) {
-			
+			System.out.println("O set auto ta null");
 		}else {
 			this.auto = auto;
 		}

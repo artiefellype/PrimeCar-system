@@ -1,25 +1,15 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import model.bo.AdminBO;
-import model.bo.AutoBO;
-import model.bo.ClienteBO;
-import model.bo.ServicoBO;
 import model.vo.AdminVO;
-import model.vo.AutoVO;
-import model.vo.ClienteVO;
-import model.vo.ServicosVO;
 import view.Telas;
 
 public class LoginController{
@@ -31,9 +21,11 @@ public class LoginController{
 	    private TextField loginText;
 	    @FXML
 	    private PasswordField passText;
+	    @FXML
+	    private Label warningTextField;
 	    
 	    AdminBO<AdminVO> admin = new AdminBO<AdminVO>();
-	    
+	    private Boolean exist = false;
 	    // Realizar login com admin cadastrado
 	    
 	    public void autenticate(ActionEvent event) {
@@ -42,19 +34,18 @@ public class LoginController{
 	    	adm.setSenha(passText.getText());
 	    	System.out.println("Foi");
 	    	
-	    	try {
-	    		if(admin.login(adm)) {
+	    	//Abrir splashScreen
+	    	if(admin.login(adm)) {
+	    		try {
 	    			Telas.telaDeSplash();
-	    			//Abrir splashScreen
-	    		}else {
-	    			throw new Exception("Administrador não encontrado");
+	    		}catch(Exception e) {
+	    			System.out.println("ERRO@>> " + e);
 	    		}
-	    	}catch(Exception e) {
-	    		System.out.print(e);
+	    		
+	    	}else{
+	    		warningTextField.setText("NOME OU SENHA INCORRETOS");
 	    	}
-	    	
-	    }
-	    
+	    } 
 	 // ---------------- END Admin functions --------------------------
 	  /*   
 	 // ---------------- Clientes functions --------------------------
@@ -347,7 +338,9 @@ public class LoginController{
 		 
 	  // ---------------- END Servicos functions --------------------------
 	    
-		
+		public void exist(Boolean value) {
+			this.exist = value;
+		}
 	    public void toClientes(ActionEvent event){
 	    	try {
 	    		Telas.telaDeClientes();
@@ -394,6 +387,22 @@ public class LoginController{
 	    		Telas.telaDeLogin();
 	    	}catch(Exception e) {
 	    		System.out.println(e);
+	    	}
+	    	
+	    }
+	    public void toCadastro(ActionEvent event){
+	    	try {
+	    		Telas.telaDeCadastro();
+	    	}catch(Exception e) {
+	    		System.out.println("ERRO@>" + e);
+	    	}
+	    	
+	    }
+	    public void toRecuperacao(ActionEvent event){
+	    	try {
+	    		Telas.telaDeRecuperacao();
+	    	}catch(Exception e) {
+	    		System.out.println("ERRO@>" + e);
 	    	}
 	    	
 	    }

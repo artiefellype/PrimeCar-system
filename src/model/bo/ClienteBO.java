@@ -10,68 +10,46 @@ public class ClienteBO<VO extends ClienteVO> {
 	
 	public void inserirBO(VO client) {
 		cli.inserir(client);
+		System.out.println("cliente Inserido");
 	}
 	
 	public void editarBO(VO client) {
 		cli.editar(client);
+		System.out.println("cliente editado");
 	}
 	
 	public void removerBO(VO client) {
 		cli.remover(client);
+		System.out.println("cliente removido");
 	}
 	
 	public List<ClienteVO> listarBO() {
-		List<ClienteVO> clientes = cli.listar();
-		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
-		
-		return clientes;
+		return cli.listar();
 	}
 	
-	public void listarByNome(VO client) {
+	public List<ClienteVO> listarByNome(VO client) {
 		String nome = client.getName();
-		List<ClienteVO> clientes = cli.findByName(nome);
 		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
+		return cli.findByName(nome);
+		
 	}
 	
 	public ClienteVO listarByCPF(VO client) {
-		String cpf = client.getCPF();
-		List<ClienteVO> clientes = cli.findByCPF(cpf);
+		List<ClienteVO> clientes = cli.findByCPF(client.getCPF());
 		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
 		return clientes.get(0);
 	}
+	public List<ClienteVO> findByCPF(VO client) {
+		System.out.println("CPFLISTA@>>>>>" + cli.findByCPF(client.getCPF()));
+		return cli.findByCPF(client.getCPF());
+	}
 	
-	public void listarByEndereco(VO client) {
+	public List<ClienteVO> listarByEndereco(VO client) {
 		String endereco = client.getEndereco();
 		List<ClienteVO> clientes = cli.findByEndereco(endereco);
+		return clientes;
 		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
+		
 	}
 	
 }
