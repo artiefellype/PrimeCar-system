@@ -6,9 +6,10 @@ public class ServicosVO {
 	private Double valor;
 	private Boolean finalizado;
 	private AutoVO auto;
-	private PecasVO peca;
 	
-	// ------------------- ID do Serviço ----------------------------
+	
+	
+	// ------------------- ID do Serviï¿½o ----------------------------
 	public Integer getId() {
 		return id;
 	}
@@ -21,7 +22,7 @@ public class ServicosVO {
 		
 	}
 
-	//------------------Tipo do serviço-----------------------
+	//------------------Tipo do serviï¿½o-----------------------
 	public String getTipo() {
 		return tipo;
 	}
@@ -34,7 +35,7 @@ public class ServicosVO {
 		
 	}
 	
-	//-------------------Valor do serviço------------------------------------
+	//-------------------Valor do serviï¿½o------------------------------------
 	public Double getValor() {
 		return valor;
 	}
@@ -59,20 +60,7 @@ public class ServicosVO {
 		}
 		
 	}
-	
-	
-	public PecasVO getPeca() {
-		return peca;
-	}
-	public void setPeca(PecasVO peca) {
-		if(peca == null) {
-			
-		}else {
-			this.peca = peca;
-		}
-		
-	}
-	//------------------ Verificação ----------------------------------------
+	//------------------ Verificaï¿½ï¿½o ----------------------------------------
 	public Boolean getFinalizado() {
 		return finalizado;
 	}

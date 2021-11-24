@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="640.0" style="-fx-background-color: #fff;">
+         <children>
+            
+            <ImageView fitHeight="128.0" fitWidth="118.0" layoutX="251.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Imagem-Engrenagem-PNG.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="240.0" layoutY="144.0" prefHeight="27.0" prefWidth="134.0" style="-fx-alignment: center;" text="PRIME CAR" textAlignment="CENTER">
+               <font>
+                  <Font name="Monospaced Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="113.0" layoutY="169.0" prefHeight="36.0" prefWidth="76.0" text="NOME" textFill="#2a24bf">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></Label>
+            <TextField id="textArea" fx:id="cadastroNomeField" layoutX="117.0" layoutY="199.0" prefHeight="65.0" prefWidth="377.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-alignment: left; -fx-font-size: 20px;" />
+            <Label layoutX="115.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" text="EMAIL" textFill="#2a24bf">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
+            <Button id="loginButton" fx:id="registerButton" layoutX="193.0" layoutY="570.0" mnemonicParsing="false" onMousePressed="#register" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #2A24BF; -fx-background-radius: 30px;" text="CADASTRAR" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button id="cadastroButton" fx:id="backButton" layoutX="191.0" layoutY="646.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #FFF; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" text="VOLTAR" textFill="#2a24bf">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Label layoutX="117.0" layoutY="411.0" prefHeight="36.0" prefWidth="88.0" text="SENHA" textFill="#2a24bf">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <PasswordField id="passBar" fx:id="cadastroSenhaField" layoutX="119.0" layoutY="445.0" prefHeight="65.0" prefWidth="377.0" style="-fx-background-radius: 30px; -fx-background-color: #fff; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-font-size: 20px;" />
+            <TextField id="textArea" fx:id="cadastroEmailField" layoutX="118.0" layoutY="319.0" prefHeight="65.0" prefWidth="377.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-alignment: left; -fx-font-size: 20px;" />
+            <Label fx:id="warningTextField" layoutX="137.0" layoutY="523.0" prefHeight="27.0" prefWidth="343.0" stylesheets="@stylesheets/TextFiledsStylesheet.css" />
+         </children>
+      </Pane>
+      <Pane layoutX="640.0" prefHeight="800.0" prefWidth="640.0" style="-fx-background-color: #433DF2;">
+         <children>
+            <ImageView fitHeight="782.0" fitWidth="616.0" layoutX="12.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/d9e69b67e9c92aa71016106ce0ca9d8c.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>

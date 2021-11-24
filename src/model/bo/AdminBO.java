@@ -5,22 +5,20 @@ import java.util.List;
 
 import model.dao.AdminDAO;
 import model.vo.AdminVO;
-import model.vo.ClienteVO;
 
-public class AdminBO {
+public class AdminBO<VO extends AdminVO> {
 	AdminDAO<AdminVO> admin = new AdminDAO<AdminVO>();
 	
-	public boolean cadastrar(AdminVO admin) throws Exception{
+	public boolean cadastrar(VO admin) throws Exception{
         try {
         	
-            if(!this.admin.findByEmail(admin).isEmpty() ) {
-                throw new Exception("Ja existe um administrador com esse email");
-            }
+            if(!this.admin.findByEmail(admin).isEmpty() || !this.admin.findByName(admin).isEmpty()) {
+                throw new Exception("Ja existe um administrador com esse nome ou email");
+            }else {
             	this.admin.inserir(admin); 
             	return true;
-            
-        	
-
+            }
+            	
             
         } catch(Exception err) {
             //Handle exception.
@@ -29,7 +27,25 @@ public class AdminBO {
         }
     }
 	
-	public void editar(AdminVO admin) throws Exception {
+	public boolean login(VO admin){
+		try {
+			AdminBO<VO> adminFind = new AdminBO<VO>();
+			List<AdminVO> findAdm = this.admin.findByName(admin);
+			if(!findAdm.isEmpty()){
+				if( admin.getSenha().equals(adminFind.findByPass(admin).getSenha())) {
+					return true;
+				}
+			}else {
+				return false;
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
+	public void editar(VO admin) throws Exception {
 		try {
 			this.admin.editarSenha(admin);
 			System.out.println("Administrador editado");
@@ -38,16 +54,32 @@ public class AdminBO {
 		}
 	}
 	
-	public void findByName(AdminVO admin) throws Exception {
-		try {
-			this.admin.findByName(admin);
-		}catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	public List<AdminVO> findByName(VO admin) throws Exception {
 		
+		return this.admin.findByName(admin);
+	}
+	public List<AdminVO> findByEmail(VO admin) throws Exception {
+		
+		return this.admin.findByEmail(admin);
 	}
 	
-	public void remover(AdminVO admin) throws Exception {
+	public AdminVO findByPass(VO admin) {
+		
+            AdminVO findedUser = new AdminVO();
+            
+            List<AdminVO> findAdmin = this.admin.findByName(admin);
+            
+            findedUser = findAdmin.get(0);
+            
+            if(findedUser == null) {
+            	return null;
+            }else {
+            	return findedUser;
+            }
+     
+	}
+	
+	public void remover(VO admin) throws Exception {
 		try {
 			this.admin.remover(admin);
 			System.out.println("Administrador removido");

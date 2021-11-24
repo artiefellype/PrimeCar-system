@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="640.0" style="-fx-background-color: #fff;" stylesheets="@stylesheets/TextFiledsStylesheet.css">
+         <children>
+            
+            <ImageView fitHeight="177.0" fitWidth="202.0" layoutX="229.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Imagem-Engrenagem-PNG.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="202.0" layoutY="191.0" prefHeight="56.0" prefWidth="205.0" style="-fx-alignment: center;" text="PRIME CAR" textAlignment="CENTER">
+               <font>
+                  <Font name="Monospaced Bold" size="37.0" />
+               </font>
+            </Label>
+            <Label layoutX="116.0" layoutY="268.0" prefHeight="36.0" prefWidth="76.0" text="NOME">
+               <font>
+                  <Font size="21.0" />
+               </font></Label>
+            <TextField id="textArea" fx:id="loginText" layoutX="120.0" layoutY="298.0" prefHeight="65.0" prefWidth="377.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-alignment: left; -fx-font-size: 20px;" />
+            <Label layoutX="119.0" layoutY="380.0" prefHeight="36.0" prefWidth="88.0" text="SENHA">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <PasswordField id="passBar" fx:id="passText" layoutX="121.0" layoutY="414.0" prefHeight="65.0" prefWidth="377.0" style="-fx-background-radius: 30px; -fx-background-color: #fff; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-font-size: 20px;" />
+            <Hyperlink id="hiperlinkForgotPassword" layoutX="355.0" layoutY="483.0" onAction="#toRecuperacao" onMouseClicked="#toRecuperacao" prefHeight="27.0" prefWidth="138.0" text="Esqueceu a senha?">
+               <font>
+                  <Font size="15.0" />
+               </font></Hyperlink>
+            <Button id="loginButton" fx:id="loginButton" layoutX="204.0" layoutY="569.0" mnemonicParsing="false" onAction="#autenticate" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #2A24BF; -fx-background-radius: 30px;" text="LOGIN" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button id="cadastroButton" fx:id="cadButton" layoutX="202.0" layoutY="646.0" mnemonicParsing="false" onAction="#toCadastro" onMouseClicked="#toCadastro" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #FFF; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" text="CADASTRE-SE" textFill="#2a24bf">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Label fx:id="warningTextField" layoutX="136.0" layoutY="514.0" prefHeight="36.0" prefWidth="361.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="640.0" prefHeight="800.0" prefWidth="640.0" style="-fx-background-color: #433DF2;">
+         <children>
+            <ImageView fitHeight="782.0" fitWidth="616.0" layoutX="12.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/d9e69b67e9c92aa71016106ce0ca9d8c.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>

@@ -61,7 +61,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public void remover(VO orc) {
 		conect = getConnection();
-		String sql = "delete from orcamentos where idorc = ?";
+		String sql = "delete from orcamentos where idorm = ?";
 		PreparedStatement ptst;
 		try {
 			
@@ -77,7 +77,10 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public List<OrcamentoVO> listar() {
 		conect = getConnection();
-		String sql = "select * from orcamentos";
+		String sql = "select * from orcamentos, auto, servicos, clientes where "
+				+ "orcamentos.idcliente = clientes.idcliente and "
+				+ "orcamentos.idauto = auto.idauto and "
+				+ "orcamentos.idservico = servicos.idservico";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -90,12 +93,21 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 				ClienteVO cliente = new ClienteVO();
 				ServicosVO servico = new ServicosVO();
 				AutoVO auto = new AutoVO();
+				
 				Calendar data = Calendar.getInstance();
 				
 				data.setTimeInMillis(rs.getDate("data").getTime());
+				
 				cliente.setId(rs.getInt("idcliente"));
-				servico.setId(rs.getInt("idservico"));
+				cliente.setName(rs.getString("nome"));
+				cliente.setCPF(rs.getString("cpf"));
+				
 				auto.setId(rs.getInt("idauto"));
+				auto.setPlaca(rs.getString("placa"));
+				
+				servico.setTipo(rs.getString("tipo"));
+				servico.setValor(rs.getDouble("valor"));
+				servico.setId(rs.getInt("idservico"));
 				
 				orcamento.setCusto(rs.getDouble("custo"));
 				orcamento.setData(data);
@@ -113,9 +125,9 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 		return orc;
 	}
 	
-	public List<OrcamentoVO> findByData(VO orca, String dataInit, String dataEnd) {
+	public List<OrcamentoVO> findByData( String dataInit, String dataEnd) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idcliente =" + orca.getClientName().getId() + " and data between '"+ dataInit +"' "
+		String sql = "select * from orcamentos where data between '"+ dataInit +"' "
 						+ " and '"+dataEnd+"'";
 		
 		Statement st;
@@ -156,7 +168,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public List<OrcamentoVO> findByCliente(VO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idcliente like'" + orca.getClientName().getId() + "%'";
+		String sql = "select * from orcamentos where idcliente = " + orca.getClientName().getId() + "";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -194,7 +206,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public List<OrcamentoVO> findByAuto(VO orca) {
 		conect = getConnection();
-		String sql = "select * from orcamentos where idauto like'" + orca.getAuto().getId() + "%'";
+		String sql = "select * from orcamentos where idauto = " + orca.getAuto().getId() + "";
 		Statement st;
 		ResultSet rs;
 		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
@@ -232,7 +244,7 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 	
 	public void editar(VO orc) {
 		conect = getConnection();
-		String sql = "update orcamentos set custo = ?, set data = ?, set idcliente = ?, setidauto = ? where idorm= ?";
+		String sql = "update orcamentos set custo = ?, data = ?, idcliente = ?, idauto = ? where idorm= ?";
 		PreparedStatement ptst;
 		try {
 			
@@ -249,6 +261,45 @@ public class OrcamentoDAO<VO extends OrcamentoVO> extends BaseDAO<VO> {
 			e.printStackTrace();
 		}
 	}
+	
+	public List<OrcamentoVO> findByServico(VO orca) {
+		conect = getConnection();
+		String sql = "select * from orcamentos where idservico = " + orca.getServicos().getId() + "";
+		Statement st;
+		ResultSet rs;
+		List<OrcamentoVO> orc = new ArrayList<OrcamentoVO>();
+		
+		try {
+			st = conect.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				OrcamentoVO orcamento = new OrcamentoVO();
+				ClienteVO cliente = new ClienteVO();
+				ServicosVO servico = new ServicosVO();
+				AutoVO auto = new AutoVO();
+				Calendar data = Calendar.getInstance();
+				data.setTimeInMillis(rs.getDate("data").getTime());
+				
+				cliente.setId(rs.getInt("idcliente"));
+				servico.setId(rs.getInt("idservico"));
+				auto.setId(rs.getInt("idauto"));
+				
+				orcamento.setCusto(rs.getDouble("custo"));
+				orcamento.setData(data);
+				orcamento.setId(rs.getInt("idorm"));
+				orcamento.setClientName(cliente);
+				orcamento.setServicos(servico);
+				orcamento.setAuto(auto);
+				orc.add(orcamento);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return orc;
+	}
+
 }
 
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecuperacaoController">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="1279.0" style="-fx-background-color: #fff;">
+         <children>
+            
+            <ImageView fitHeight="128.0" fitWidth="118.0" layoutX="592.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Imagem-Engrenagem-PNG.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="584.0" layoutY="196.0" prefHeight="27.0" prefWidth="134.0" style="-fx-alignment: center;" text="PRIME CAR" textAlignment="CENTER">
+               <font>
+                  <Font name="Monospaced Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="561.0" layoutY="270.0" prefHeight="36.0" prefWidth="188.0" text="INSIRA SEU EMAIL" textFill="#2a24bf">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></Label>
+            <TextField id="textArea" fx:id="recuperaEmailField" layoutX="320.0" layoutY="324.0" prefHeight="65.0" prefWidth="707.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px; -fx-alignment: left; -fx-font-size: 20px;" />
+            <Button id="loginButton" fx:id="sendButton" layoutX="537.0" layoutY="580.0" mnemonicParsing="false" onMousePressed="#sendEmail" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #2A24BF; -fx-background-radius: 30px;" text="ENVIAR" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button id="cadastroButton" fx:id="backButton" layoutX="535.0" layoutY="656.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #FFF; -fx-background-radius: 30px; -fx-border-color: #2A24BF; -fx-border-radius: 30px;" text="VOLTAR" textFill="#2a24bf">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Label fx:id="warningTextField" layoutX="337.0" layoutY="396.0" prefHeight="63.0" prefWidth="681.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

@@ -57,13 +57,14 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 		
 	}
 	
+	
 	public void remover(VO automovel) {
 		conect = getConnection();
-		String sql = "delete from auto where idauto = ?";
+		String sql = "delete from auto where placa = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conect.prepareStatement(sql);
-			ptst.setInt(1, automovel.getId());
+			ptst.setString(1, automovel.getPlaca());
 			ptst.executeUpdate();
 			} catch (SQLException e) {
 		
@@ -75,7 +76,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	
 	public List<AutoVO> listar() {
 		conect = getConnection();
-		String sql = "select * from auto";
+		String sql = "select * from auto,clientes where auto.idcliente = clientes.idcliente ";
 		Statement st;
 		ResultSet rs;
 		List<AutoVO> auto = new ArrayList<AutoVO>();
@@ -85,14 +86,17 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				AutoVO automovel = new AutoVO();
+				ClienteVO cliente = new ClienteVO();
 				
+				cliente.setCPF(rs.getString("cpf"));
+				cliente.setId(rs.getInt("idcliente"));
 				automovel.setId(rs.getInt("idauto"));
 				automovel.setMarca(rs.getString("marca"));
 				automovel.setCor(rs.getString("cor"));
 				automovel.setPlaca(rs.getString("placa"));
 				automovel.setAno(rs.getInt("ano"));
 				automovel.setQuilometragem(rs.getDouble("quilometragem"));
-				automovel.getProprietario().setId(rs.getInt("idcliente"));
+				automovel.setProprietario(cliente);
 				auto.add(automovel);
 				
 			}
@@ -105,7 +109,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	
 	public List<AutoVO> findByMarca(String marca){
 		conect = getConnection();
-		String sql = "select * from auto where marca like '" + marca + "%'" ;
+		String sql = "select * from auto where marca like '%" + marca + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -138,7 +142,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByCor(String cor){
 		conect = getConnection();
-		String sql = "select * from auto where cor like '" + cor + "%'" ;
+		String sql = "select * from auto where cor like '%" + cor + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -171,7 +175,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByPlaca(String placa){
 		conect = getConnection();
-		String sql = "select * from auto where placa like '" + placa + "%'" ;
+		String sql = "select * from auto where placa like '%" + placa + "%'" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -203,7 +207,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByAno(Integer ano){
 		conect = getConnection();
-		String sql = "select * from auto where ano like '" + ano + "%'" ;
+		String sql = "select * from auto where ano = " + ano + "" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -236,7 +240,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByQuilom(Double km){
 		conect = getConnection();
-		String sql = "select * from auto where quilometragem like '" + km + "%'" ;
+		String sql = "select * from auto where quilometragem = " + km + " " ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -268,7 +272,7 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public List<AutoVO> findByCliente(Integer idClient){
 		conect = getConnection();
-		String sql = "select * from auto where idcliente like '" + idClient + "%'" ;
+		String sql = "select * from auto where idcliente = " + idClient + "" ;
 		ResultSet rs;
 		PreparedStatement ptst;
 		
@@ -300,18 +304,18 @@ public class AutoDAO<VO extends AutoVO> extends BaseDAO<VO>{
 	}
 	public void editar(VO automovel) {
 		conect = getConnection();
-		String sql = "update auto set marca = ?, set cor = ?, set placa = ?, set ano = ?, set quilometragem = ?, set idcliente = ? where idauto= ?";
+		String sql = "update auto set marca = ?, cor = ?, placa = ?, ano = ?, quilometragem = ?, idcliente = ? where idauto= ?";
 		PreparedStatement ptst;
 		
 		try {
 			ptst = conect.prepareStatement(sql);
 			ptst.setString(1, automovel.getMarca());
-			ptst.setString(1, automovel.getCor());
-			ptst.setString(1, automovel.getPlaca());
-			ptst.setInt(1, automovel.getAno());
-			ptst.setDouble(1, automovel.getQuilometragem());
-			ptst.setInt(1, automovel.getProprietario().getId());
-			ptst.setInt(2, automovel.getId());
+			ptst.setString(2, automovel.getCor());
+			ptst.setString(3, automovel.getPlaca());
+			ptst.setInt(4, automovel.getAno());
+			ptst.setDouble(5, automovel.getQuilometragem());
+			ptst.setInt(6, automovel.getProprietario().getId());
+			ptst.setInt(7, automovel.getId());
 			ptst.execute();
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block

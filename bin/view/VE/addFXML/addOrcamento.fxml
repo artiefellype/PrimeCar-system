@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="663.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addcontrollers.addBudgetController">
+   <children>
+      <HBox prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="201.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="CLIENTE" />
+         </children>
+         <VBox.margin>
+            <Insets left="50.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/person-outline.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="orcamentosClienteField" prefHeight="58.0" prefWidth="490.0" promptText="CPF do cliente" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="60.0" layoutY="70.0" prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="200.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="SERVIÇO" />
+         </children>
+         <VBox.margin>
+            <Insets left="50.0" top="20.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="70.0" prefHeight="74.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/wrench%20(1).png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="orcamentosServicoField" prefHeight="58.0" prefWidth="490.0" promptText="Nome do serviço" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="146.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="VALOR" />
+         </children>
+         <VBox.margin>
+            <Insets left="75.0" top="20.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="44.0" prefWidth="732.0">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pricetags-outline.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="orcamentosValorField" prefHeight="58.0" prefWidth="490.0" promptText="Valor total" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="60.0" layoutY="70.0" prefHeight="30.0" prefWidth="550.0">
+         <VBox.margin>
+            <Insets left="75.0" top="20.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="237.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="VEÍCULO(PLACA)" />
+         </children>
+         <VBox.margin>
+            <Insets left="70.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/plus-outline.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="orcamentosPlacaField" prefHeight="58.0" prefWidth="490.0" stylesheets="@../stylesheets/TextFiledsStylesheet.css">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="30.0" prefWidth="550.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="163.0" stylesheets="@../stylesheets/fontFieldStylesheet.css" text="DATA " />
+         </children>
+         <VBox.margin>
+            <Insets left="60.0" top="20.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox fx:id="orcam" prefHeight="44.0" prefWidth="508.0" spacing="30.0">
+         <VBox.margin>
+            <Insets left="110.0" />
+         </VBox.margin>
+         <children>
+            <DatePicker fx:id="orcamentosDatepickerStart" prefHeight="26.0" prefWidth="200.0" stylesheets="@../stylesheets/DatePickerStylesheet.css" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0" spacing="60.0">
+         <VBox.margin>
+            <Insets top="40.0" />
+         </VBox.margin>
+         <children>
+            <Button fx:id="serviceAddButton" mnemonicParsing="false" onMouseClicked="#adicionar" prefHeight="39.0" prefWidth="162.0" stylesheets="@../stylesheets/PrimaryButtonStylesheet.css" text="ADICIONAR" />
+            <Button fx:id="serviceCancelButton" mnemonicParsing="false" onMouseClicked="#close" stylesheets="@../stylesheets/SecondaryButtonStylesheet.css" text="CANCELAR">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" top="20.0" />
+   </padding>
+</VBox>

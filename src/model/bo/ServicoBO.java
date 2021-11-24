@@ -1,5 +1,7 @@
 package model.bo;
 
+import java.util.List;
+
 import model.dao.AutoDAO;
 import model.dao.PecasDAO;
 import model.dao.ServicosDAO;
@@ -7,13 +9,13 @@ import model.vo.AutoVO;
 import model.vo.PecasVO;
 import model.vo.ServicosVO;
 
-public class ServicoBO {
+public class ServicoBO<VO extends ServicosVO> {
 
 	ServicosDAO<ServicosVO> services = new ServicosDAO<ServicosVO>();
 	AutoDAO<AutoVO> auto = new AutoDAO<AutoVO>();
 	PecasDAO<PecasVO> peca = new PecasDAO<PecasVO>();
 	
-	public void inserir(ServicosVO serv) throws Exception {
+	public void inserir(VO serv) throws Exception {
 		try {
 			services.inserir(serv);
 			System.out.println("Servico inserida!");
@@ -23,7 +25,7 @@ public class ServicoBO {
 		}
 	}
 	
-	public void editar(ServicosVO serv) throws Exception{
+	public void editar(VO serv) throws Exception{
 		try {
 			services.editar(serv);
 			System.out.println("Servico editado");
@@ -32,37 +34,31 @@ public class ServicoBO {
 		}
 	}
 	
-	public void remover(ServicosVO serv) throws Exception {
-		try {
+	public void remover(VO serv) {
+		
 			services.remover(serv);
 			System.out.println("Servico removido");
-		}catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
+		
 	}
 	
-	public void findByTipo(ServicosVO serv) throws Exception {
-		try {
-			services.findByTipo(serv);
-		}catch(Exception e){
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	public List<ServicosVO> findByTipo(VO serv) {
+		
+			return services.findByTipo(serv);
+		
 	}
 	
-	public void findByAuto(AutoVO auto) throws Exception {
+	public List<ServicosVO> findByAuto(AutoVO auto) throws Exception {
 		if(this.auto.findByPlaca(auto.getPlaca()) == null) {
-			throw new Exception("Automovel não encontrado");
+			throw new Exception("Automovel nï¿½o encontrado");
 		}
-		try {
-			services.findByAuto(auto);
-		}catch(Exception e){
-			System.out.println("ERRO: " + e.getMessage());
-		}
-	}
 	
+			return services.findByAuto(auto);
+		
+	}
+	/*
 	public void findByPeca(PecasVO peca) throws Exception {
 		if(this.peca.findByNome(peca) == null) {
-			throw new Exception("Peca não encontrada");
+			throw new Exception("Peca nï¿½o encontrada");
 		}
 		
 		try {
@@ -71,8 +67,8 @@ public class ServicoBO {
 			System.out.println("ERRO: " + e.getMessage());
 		}
 	}
-	
-	public void findByFinished(ServicosVO serv) throws Exception {
+	*/
+	public void findByFinished(VO serv) throws Exception {
 		
 		try {
 			services.findByFinalizado(serv);
@@ -81,11 +77,9 @@ public class ServicoBO {
 		}
 	}
 	
-	public void listar() throws Exception {
-		try {
-			services.listar();
-		}catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	public List<ServicosVO> listarBO() {
+		
+		return services.listar();
+		
 	}
 }

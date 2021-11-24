@@ -5,70 +5,51 @@ import model.dao.ClienteDAO;
 import java.util.List;
 
 
-public class ClienteBO {
+public class ClienteBO<VO extends ClienteVO> {
 	ClienteDAO<ClienteVO> cli = new ClienteDAO<>();
 	
-	public void inserirBO(ClienteVO client) {
+	public void inserirBO(VO client) {
 		cli.inserir(client);
+		System.out.println("cliente Inserido");
 	}
 	
-	public void editarBO(ClienteVO client) {
+	public void editarBO(VO client) {
 		cli.editar(client);
+		System.out.println("cliente editado");
 	}
 	
-	public void removerBO(ClienteVO client) {
+	public void removerBO(VO client) {
 		cli.remover(client);
+		System.out.println("cliente removido");
 	}
 	
-	public void listarBO() {
-		List<ClienteVO> clientes = cli.listar();
-		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
+	public List<ClienteVO> listarBO() {
+		return cli.listar();
 	}
 	
-	public void listarByNome(ClienteVO client) {
+	public List<ClienteVO> listarByNome(VO client) {
 		String nome = client.getName();
-		List<ClienteVO> clientes = cli.findByName(nome);
 		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
+		return cli.findByName(nome);
+		
 	}
 	
-	public void listarByCPF(ClienteVO client) {
-		String cpf = client.getCPF();
-		List<ClienteVO> clientes = cli.findByCPF(cpf);
+	public ClienteVO listarByCPF(VO client) {
+		List<ClienteVO> clientes = cli.findByCPF(client.getCPF());
 		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
+		return clientes.get(0);
+	}
+	public List<ClienteVO> findByCPF(VO client) {
+		System.out.println("CPFLISTA@>>>>>" + cli.findByCPF(client.getCPF()));
+		return cli.findByCPF(client.getCPF());
 	}
 	
-	public void listarByEndereco(ClienteVO client) {
+	public List<ClienteVO> listarByEndereco(VO client) {
 		String endereco = client.getEndereco();
 		List<ClienteVO> clientes = cli.findByEndereco(endereco);
+		return clientes;
 		
-		for(ClienteVO clientesShow : clientes) {
-			System.out.println(clientesShow.getId());
-			System.out.println(clientesShow.getName());
-			System.out.println(clientesShow.getEndereco());
-			System.out.println(clientesShow.getCPF());
-			
-		}
+		
 	}
 	
 }

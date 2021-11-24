@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ServicosController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#827ef2" height="694.0" layoutX="26.0" layoutY="-214.0" rotate="-30.1" stroke="BLACK" strokeType="INSIDE" width="1270.0" />
+      <Pane layoutX="332.0" layoutY="217.0" prefHeight="550.0" prefWidth="919.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" height="37.38" offsetX="2.0" radius="22.285" width="53.76" />
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <TableView fx:id="servicosTableView" layoutX="21.0" layoutY="17.0" prefHeight="521.0" prefWidth="886.0" stylesheets="@stylesheets/TableViewStylesheet.css">
+              <columns>
+                <TableColumn fx:id="servicosColumnNome" prefWidth="283.2000427246094" text="NOME" />
+                <TableColumn fx:id="servicosColumnValor" prefWidth="216.00003051757812" text="VALOR" />
+                  <TableColumn fx:id="servicosColumnCarro" prefWidth="179.466796875" text="VEÍCULO(PLACA)" />
+                  <TableColumn fx:id="servicosColumnFinalizado" prefWidth="130.1331787109375" text="FINALIZADO" />
+                  <TableColumn fx:id="servicosIcons" prefWidth="78.93341064453125" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Label layoutX="333.0" layoutY="65.0" prefHeight="106.0" prefWidth="406.0" text="SERVIÇOS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="60.0" />
+         </font>
+      </Label>
+      <TextField fx:id="clienteInput" layoutX="868.0" layoutY="92.0" prefHeight="58.0" prefWidth="307.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-font-size: 15px;" />
+      <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="1190.0" layoutY="91.0" onMouseClicked="#searchServico" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/search-outline.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Pane prefHeight="800.0" prefWidth="300.0" style="-fx-background-color: #433DF2; -fx-border-color: #000; -fx-effect: dropshadow( one-pass-box, black, 8, 0.0, 1, 0 );">
+         <children>
+            <ImageView fitHeight="115.0" fitWidth="141.0" layoutX="79.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Imagem-Engrenagem-PNG.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="79.0" layoutY="135.0" prefHeight="40.0" prefWidth="115.0" text="PRIME CAR" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button id="clientButton" layoutX="-31.0" layoutY="222.0" mnemonicParsing="false" onAction="#toClientes" prefHeight="69.0" prefWidth="330.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-width: 10px; -fx-border-radius: 30px;" text="CLIENTES" textFill="#433df2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button id="autoButton" layoutX="-31.0" layoutY="305.0" mnemonicParsing="false" onAction="#toAutomoveis" prefHeight="69.0" prefWidth="330.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-width: 10px;" text="AUTOMÓVEIS" textFill="#433df2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button id="pecasButton" layoutX="-31.0" layoutY="390.0" mnemonicParsing="false" onAction="#toPecas" prefHeight="69.0" prefWidth="330.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-width: 10px;" text="PEÇAS" textFill="#433df2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button id="servicosButton" layoutX="-31.0" layoutY="474.0" mnemonicParsing="false" onAction="#toServicos" prefHeight="69.0" prefWidth="330.0" style="-fx-background-color: #fff; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-width: 10px; -fx-border-color: #F9D72E;" text="SERVIÇOS" textFill="#433df2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button id="orcamentosButton" layoutX="-35.0" layoutY="557.0" mnemonicParsing="false" onAction="#toOrcamentos" prefHeight="69.0" prefWidth="335.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="ORÇAMENTOS" textFill="#433df2">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button id="exitButton" layoutX="-35.0" layoutY="713.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="334.0" style="-fx-background-color: #fff; -fx-background-radius: 30px;" text="SAIR" textFill="#433df2">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></Button>
+         </children>
+      </Pane>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="631.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #fff; -fx-border-color: #c4c4c4; visibility: false;" translateX="490.0" translateY="250.0" visible="false">
+         <children>
+            <HBox prefHeight="30.0" prefWidth="550.0">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="118.0" stylesheets="@stylesheets/fontFieldStylesheet.css" text="NOME" />
+               </children>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/wrench%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="serviceNameField" prefHeight="58.0" prefWidth="490.0" stylesheets="@stylesheets/TextFiledsStylesheet.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox layoutX="60.0" layoutY="70.0" prefHeight="30.0" prefWidth="550.0">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="118.0" stylesheets="@stylesheets/fontFieldStylesheet.css" text="VALOR" />
+               </children>
+               <VBox.margin>
+                  <Insets left="50.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="70.0" prefHeight="74.0" prefWidth="600.0">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/pricetags-outline.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="serviceValorField" prefHeight="58.0" prefWidth="490.0" stylesheets="@stylesheets/TextFiledsStylesheet.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="60.0" layoutY="70.0" prefHeight="30.0" prefWidth="550.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="201.0" stylesheets="@stylesheets/fontFieldStylesheet.css" text="PLACA DO VEÍCULO" />
+               </children>
+               <VBox.margin>
+                  <Insets left="75.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="100.0" prefHeight="74.0" prefWidth="600.0">
+               <children>
+                  <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/wrench.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="servicePlacaField" prefHeight="58.0" prefWidth="490.0" stylesheets="@stylesheets/TextFiledsStylesheet.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0" spacing="60.0">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <children>
+                  <Button fx:id="serviceAddButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="162.0" stylesheets="@stylesheets/PrimaryButtonStylesheet.css" text="ADICIONAR" />
+                  <Button fx:id="serviceCancelButton" mnemonicParsing="false" stylesheets="@stylesheets/SecondaryButtonStylesheet.css" text="CANCELAR">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" top="20.0" />
+         </padding>
+      </VBox>
+      <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="400.0" layoutY="169.0" onMouseClicked="#addDataServicos" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/plus-square-outline.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="356.0" layoutY="171.0" onMousePressed="#loadDataServicos" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/refresh-outline-white.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</Pane>

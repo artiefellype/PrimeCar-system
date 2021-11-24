@@ -1,16 +1,17 @@
 package model.bo;
 
 import java.sql.SQLException;
-
+import java.util.List;
 
 import model.dao.PecasDAO;
+import model.vo.AutoVO;
 import model.vo.PecasVO;
 
-public class PecaBO {
+public class PecaBO<VO extends PecasVO> {
 	
 	PecasDAO<PecasVO> pec = new PecasDAO<PecasVO>();
 	
-	public void inserir(PecasVO peca) throws SQLException {
+	public void inserir(VO peca) throws SQLException {
 		try {
 			pec.inserir(peca);
 			System.out.println("Peca inserida!");
@@ -18,8 +19,13 @@ public class PecaBO {
 			System.out.println("ERRO: " + e.getMessage());
 		}
 	}
+	public Integer getIdFromBd(){
+		
+			return pec.getIdFromBD();
+		
+	}
 	
-	public void editar(PecasVO peca) throws SQLException{
+	public void editar(VO peca) throws SQLException{
 		try {
 			pec.editar(peca);
 			System.out.println("Peca editada");
@@ -28,36 +34,54 @@ public class PecaBO {
 		}
 	}
 	
-	public void findByName(PecasVO peca) throws SQLException {
-		try {
-			
-			pec.findByNome(peca);
-			
-		}catch(Exception e){
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	public List<PecasVO> findByName(VO peca) {
 		
+		return pec.findByNome(peca);
 	}
 	
-	public void findByFab(PecasVO peca) throws SQLException {
-		try {
-			pec.findByFabricante(peca);
-		}catch(Exception e){
-			System.out.println("ERRO: " + e.getMessage());
-			
-		}
-	}
-	public void listar() throws SQLException{
+	public List<PecasVO> findByFab(VO peca) {
 		
-		try{
-			pec.listar();
+			return pec.findByFabricante(peca);
+		
+	}
+	public List<PecasVO> findByAuto(VO peca) throws Exception{
+		try {
+			return pec.findByAuto(peca);
 		}catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
+			System.out.println("ERRO@>> " + e);
 		}
+		return null;
+	
+    }
+    public List<PecasVO> findByAutopl(AutoVO pl) {
+		
+    	try {
+			return pec.findByAutoPl(pl);
+		}catch(Exception e) {
+			System.out.println("ERRO@>> " + e);
+		}
+		return null;
+		
+		
+    }
+ public List<PecasVO> findByPreco(VO pl) {
+		
+    	try {
+			return pec.findByPreco(pl);
+		}catch(Exception e) {
+			System.out.println("ERRO@>> " + e);
+		}
+		return null;
+		
+		
+    }
+	public List<PecasVO> listarBO(){
+		
+		return pec.listar();
 		
 	}
 	
-	public void remove(PecasVO peca) throws SQLException {
+	public void remove(VO peca){
 		try {
 			pec.remover(peca);
 			System.out.println("Peca removida !");

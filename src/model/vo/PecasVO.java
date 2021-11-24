@@ -7,10 +7,10 @@ public class PecasVO {
 	private String name;
 	private String fabricante;
 	private Double preco;
+	private AutoVO auto;
 	
 	
-	
-	// ------------------- ID da peça ----------------------------
+	// ------------------- ID da peï¿½a ----------------------------
 	public Integer getId() {
 		return id;
 	}
@@ -23,7 +23,7 @@ public class PecasVO {
 		
 	}
 	
-	//-----------------------Nome da peça--------------------------
+	//-----------------------Nome da peï¿½a--------------------------
 	public String getName() {
 		return name;
 	}
@@ -35,7 +35,7 @@ public class PecasVO {
 		}
 		
 	}
-	//-----------------------Fabricante da peça--------------------------------------
+	//-----------------------Fabricante da peï¿½a--------------------------------------
 	public String getFabricante() {
 		return fabricante;
 	}
@@ -47,7 +47,7 @@ public class PecasVO {
 		}
 		
 	}
-	//------------------------Valor da peça------------------------------------
+	//------------------------Valor da peï¿½a------------------------------------
 	public Double getPreco() {
 		return preco;
 	}
@@ -55,10 +55,21 @@ public class PecasVO {
 		if(preco == null || preco.equals("")) {
 			
 		}else {
-			if(preco > 0) // Não existe preço negativo
+			if(preco > 0) // Nï¿½o existe preï¿½o negativo
 				this.preco = preco;
 		}
 		
+	}
+	// ------------------------ placa do veiculo ----------------------
+	public AutoVO getAuto() {
+		return auto;
+	}
+	public void setAuto(AutoVO auto) {
+		if(auto == null) {
+			System.out.println("O set auto ta null");
+		}else {
+			this.auto = auto;
+		}
 	}
 	
 	

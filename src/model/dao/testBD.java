@@ -30,7 +30,7 @@ public class testBD {
 		adminV.setId(admin.getIdFromBD());
 		
 		//admin.inserir(adminV);
-		
+		/*
 		List<AdminVO> clientes = admin.listar();
 		
 		for(AdminVO clientesShow : clientes) {
@@ -39,7 +39,7 @@ public class testBD {
 			System.out.println(clientesShow.getSenha());
 			System.out.println(clientesShow.getEmail());
 		}
-		
+		*/
 		 // ---------------TESTE CLIENTEDAO --------------------
 		ClienteDAO<ClienteVO> clientD = new ClienteDAO<ClienteVO>();
 		ClienteVO clientV = new ClienteVO();
@@ -101,19 +101,19 @@ public class testBD {
 		AutoVO autoV = new AutoVO();
 		
 		
-		autoV.setMarca("Chevrolet camaro");
+		autoV.setMarca("Corsinha");
 		autoV.setCor("bege");
 		autoV.setPlaca("BRA9J34");
 		autoV.setAno(1989);
-		autoV.setQuilometragem(23440.506);// atenção para 0km
+		autoV.setQuilometragem(23440.506);// atenï¿½ï¿½o para 0km
 		autoV.setProprietario(clientV);
 		autoV.setId(autoD.getIdFromBD());
 		
 		//autoD.inserir(autoV);
 		
 		
-		/*
-		List<AutoVO> auto = autoD.findByMarca(autoV.getMarca());
+		
+		List<AutoVO> auto = autoD.listar();
 		
 		for(AutoVO automovelShow : auto) {
 			System.out.println(automovelShow.getId());
@@ -123,13 +123,14 @@ public class testBD {
 			System.out.println(automovelShow.getAno());
 			System.out.println(automovelShow.getQuilometragem());
 			System.out.println(automovelShow.getProprietario().getId());
+			System.out.println(automovelShow.getProprietario().getCPF());
 			System.out.println("-------------------------------------------");
 			
 		}
 		//autoD.removeByCor(autoV);
 		
 			
-		 */
+		 
 		//--------------TESTE DE PECADAO-------------------
 		PecasDAO<PecasVO> pecaD = new PecasDAO<PecasVO>();
 		PecasVO pecaV = new PecasVO();
@@ -158,15 +159,15 @@ public class testBD {
 		*/
 		
 		
-		// -------------TESTE SERVIÇODAO------------------
+		// -------------TESTE SERVIï¿½ODAO------------------
 		ServicosDAO<ServicosVO> servicosD = new ServicosDAO<ServicosVO>();
 		ServicosVO servicosV = new ServicosVO();
 		
-		servicosV.setTipo("instalação de retrovisor");
+		servicosV.setTipo("instalaï¿½ï¿½o de retrovisor");
 		servicosV.setValor(220.60);
 		servicosV.setFinalizado(true);
 		servicosV.setAuto(autoV);
-		servicosV.setPeca(pecaV);
+		//servicosV.setPeca(pecaV);
 		servicosV.setId(servicosD.getIdFromBD());
 		
 		//servicosD.inserir(servicosV);

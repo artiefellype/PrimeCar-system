@@ -3,22 +3,40 @@ package model.bo;
 import java.util.List;
 
 import model.vo.AdminVO;
+import model.vo.AutoVO;
 import model.vo.ClienteVO;
 
 public class testeBO {
 	
 	public static void main (String[] args) throws Exception {
 		
-		ClienteBO clientB = new ClienteBO();
+		AutoBO<AutoVO> autoB = new AutoBO<AutoVO>();
+		AutoVO autoV = new AutoVO();
+		
 		ClienteVO clientV = new ClienteVO();
+		ClienteBO<ClienteVO> clientB = new ClienteBO<ClienteVO>();
+		
+		clientV.setName("Joao Amerildo");
+		clientV.setCPF("714.640.450-11");
+		clientV.setEndereco("Rua dos indigentes");
+		clientV.setId(16);
+		
+		
+		autoV.setAno(1999);
+		autoV.setMarca("Fiat Uno da firma");
+		autoV.setCor("Cinza");
+		autoV.setPlaca("LIG3I40");
+		autoV.setQuilometragem(23455.80);
+		autoV.setProprietario(clientV);
+		//autoB.inserirBO(autoV);
+		//clientB.listarBO();
+		autoB.listarBO();
+		
+		
+		
+		//clientB.listarByCPF(clientV);
+		
 		/*
-		clientV.setName("joao");
-		clientV.setCPF("345.634.326-34");
-		clientV.setEndereco("Rua amado batista");
-		
-		clientB.listarByCPF(clientV);
-		*/
-		
 		AdminBO adminB = new AdminBO();
 		AdminVO adminV = new AdminVO();
 		
@@ -29,7 +47,7 @@ public class testeBO {
 		//adminB.findByName(adminV);
 		
 		adminB.listar();
-		
+		*/
 		
 
 		
