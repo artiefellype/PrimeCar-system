@@ -1,12 +1,29 @@
 package model.vo;
 
+
 public class AutoVO {
+	private Integer id;
 	private String marca;
 	private String cor;
 	private String placa;
 	private Integer ano;
 	private Double quilometragem;
 	private ClienteVO proprietario;
+	
+	
+
+	// ------------------- ID do automóvel ----------------------------
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		if(id == null) {
+			
+		}else {
+			this.id = id;
+		}
+		
+	}
 	
 	//-----------------------Marca do automóvel------------------------------------
 	public String getMarca() {
@@ -75,19 +92,14 @@ public class AutoVO {
 	}
 	public void setProprietario(ClienteVO proprietario) {
 		
-		if(proprietario.getName() == null || proprietario.getName().isBlank()) {
-			
+		if(proprietario == null || proprietario.equals("")) {
+		
 			
 		}else {
 			this.proprietario = proprietario;
 		}
 		
-	}
-	
-	
-	
-	
-	
+	}	
 	
 	
 }

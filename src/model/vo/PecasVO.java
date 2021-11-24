@@ -1,9 +1,25 @@
 package model.vo;
 
-public class PacasVO {
+
+
+public class PecasVO {
+	private Integer id;
 	private String name;
 	private String fabricante;
 	private Double preco;
+	
+	// ------------------- ID da peça ----------------------------
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		if(id == null) {
+			
+		}else {
+			this.id = id;
+		}
+		
+	}
 	
 	//-----------------------Nome da peça--------------------------
 	public String getName() {

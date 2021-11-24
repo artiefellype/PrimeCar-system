@@ -1,34 +1,51 @@
 package model.vo;
 
+
+import java.util.Calendar;
+
 public class OrcamentoVO {
+	private Integer id;
 	private ClienteVO clientName;
-	private Double orcamento;
+	private ServicosVO servicos;
+	private AutoVO auto;
 	private Double custo;
-	private Double balanco;
-	
+	private Calendar data;
+
+	// ------------------- ID do orçamento ----------------------------
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		if(id == null) {
+			
+		}else {
+			this.id = id;
+		}
+		
+	}
 	//--------------------Nome do cliente a qual pertence o orçamento---------------------------
 	public ClienteVO getClientName() {
 		return clientName;
 	}
 	public void setClientName(ClienteVO clientName) {
-		if(clientName.getName() == null || clientName.getName().isBlank()) {
+		if(clientName == null || clientName.equals("")) {
 			
 		}else {
 			this.clientName = clientName;
 		}
 		
 	}
-	//--------------------Orçamento  do cliente---------------------------------------
-	public Double getOrcamento() {
-		return orcamento;
+    //-------------------Serviços prestados --------------------------------------------
+	public ServicosVO getServicos() {
+		return servicos;
 	}
-	public void setOrcamento(Double orcamento) {
-		if(orcamento == null || orcamento.equals("")) {
+	public void setServicos(ServicosVO servicos) {
+		if(servicos == null || servicos.equals(" ")) {
 			
 		}else {
-			if(orcamento > 0) // Não existe orçamento menor que 0
-				this.orcamento = orcamento;
+			this.servicos = servicos;
 		}
+		
 	}
 	//--------------------custos------------------------
 	public Double getCusto() {
@@ -42,18 +59,29 @@ public class OrcamentoVO {
 				this.custo = custo;
 		}
 	}
-	//--------------------Balanço--------------------------------
-	public Double getBalanco() {
-		return balanco;
+	// ------------------------ data de orçamento ----------------------------
+	public Calendar getData() {
+		return data;
 	}
-	public void setBalanco(Double balanco) {
-		if(balanco == null || balanco.equals("")) {
+	public void setData(Calendar data) {
+		if(data == null) {
 			
 		}else {
-			this.balanco = balanco;
+			this.data = data;
 		}
+		
 	}
 	
+	public AutoVO getAuto() {
+		return auto;
+	}
+	public void setAuto(AutoVO auto) {
+		if (auto == null || auto.equals(" ")) {
+			
+		}else {
+			this.auto = auto;
+		}
+	}
 	
 	
 }

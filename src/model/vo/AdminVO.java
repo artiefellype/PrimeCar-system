@@ -1,9 +1,23 @@
 package model.vo;
 
 public class AdminVO {
+	private Integer id;
 	private String name;
 	private String senha;
 	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		if(id == null) {
+			
+		}{
+			this.id = id;
+		}
+		
+	}
 	//-------------------Nome do admin------------------------------
 	public String getName() {
 		
