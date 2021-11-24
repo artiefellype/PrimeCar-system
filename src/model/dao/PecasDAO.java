@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.vo.PecasVO;
 
+
 public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	public void inserir(VO peca) {
 		conect = getConnection();
@@ -52,6 +53,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		
 	}
 	
+
 	public void remover(VO peca) {
 		conect = getConnection();
 		String sql = "delete from pecas where idpeca = ?";
@@ -71,12 +73,12 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 	
 	
 	
-	public List<VO> listar() {
+	public List<PecasVO> listar() {
 		conect = getConnection();
 		String sql = "select * from pecas";
 		Statement st;
 		ResultSet rs;
-		List<VO> pecas = new ArrayList<VO>();
+		List<PecasVO> pecas = new ArrayList<PecasVO>();
 		
 		try {
 			st = conect.createStatement();
@@ -112,7 +114,7 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 				pecaV.setName(rs.getString("nome"));
 				pecaV.setFabricante(rs.getString("fabricante"));
 				pecaV.setPreco(rs.getDouble("preco"));
-				pecaV.setId(rs.getInt("id"));
+				pecaV.setId(rs.getInt("idpeca"));
 				pecas.add(pecaV);
 				
 			}
@@ -148,16 +150,19 @@ public class PecasDAO<VO extends PecasVO> extends BaseDAO<VO> {
 		}
 		return pecas;
 	}
+
 	
 	public void editar(VO peca) {
 		conect = getConnection();
-		String sql = "update peca set nome = ? where idpeca = ?";
+		String sql = "update peca set nome = ?, set fabricante = ?, set preco = ? where idpeca = ?";
 		PreparedStatement ptst;
 		try {
 			
 			ptst = conect.prepareStatement(sql);		
 			ptst.setString(1, peca.getName());
-			ptst.setInt(2, peca.getId());
+			ptst.setString(2, peca.getFabricante());
+			ptst.setDouble(3, peca.getPreco());
+			ptst.setInt(4, peca.getId());
 			ptst.execute();
 			
 			} catch (SQLException e) {

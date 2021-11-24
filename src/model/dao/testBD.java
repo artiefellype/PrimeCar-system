@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import model.vo.AdminVO;
 import model.vo.AutoVO;
 import model.vo.ClienteVO;
 import model.vo.OrcamentoVO;
@@ -20,18 +21,38 @@ public class testBD {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		/*
+		AdminDAO<AdminVO> admin = new AdminDAO<AdminVO>();
+		AdminVO adminV = new AdminVO();
+		
+		adminV.setName("superMalvadao");
+		adminV.setSenha("senhaforte");
+		adminV.setEmail("chamacommalvadao@gsail.com");
+		adminV.setId(admin.getIdFromBD());
+		
+		//admin.inserir(adminV);
+		
+		List<AdminVO> clientes = admin.listar();
+		
+		for(AdminVO clientesShow : clientes) {
+			System.out.println(clientesShow.getId());
+			System.out.println(clientesShow.getName());
+			System.out.println(clientesShow.getSenha());
+			System.out.println(clientesShow.getEmail());
+		}
+		
 		 // ---------------TESTE CLIENTEDAO --------------------
-		ClienteDAO clientD = new ClienteDAO();
+		ClienteDAO<ClienteVO> clientD = new ClienteDAO<ClienteVO>();
 		ClienteVO clientV = new ClienteVO();
 		
 		
-		clientV.setName("mariazinha");
-		clientV.setCPF("345.673.456-34");
-		clientV.setEndereco("Rua chico anizio");
+		clientV.setName("islania satna");
+		clientV.setCPF("12102428427");
+		clientV.setEndereco("Rua oleo de agua");
 		clientV.setId(clientD.getIdFromBD());
 		
 		//clientD.inserir(clientV);
+		//System.out.println("tudo ok");
+		
 		/*
 		
 		//List<ClienteVO> clientes = clientD.findByName(clientV.getName());
@@ -74,17 +95,17 @@ public class testBD {
 		
 	*/
 		
-		/*
+		
 		 //-------------TESTE AUTOMOVELDAO---------------------
-		AutoDAO autoD = new AutoDAO();
+		AutoDAO<AutoVO> autoD = new AutoDAO<AutoVO>();
 		AutoVO autoV = new AutoVO();
 		
 		
-		autoV.setMarca("Chevrolet chevete");
+		autoV.setMarca("Chevrolet camaro");
 		autoV.setCor("bege");
 		autoV.setPlaca("BRA9J34");
 		autoV.setAno(1989);
-		autoV.setQuilometragem(28209883.0);// atenção para 0km
+		autoV.setQuilometragem(23440.506);// atenção para 0km
 		autoV.setProprietario(clientV);
 		autoV.setId(autoD.getIdFromBD());
 		
@@ -107,22 +128,38 @@ public class testBD {
 		}
 		//autoD.removeByCor(autoV);
 		
-			*/
-		/*
+			
+		 */
 		//--------------TESTE DE PECADAO-------------------
-		PecasDAO pecaD = new PecasDAO();
+		PecasDAO<PecasVO> pecaD = new PecasDAO<PecasVO>();
 		PecasVO pecaV = new PecasVO();
 		
 		
-		pecaV.setName("Parafuso da parafuzeta");
-		pecaV.setFabricante("Tesla companies");
-		pecaV.setPreco(22.50);
+		pecaV.setName("Rebinboca do inferno");
+		pecaV.setFabricante("Luci uncle corp");
+		pecaV.setPreco(340.90);
 		pecaV.setId(pecaD.getIdFromBD());
 		
 		//pecaD.inserir(pecaV);
 		
+		 
+		/*
+		
+		List<PecasVO> auto = pecaD.findByNome(pecaV);
+		
+		for(PecasVO automovelShow : auto) {
+			System.out.println(automovelShow.getId());
+			System.out.println(automovelShow.getName());
+			System.out.println(automovelShow.getFabricante());
+			System.out.println(automovelShow.getPreco());
+			System.out.println("-------------------------------------------");
+			
+		}
+		*/
+		
+		
 		// -------------TESTE SERVIÇODAO------------------
-		ServicosDAO servicosD = new ServicosDAO();
+		ServicosDAO<ServicosVO> servicosD = new ServicosDAO<ServicosVO>();
 		ServicosVO servicosV = new ServicosVO();
 		
 		servicosV.setTipo("instalação de retrovisor");
@@ -146,8 +183,8 @@ public class testBD {
 			System.out.println("Finalizado:" + servicosShow.getFinalizado());
 			
 		}
-		
 		*/
+		
 		/*
 		 //-------------------TESTE ORCAMENTODAO-----------------
 		OrcamentoVO orcV = new OrcamentoVO();

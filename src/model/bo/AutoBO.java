@@ -2,12 +2,11 @@ package model.bo;
 
 
 import model.vo.AutoVO;
-import model.vo.ClienteVO;
 import model.dao.AutoDAO;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AutoBO {
+	
 	AutoDAO<AutoVO> autd = new AutoDAO<>();
 	public void inserirBO(AutoVO auto) {
 		autd.inserir(auto);
@@ -87,7 +86,7 @@ public class AutoBO {
 	
 	public void listarByKmBO(AutoVO auto){
 		Double km = auto.getQuilometragem();
-		List<AutoVO> l = autd.findByAno(km);	
+		List<AutoVO> l = autd.findByQuilom(km);	
 		for(AutoVO aut : l) {
 			System.out.println(aut.getId());
 			System.out.println(aut.getMarca());
@@ -98,8 +97,9 @@ public class AutoBO {
 		}
 	}
 	
-	public void listarByClienteBO(ClienteVO cliente){
-		Integer id = cliente.getId();
+	public void listarByClienteBO(AutoVO cliente){
+		
+		Integer id = cliente.getProprietario().getId();
 		List<AutoVO> l = autd.findByCliente(id);	
 		for(AutoVO aut : l) {
 			System.out.println(aut.getId());

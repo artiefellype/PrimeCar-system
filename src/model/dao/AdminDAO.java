@@ -11,16 +11,17 @@ import java.util.List;
 import model.vo.AdminVO;
 
 public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {  
-	@Override
+	
 	public void inserir(VO admin) {
 		conect = getConnection();
-		String sql = "insert into admin (nome, senha) values (?,?)";
+		String sql = "insert into admin (nome, senha, email) values (?,?,?)";
 		PreparedStatement ptst;
 		try {
 		
 			ptst = conect.prepareStatement(sql);		
 			ptst.setString(1, admin.getName());
 			ptst.setString(2, admin.getSenha());
+			ptst.setString(3, admin.getEmail());
 			ptst.execute();
 			
 			} catch (SQLException e) {
@@ -43,13 +44,76 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 			while(rs.next()) {
 			admin.setId(rs.getInt("idadmin"));
 			}
-			id = admin.getId();
+				if(admin.getId() == null) {
+					id = 1;
+				}else {
+					id = admin.getId();
+				}
+				
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return id;
+		
+	}
+	
+	public List<AdminVO> findByName(VO name){
+		conect = getConnection();
+		String sql = "select * from admin where nome like '" + name.getName() + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AdminVO> admin = new ArrayList<AdminVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AdminVO adm = new AdminVO();
+				adm.setId(rs.getInt("idadmin"));
+				adm.setName(rs.getString("nome"));
+				adm.setSenha(rs.getString("senha"));
+				adm.setEmail(rs.getString("email"));
+				admin.add(adm);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return admin;
+		
+	}
+	
+	public List<AdminVO> findByEmail(VO email){
+		conect = getConnection();
+		String sql = "select * from admin where email like '" + email.getEmail() + "%'" ;
+		ResultSet rs;
+		PreparedStatement ptst;
+		
+		List<AdminVO> admin = new ArrayList<AdminVO>();
+		
+		try {
+			ptst = conect.prepareStatement(sql);
+			rs = ptst.executeQuery();
+			while(rs.next()) {
+				AdminVO adm = new AdminVO();
+				adm.setId(rs.getInt("idadmin"));
+				adm.setName(rs.getString("nome"));
+				adm.setSenha(rs.getString("senha"));
+				adm.setEmail(rs.getString("email"));
+				admin.add(adm);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return admin;
 		
 	}
 	
@@ -71,12 +135,12 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		}
 	}
 	
-	public List<VO> listar() {
+	public List<AdminVO> listar(){
 		conect = getConnection();
 		String sql = "select * from admin";
 		Statement st;
 		ResultSet rs;
-		List<VO> admin = new ArrayList<VO>();
+		List<AdminVO> admin = new ArrayList<AdminVO>();
 		
 		try {
 			st = conect.createStatement();
@@ -87,6 +151,7 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 				adm.setId(rs.getInt("idadmin")); 
 				adm.setName(rs.getString("nome"));
 				adm.setSenha(rs.getString("senha")); 
+				adm.setEmail(rs.getString("email"));
 			
 				
 				admin.add(adm);
@@ -99,15 +164,17 @@ public class AdminDAO<VO extends AdminVO> extends BaseDAO<VO> {
 		return admin;
 	}
 	
-	public void editarSenha(VO admin) {
+	public void editarSenha(VO admin){
 		conect = getConnection();
-		String sql = "update admin set senha = ? where id = ?";
+		String sql = "update admin set nome = ?, set senha = ?, set email = ? where id = ?";
 		PreparedStatement ptst;
 		try {
 			
-			ptst = conect.prepareStatement(sql);		
-			ptst.setString(1, admin.getSenha());
-			ptst.setInt(2, admin.getId());
+			ptst = conect.prepareStatement(sql);
+			ptst.setString(1, admin.getName());
+			ptst.setString(2, admin.getSenha());
+			ptst.setString(3, admin.getEmail());
+			ptst.setInt(4, admin.getId());
 			ptst.executeUpdate();
 			
 			} catch (SQLException e) {
